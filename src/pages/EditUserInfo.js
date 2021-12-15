@@ -204,17 +204,14 @@ export default function Write() {
         .then((res) => {
             alert("변경 완료, 로그아웃 후 확인해주세요:)")
             history.push("/home")
-            console.log(res.data)
         })
-        .catch((err) => console.log(err))
+        .catch((err) => err)
     }
-   
+
     const onSubmit = (e) => {
-        console.log(e)
         e.preventDefault()
         const formData = new FormData()
         formData.append("img", photo)
-        console.log(formData)
         axios
             .post(url + "/post/photo", formData, {
                 "Content-Type": "multipart/form-data",
@@ -233,7 +230,6 @@ export default function Write() {
             })
     }
     const addFile = (e) => {
-        console.log(e.target.files[0])
         setPhoto(e.target.files[0])
     }
 

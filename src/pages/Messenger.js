@@ -163,10 +163,8 @@ export default function Messenger() {
 
     const [recievemessage, setrecievemessage] = useState([])
     const history = useHistory()
-    console.log(recievemessage)
     //새로 방을 개설할때 , 채팅할 상대의 아이디를 쓰는 이벤트타겟(onChange용)-hoon
     function roomNamefunc(e) {
-        console.log(e.target.value)
         setreceiver_id(e.target.value)
     }
     //방을 개설할때 클릭된 함수
@@ -213,7 +211,6 @@ export default function Messenger() {
     useState(() => {
         setNewMsgSection([...newMsgSection])
         setprevmsg([...prevmsg])
-        console.log(newMsgSection)
     }, [roomInOut, prevmsg, newMsgSection])
 
     //방을 클릭했을때 방을 입장하게 할 함수-hoon

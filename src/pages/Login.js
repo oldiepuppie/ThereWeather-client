@@ -308,7 +308,6 @@ export default function Login() {
         nickNameInput: "",
     })
     useEffect(() => {
-        console.log("나는 login.js")
         dispatch(changeMapPage(false))
         const urlinfo = new URL(window.location.href)
         const hash = urlinfo.hash
@@ -324,9 +323,6 @@ export default function Login() {
                     accept: "application/json",
                 },
             }).then((res) => {
-                console.log(res.data)
-                console.log(res.data.email)
-                console.log(res.data.verified_email)
                 //구글에 정상 인증완료시-hoon
                 if (res.data.verified_email) {
                     //구글측의 정상인증 회원이지만, 우리사이트 간편가입 되어있는지 확인 요청 -hoon
@@ -340,7 +336,6 @@ export default function Login() {
                         },
                     }).then((res2) => {
                         // 소셜인증 되었으나 회원등록은 안된경우-hoon
-                        console.log(res2.data)
                         if (!res2.data) {
                             alert("소셜 간편 가입 필요")
                             setSocialLogined(true)
@@ -363,17 +358,10 @@ export default function Login() {
                         else {
                             // dispatch(changeIsLogin(res.data.verified_email))
                             alert("소셜 간편 가입 되어있는 회원")
-                            console.log(res.data.email)
-                            // setInputSignUpData({
-                            //     ...inputSignUpData,
-                            //     idInput: res.data.email,
-                            // })
-                            console.log(inputSignUpData.idInput)
                             setInputVaildMessage({
                                 ...inputVaildMessage,
                                 idInput: "",
                             })
-                            console.log(res.data.email)
                             socialAutoLogin(res.data.email)
                         }
                     })
@@ -385,7 +373,6 @@ export default function Login() {
             })
         }
     }, [])
-    console.log(isLogin)
     const loginidOnChangeHanlder = (e) => {
         setIdInput((prevInput) => e.target.value)
 
@@ -409,9 +396,9 @@ export default function Login() {
     const loginButtonHandler = (e) => {
         e.preventDefault()
 
-        if (idInput.length === 0 && pwInput.length === 0) {
-            console.log("모든 항목을 입력해야 합니다.")
-        }
+        // if (idInput.length === 0 && pwInput.length === 0) {
+        //     console.log("모든 항목을 입력해야 합니다.")
+        // }
 
         axios
             .post(
@@ -426,7 +413,6 @@ export default function Login() {
                 }
             )
             .then((res) => {
-                console.log(res.data.data)
                 localStorage.setItem(
                     "ATOKEN",
                     JSON.stringify(res.data.data.accessToken)
@@ -438,8 +424,6 @@ export default function Login() {
     }
     //간편가입완료했거나, 예전에 간편가입완료했던 소셜로그인사용자는 자동으로 로그인이 진행되게 하는 함수-hoon
     function socialAutoLogin(id) {
-        console.log("socialAutoLogin함수")
-        console.log(inputSignUpData.idInput)
         axios({
             url: url + "/sociallogin",
             method: "post",
@@ -447,7 +431,6 @@ export default function Login() {
                 user_id: id,
             },
         }).then((res) => {
-            console.log(res.data.data)
             localStorage.setItem(
                 "ATOKEN",
                 JSON.stringify(res.data.data.accessToken)
@@ -459,7 +442,6 @@ export default function Login() {
     }
 
     function googleLoginButtonHandler() {
-        console.log("구글 로그인 버튼 동작 확인")
         if (isLogin) {
             alert("이미 로그인상태입니다.")
         } else {
@@ -532,7 +514,6 @@ export default function Login() {
     }
 
     function signupFunc(e) {
-        console.log("프론트 콘솔:회원가입 입장")
         if (
             inputVaildMessage.idInput ||
             // inputVaildMessage.pwInput ||
@@ -540,9 +521,7 @@ export default function Login() {
             // pwCheckInputMessage ||
             userRoadAddress === "위 검색창에서 검색해주세요."
         ) {
-            console.log("프론트:빈칸을 채워주세요")
         } else {
-            console.log("프론트:빈칸 채우기 완료")
             axios({
                 url: url + "/users/signup",
                 method: "post",
@@ -554,7 +533,6 @@ export default function Login() {
                     user_photo: uploadedImg.filePath,
                 },
             }).then((res) => {
-                console.log(res)
                 if (res.status === 211) {
                     alert("아이디 중복입니다.")
                 } else if (res.status === 212) {
@@ -571,11 +549,9 @@ export default function Login() {
     }
     ////////////////////////////////////////////////
     const onSubmit = (e) => {
-        console.log(e)
         e.preventDefault()
         const formData = new FormData()
         formData.append("img", photo)
-        console.log(formData)
         axios
             .post(url + "/users/photo", formData, {
                 "Content-Type": "application/json",
@@ -592,7 +568,6 @@ export default function Login() {
     }
 
     const addFile = (e) => {
-        console.log(e.target.files[0])
         setPhoto(e.target.files[0])
     }
     ////////////////////////////////

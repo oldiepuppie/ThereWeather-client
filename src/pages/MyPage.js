@@ -7,12 +7,6 @@ import axios from "axios"
 import { changeIsLogin, userPosts, updatePostId } from "../actions/index"
 import GoBackButton from "../components/GoBackButton"
 
-/*
-    [수정]
-    - 페이지네이션 추가
-    - 주석, console.log 정리
-*/
-
 const Outer = styled.div`
     background-color: var(--page-bg-color);
     width: 100vw;
@@ -240,9 +234,6 @@ export default function MyPage() {
     const { isLogin, userInfo, postInfo, readPostId } = useSelector(
         (state) => state.itemReducer
     )
-    console.log(userInfo) //정보잘넘어옴
-    console.log(postInfo.postinfo)
-    console.log(readPostId)
 
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [removeUser, setremoveUser] = useState(false)
@@ -266,7 +257,6 @@ export default function MyPage() {
 
     // 정보수정
     const changeUserInfo = () => {
-        //console.log("정보수정 클릭")
         history.push("/edituserinfo")
     }
 

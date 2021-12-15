@@ -295,12 +295,6 @@ export default function Home() {
   const dispatch = useDispatch()
   const history = useHistory()
   const { item, curLocation } = useSelector((state) => state.itemReducer)
-  console.log(item)
-  console.log('카카오 위도 : ', curLocation.lat); // map 페이지 거쳐야함
-  console.log('카카오 경도 : ', curLocation.lon);
-
-  // const { userInfo } = useSelector((state) => state.itemReducer)
-  // dispatch(changeUser(axiosData))
 
   const [weatherData, setWeatherData] = useState()
 
@@ -310,7 +304,6 @@ export default function Home() {
       navigator.geolocation.getCurrentPosition(function (position) {
           let lat = position.coords.latitude, // 위도
               lon = position.coords.longitude // 경도
-          console.log(lat, lon) //브라우저에 찍힘        
           axios({
               url: url + "/map",
               method: "post",   
@@ -318,8 +311,6 @@ export default function Home() {
               withCredentials: true
           })
           .then((res) => {
-            //console.log(res.data)
-            //console.log(res.data.item)
             setWeatherData(res.data)
             dispatch(updateWeatherInfo(res.data))    
           })
@@ -352,8 +343,6 @@ export default function Home() {
         let top = lon + 0.03750225
         let bottom = lon - 0.03750225
 
-        console.log(right, left, top, bottom);
-
         axios({
           url: url + "/home",
           method: "post",
@@ -368,13 +357,8 @@ export default function Home() {
           withCredentials: true
         })
         .then((res) => {
-          // console.log('res : ', res.data.address);
-          console.log('address : ', res.data.address)
-          console.log('게시글 데이터 : ', res.data.curtPost);
           setcurrentPosts(res.data.curtPost)  // 주민예보글 렌더링 부분
           setcurAddress(res.data.address)
-
-          // dispatch(homePost(res.data))
         })
       })
     };
@@ -473,16 +457,10 @@ export default function Home() {
     setcurrentOuter(maxOuter)
     setcurrentTop(maxTop)
     setcurrentBottom(maxBottom)
-
-    console.log('currentTemp : ', currentTemp);
-    console.log('currentWind : ', currentWind);
-    console.log('currentWeather : ', currentWeather);
-    console.log('outer : ', currentOuter);  // 안나옴
   })
 
   // 게시물 사진 클릭
   const photoClickHandler = (e) => {
-    // console.log(e.target.id); // 게시물id 전달
     let elem = e.target;
 
     dispatch(updatePostId(elem.id));
@@ -544,14 +522,6 @@ export default function Home() {
                         <p>기상청 일기예보</p>
                         <div className="weatherInfo">
                         <ul>
-                          {/* {console.log(weatherData.item)}  */}
-                          {/* weatherData -> {item: Array(30)}, weatherData.item -> [ baseDate: '20211106',baseTime: '2130',category: 'T1H', fcstDate: '20211107', fcstTime: '0300', fcstValue: '10', nx: 59, ny: 128, ... ] */}
-                          {/* { weatherData && weatherData.item.map((info, idx) => { return <li kye={idx}>날짜:{info.baseDate}</li> })[0] }
-                          { weatherData && weatherData.item.map((info, idx) => { return <li key={idx}>기준 예보시각: {info.baseTime}</li> })[0] }
-                          { weatherData && weatherData.item.map((info, idx) => { return <li key={idx}>현재위치 기온: {info.fcstValue}℃</li> })[24] } 
-                          { weatherData && weatherData.item.map((info, idx) => { return <li key={idx}>현재위치 바람세기: {info.fcstValue  < "9" ? "바람세기 약하거나 약간 강함" : info.fcstValue  < "14" ? "바람세기 강함" : "바람세기 매우 강함" }</li> })[54] } 
-                          { weatherData && weatherData.item.map((info, idx) => { return <li key={idx}>현재위치 날씨상태: {info.fcstValue === "0" ? "맑음" : info.fcstValue === "1" ? "비" : info.fcstValue === "3" ? "눈" : info.fcstValue === "5" ? "빗방울" : "눈날림" }</li> })[6] }  */}
-
                           { weatherData && weatherData.item.map((info) => { return <li key={nanoid()}>날짜:{info.baseDate}</li> })[0] }
                           { weatherData && weatherData.item.map((info) => { return <li key={nanoid()}>기준 예보시각: {info.baseTime}</li> })[0] }
                           { weatherData && weatherData.item.map((info) => { return <li key={nanoid()}>현재위치 기온: {info.fcstValue}℃</li> })[24] } 

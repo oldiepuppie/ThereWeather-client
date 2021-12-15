@@ -64,7 +64,6 @@ export const Toggle = () => {
 
     const toggleHandler = () => {
         isOn === 1 ? setisOn(2) : setisOn(1)
-        console.log(isOn)
         dispatch(changeGender(isOn))
     }
 

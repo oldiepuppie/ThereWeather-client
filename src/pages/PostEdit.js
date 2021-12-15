@@ -222,9 +222,6 @@ export default function Write() {
     const dispatch = useDispatch()
     const history = useHistory()
     const { userInfo, curLocation, postInfo, readPostId } = useSelector((state) => state.itemReducer)
-    // console.log('userId : ',userInfo);
-    // console.log('postInfo : ', postInfo);
-    // console.log('readPostId : ', readPostId);
     const [postId, setPostId] = useState(readPostId)
     const [selectWeather, setSelectWeather] = useState()    // 날씨
     const [selectWind, setSelectWind] = useState()  // 바람
@@ -236,7 +233,6 @@ export default function Write() {
         filePath: `${url}/img/blankPost.png`,
     })
     const postIds = Number(readPostId)
-    // console.log('postIds : ', postIds)
 
     // 제목 handler
     const [title, setTitle] = useState("")
@@ -244,9 +240,6 @@ export default function Write() {
     const titleInputHandler = (e) => {
         setTitle((prev) => e.target.value)
     }
-    useEffect(() => {
-        console.log(userInfo.user_id)
-    }, [])
 
     // 날씨 버튼
     const weathers = [
@@ -286,7 +279,6 @@ export default function Write() {
 
         while (!elem.classList.contains("weatherButton")) {
             elem = elem.parentNode
-            console.log("while - work?", elem.name)
             setSelectWeather(elem.name)
 
             if (elem.nodeName === "ARTICLE") {
@@ -370,7 +362,6 @@ export default function Write() {
             withCredentials: true,
         })
         .then((res) => {
-            console.log('res : ', res.data);    // 해당 게시물 데이터 들어옴
             // 제목
             setTitle(res.data.post_title)
             // 사진
@@ -387,7 +378,7 @@ export default function Write() {
             // 내용
             setPostText(res.data.post_content)
         })
-        .catch(err => console.log(err))
+        .catch(err => err)
     }, [])
 
 
@@ -434,7 +425,7 @@ export default function Write() {
                     alert("작성 완료")
                     history.push("/mypage")
                 })
-                .catch((err) => console.log(err))
+                .catch((err) => err)
         } else {
             alert("모든 항목은 필수입니다:)")
         }
@@ -467,23 +458,18 @@ export default function Write() {
         })
     }, [selectTemp])
     function weatherFunc(select) {
-        console.log("select=" + select)
         setSelectWeather(select)
     }
     function weatherFunc2(select) {
-        console.log("select=" + select)
         setSelectWind(select)
     }
     function weatherFunc3(select) {
-        console.log("select=" + select)
         setSelectTemp(select)
     }
     const onSubmit = (e) => {
-        console.log(e)
         e.preventDefault()
         const formData = new FormData()
         formData.append("img", photo)
-        console.log(formData)
         axios
             .post(url + "/post/photo", formData, {
                 "Content-Type": "application/json",
@@ -502,7 +488,6 @@ export default function Write() {
             })
     }
     const addFile = (e) => {
-        console.log(e.target.files[0])
         setPhoto(e.target.files[0])
     }
     function sFunc() {

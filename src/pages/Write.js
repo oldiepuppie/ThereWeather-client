@@ -252,9 +252,6 @@ export default function Write() {
     const titleInputHandler = (e) => {
         setTitle((prev) => e.target.value)
     }
-    useEffect(() => {
-        console.log(userInfo.user_id)
-    }, [])
 
     // 날씨 버튼
     const weathers = [
@@ -294,7 +291,6 @@ export default function Write() {
 
         while (!elem.classList.contains("weatherButton")) {
             elem = elem.parentNode
-            console.log("while - work?", elem.name)
             setSelectWeather(elem.name)
 
             if (elem.nodeName === "ARTICLE") {
@@ -317,11 +313,6 @@ export default function Write() {
             })
         }
     }
-
-    /* clickedWeatherButtons 상태 확인용 */
-    // useEffect (() => {
-    //   console.log('***clickedWeatherButtons: useEffect***', clickedWeatherButtons);
-    // },[clickedWeatherButtons]);
 
     // 겉옷 더미데이터
     const outer = [
@@ -375,11 +366,6 @@ export default function Write() {
 
     // 등록버튼 이벤트
     const submitButtonHandler = (e) => {
-        //console.log("등록버튼 동작 확인")
-        // TODO
-        // axios.post
-        // 페이지 이동 : '글 읽기' 페이지로?
-        //console.log(userInfo.user_id)
         if (curLocation.lat === "") {
             alert("gps활용 허용하신 회원만 예보를 작성 할 수 있습니다.")
             history.push("/map")
@@ -423,7 +409,7 @@ export default function Write() {
                     alert("작성 완료")
                     history.push("/mypage")
                 })
-                .catch((err) => console.log(err))
+                .catch((err) => err)
         } else {
             alert("모든 항목은 필수입니다:)")
         }
@@ -456,23 +442,18 @@ export default function Write() {
         })
     }, [selectTemp])
     function weatherFunc(select) {
-        console.log("select=" + select)
         setSelectWeather(select)
     }
     function weatherFunc2(select) {
-        console.log("select=" + select)
         setSelectWind(select)
     }
     function weatherFunc3(select) {
-        console.log("select=" + select)
         setSelectTemp(select)
     }
     const onSubmit = (e) => {
-        console.log(e)
         e.preventDefault()
         const formData = new FormData()
         formData.append("img", photo)
-        console.log(formData)
         axios
             .post(url + "/post/photo", formData, {
                 "Content-Type": "application/json",
@@ -491,7 +472,6 @@ export default function Write() {
             })
     }
     const addFile = (e) => {
-        console.log(e.target.files[0])
         setPhoto(e.target.files[0])
     }
     function sFunc() {

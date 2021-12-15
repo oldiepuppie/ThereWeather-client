@@ -200,7 +200,6 @@ export default function Messenger2() {
 
     //새로 방을 개설할때 , 채팅할 상대의 아이디를 쓰는 이벤트타겟(onChange용)
     function roomNamefunc(e) {
-        console.log(e.target.value)
         setroomName(e.target.value)
     }
     //방을 개설할때 클릭된 함수
@@ -224,7 +223,6 @@ export default function Messenger2() {
             },
             withCredentials: true,
         }).then((res) => {
-            console.log(res.data)
             setjoinedRoom(res.data)
         })
     }
@@ -258,7 +256,6 @@ export default function Messenger2() {
     }
 
     function msgfunc(e) {
-        console.log(e.target.value)
         setmsgevent(e.target.value)
     }
 

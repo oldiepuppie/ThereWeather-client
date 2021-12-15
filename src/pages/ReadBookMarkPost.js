@@ -309,12 +309,7 @@ if (!url) url = "https://thereweather.space"
 export default function PostRead(){
   const history = useHistory()
   const { readPostId, userInfo, postInfo } = useSelector(state => state.itemReducer);
-  console.log(userInfo) //현재접속한 유저 
-  console.log(readPostId) //포스트번호 
-  console.log(postInfo) //본인것만 보임
-  // console.log(pagePostInfo)
   const postIds = Number(readPostId)
-  console.log(postIds) 
 
   // postData state 변수
   const [postData, setPostData] = useState({
@@ -356,11 +351,9 @@ export default function PostRead(){
         withCredentials: true
       })
       .then (res => {
-        console.log(res.data);
         return setPostData(prev => res.data);
-        // return res.data;
       })
-      .catch (err => console.log(err));
+      .catch (err => err);
     };
 
     let id;
@@ -371,7 +364,6 @@ export default function PostRead(){
     }
 
     if (!id) {
-      console.log('**postread: id가 없습니다**');
       setNoIdWarning(prev => '잘못된 접근입니다.');
     } else {
       getOnePost(id);
@@ -389,13 +381,11 @@ export default function PostRead(){
 
   // 게시물 수정
   const editPost = () => {
-    console.log('수정버튼동작확인');
     setEdit(true);
   }
 
   // 게시물 삭제
   const deletePost = (e) => {
-    console.log('삭제버튼동작확인');
     setRemovePost(true);
   }
 
@@ -424,9 +414,7 @@ export default function PostRead(){
 
   //게시물 삭제 yes버튼 
   const removeModalYes = () => {
-    // console.log('삭제완료')
     const token = JSON.parse(localStorage.getItem("ATOKEN"))
-    //console.log(token)
     axios({
       url:  url + "/deletepost",
       method: "delete",
@@ -438,7 +426,6 @@ export default function PostRead(){
       withCredentials: true
     })
     .then((res) => {
-      console.log(res.data)
       alert(res.data)
       // alert("삭제 완료")
       history.push("/mypage")
@@ -457,7 +444,6 @@ export default function PostRead(){
   }
 
   const bookmarkHandler = (e) => {
-    console.log('글 읽기 - 북마크 버튼 동작 확인');
     //눌렀을 때 북마크에 저장
     //다시 누르면 해제
       axios({
@@ -469,11 +455,9 @@ export default function PostRead(){
         withCredentials: true,
       })
     .then((res) => {
-      console.log(res.data)
       setBookmarked(prev => !prev);
       // history.push("/bookmark")  
-    })  
-  // console.log(e.currentTarget);
+    })
   }
 
   return (

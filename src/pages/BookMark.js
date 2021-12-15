@@ -258,12 +258,7 @@ export default function BookMark() {
         (state) => state.itemReducer
     )
     const [bookmarkList, setBookmarkList] = useState()
-
-    console.log(userInfo)
-    console.log(readPostId)
-    console.log(postInfo)
     const postId = Number(readPostId)
-    console.log(postId)
 
     useEffect(() => {
         axios({
@@ -280,12 +275,9 @@ export default function BookMark() {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,
         }).then((res) => {
-            console.log("**res.data bookmarkList**", res.data)
             setBookmarkList(res.data)
         })
     }, [])
-
-    //console.log(bookmarkList)
 
     const formatDate = (dateString) => {
         // 예시 : 2021. 11. 5. 22:02

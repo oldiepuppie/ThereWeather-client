@@ -114,7 +114,6 @@ export default function ChatRoom() {
     // const [newMsgSection, setNewMsgSection] = useState([])
     const [msgevent, setmsgevent] = useState("")
 
-    console.log(curRoom)
     // useEffect(() => {
     //     setprevmsg([...prevmsg, newMsgSection])
     // }, [newMsgSection])
@@ -152,8 +151,6 @@ export default function ChatRoom() {
         socket.on("sendmsg", (msgobj) =>
             // setNewMsgSection([...newMsgSection, msgobj])
             {
-                console.log(newMsgSection)
-                console.log(msgobj)
                 // return dispatch(changeNewMsgSection([...newMsgSection, msgobj]))
                 recievemessage({
                     user_id: msgobj.receiver_id,
@@ -184,7 +181,6 @@ export default function ChatRoom() {
         })
     }, [])
     function msgfunc(e) {
-        console.log(e.target.value)
         setmsgevent(e.target.value)
     }
 
@@ -242,7 +238,6 @@ export default function ChatRoom() {
                 }
             })}
             {newMsgSection.map((el) => {
-                console.log(el)
                 if (userInfo.user_id === el.user_id) {
                     return <MeDiv>{el.chatcontent}</MeDiv>
                 } else {

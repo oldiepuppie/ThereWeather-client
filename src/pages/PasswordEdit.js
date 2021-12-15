@@ -142,7 +142,6 @@ export default function PasswordEdit() {
 
   const curInputHandler = (e) => {
     setCurPwd(prev => e.target.value);
-    // console.log(e.target.value)
     if (e.target.value.length === 0) {
       setCurPwdInputWarning(prev => '비밀번호를 입력해주세요.');
     } else {
@@ -192,13 +191,11 @@ export default function PasswordEdit() {
     // e.prevntDefault()
 
     let newPwdValid = validationReg.test(newPwd)
-    console.log('새 비밀번호 유효성 검사 결과', newPwdValid);
     // TODO
     // 클라이언트 로컬스토리지에 있는 토큰을 찾아서 
     // 헤더에 담아서 서버에 전달 
     // const token = localStorage.getItem("ATOKEN")  //문자열
     const token = JSON.parse(localStorage.getItem("ATOKEN")) //문자열벗긴 토큰
-    //console.log(token) //토큰찾음
      axios({
        url: url + "/password",
        method: "put",
@@ -209,55 +206,18 @@ export default function PasswordEdit() {
         withCredentials: true,
      })
      .then((res) => {
-      // console.log(res.data)
       dispatch(changeUserPw(true))
       history.push("/mypage")
      })
   }
 
   const cancelButtonHandler = (e) => {
-    console.log('취소 버튼 동작 확인')
     setCurPwd(prev => '');
     setNewPwd(prev => '');
     setIsValid(prev => '');
     // TODO 이전 페이지로
     history.push('/home');
   }
-
-  // 탈퇴 모달에 붙은 함수
-  // const [ isModalOpen, setIsModalOpen ] = useState(false);
-  // const withdrawButtonHandler = (e) => {
-  //   console.log('탈퇴 버튼 동작확인');
-  //   setIsModalOpen(true);
-  // }
-
-  // const modalSelectList = [
-  //   [null, "--탈퇴 이유 선택--"],
-  //   ["notMuchUse", "사용을 많이 하지 않음"],
-  //   ["inconvenientDesign", "디자인이 불편함"],
-  //   ["chooseOtherApps", "다른 앱을 이용하기 위해"],
-  //   ["etc", "기타"]
-  // ];
-
-  // const [ modalSelected, setModalSelected ] = useState("");
-  // const handleChangeSelect = (e) => {
-  //   setModalSelected(prev => e.target.value);
-  // }
-
-  // const modalCloseButtonHandler = (e) => {
-  //   console.log('모달 닫기 버튼 동작 확인');
-  //   setIsModalOpen(false);
-  // }
-
-  // const modalYesButtonHandler = (e) => {
-  //   console.log('모달 yes 버튼 동작 확인');
-  // }
-
-  // const modalNoButtonHandler = (e) => {
-  //   console.log('모달 no 버튼 동작 확인');
-  //   setIsModalOpen(false);
-  // }
-
 
   return (
     <Outer className="loginPageComponent">

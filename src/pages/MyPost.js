@@ -174,7 +174,6 @@ export default function MyPost() {
         method: "get",
         withCredentials: true,
     }).then((res) => {
-        //console.log(res.data)
         setcurrentPosts(res.data)
         dispatch(userPosts(res.data))
     })
