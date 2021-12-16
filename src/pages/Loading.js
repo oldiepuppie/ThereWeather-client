@@ -1,7 +1,4 @@
-import React, { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
-import { changeUser } from "../actions/index"
 import LoadingSpinner from "../components/LoadingSpinner"
 
 // 부모요소에 postion: relative 필요함
@@ -28,7 +25,6 @@ const LoadingContainer = styled.div`
     width: 100vw;
     min-height: 100vh;
     background-color: rgba(253, 254, 254, 0.5);
-    // 밝은 회색, opacity 0.3
     z-index: 300;
 
     & > img {
@@ -41,10 +37,6 @@ const LoadingContainer = styled.div`
 `
 
 export default function Loading({ size, duration, hide }) {
-    // const dispatch = useDispatch()
-    // const { userInfo } = useSelector((state) => state.itemReducer)
-    // dispatch(changeUser(axiosData))
-
     return (
         <LoadingContainer className="loadingContainer" hide={hide}>
             <LoadingSpinner size={size} duration={duration} />

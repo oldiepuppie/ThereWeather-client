@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { updateWeatherInfo, updatePostId } from "../actions/index"
 import TopButton from "../components/TopButton";
 import { useHistory } from "react-router-dom"
-import { nanoid } from 'nanoid';
-// import Loading from "./Loading";
+import { nanoid } from 'nanoid';  
 
 const HomeContainer = styled.div`
     display: flex;
@@ -294,7 +293,7 @@ if (!url) url = "https://thereweather.space"
 export default function Home() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const { item, curLocation } = useSelector((state) => state.itemReducer)
+  const { curLocation } = useSelector((state) => state.itemReducer)
 
   const [weatherData, setWeatherData] = useState()
 
@@ -324,10 +323,9 @@ export default function Home() {
   const [currentPosts, setcurrentPosts] = useState([])
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
+      navigator.geolocation.getCurrentPosition(function () {
         let lat = curLocation.lat, // 위도
             lon = curLocation.lon // 경도
-        // 37.5525698 127.0783197
         /*
           소수 7째자리까지 : Math.floor(a * 10000000) /10000000
 
@@ -362,20 +360,18 @@ export default function Home() {
         })
       })
     };
-  }, [])
+  }, [curLocation.lat, curLocation.lon])
 
     // 날짜
-    const [todaysDate, settodaysDate] = useState("")
+    const [todaysDate, setTodaysDate] = useState("")
     useEffect(() => {
-        let date = new Date()
+        let date = new Date();
         const formatDate = (currentDate) => {
-            let formatted = `${currentDate.getFullYear()}년 ${
-                currentDate.getMonth() + 1
-            }월 ${currentDate.getDate()}일`
-            return formatted
+            let formatted = `${currentDate.getFullYear()}년 ${currentDate.getMonth() + 1}월 ${currentDate.getDate()}일`;
+            return formatted;
         }
-        settodaysDate(formatDate(date))
-    })
+        setTodaysDate(formatDate(date));
+    }, []);
 
   // 날씨, 코디 가져오기, 추후 수정
   let [currentTemp, setcurrentTemp] = useState('')
@@ -384,7 +380,7 @@ export default function Home() {
   let [currentOuter, setcurrentOuter] = useState('')
   let [currentTop, setcurrentTop] = useState('')
   let [currentBottom, setcurrentBottom] = useState('')
-  
+
   useEffect(() => {
     let tempArr = []  // 체감온도
     let windArr = []  // 바람세기
@@ -457,7 +453,7 @@ export default function Home() {
     setcurrentOuter(maxOuter)
     setcurrentTop(maxTop)
     setcurrentBottom(maxBottom)
-  })
+  }, [currentPosts]);
 
   // 게시물 사진 클릭
   const photoClickHandler = (e) => {
@@ -553,7 +549,7 @@ export default function Home() {
                       </RightNav1>
                       {currentPosts.map((el) => (
                           <div className="userPost" key={el.id}>
-                            <img src={el.post_photo} id={el.id} onClick={photoClickHandler}/>
+                            <img src={el.post_photo} id={el.id} onClick={photoClickHandler} alt="posted pictures" />
                           </div>
                       ))}
                   </RightContainer>

@@ -108,7 +108,6 @@ const LoginButton = styled.button`
 const Outer = styled.section`
     position: relative;
     width: 100vw;
-    // height: var(--mobile-page-height);
     background-color: var(--page-bg-color);
     display: flex;
     flex-direction: column;
@@ -125,7 +124,6 @@ const Outer = styled.section`
     }
 
     @media screen and (min-width: 1081px) {
-        // height: calc(100vh - 125px);
     }
 `
 
@@ -136,7 +134,6 @@ const StyledArticle = styled.article`
 `
 
 const InputAndTitle = styled.div`
-    // display: flex;
     justify-content: flex-end;
     align-items: center;
     margin: 1rem;
@@ -148,16 +145,11 @@ const InputAndTitle = styled.div`
     }
 `
 const InputAndTitle2 = styled.div`
-    // border: 1px solid blue;
-
     display: flex;
     flex-direction: row;
-    // margin-top: -7rem;
-    // padding-top: -5rem;
-
     align-items: center;
-    h3,
-    div {
+
+    h3, div {
         font-size: 1.4rem;
         margin: 1rem;
         font-weight: bold;
@@ -253,6 +245,7 @@ const Button2 = styled.input`
     }
 `
 ////////////////////////
+
 const PhotoUploadSection = styled.form`
     // border: 2px solid yellow;
     // margin: auto 2rem;
@@ -279,8 +272,8 @@ const PhotoBox2 = styled.img`
     width: 30vh;
     height: 30vh;
 `
+
 ////////////////////////////////////////////////////
-// const url = "https://thereweather.space"
 let url = process.env.REACT_APP_LOCAL_URL
 let clientUrl = "http://localhost:3000"
 
@@ -396,10 +389,6 @@ export default function Login() {
     const loginButtonHandler = (e) => {
         e.preventDefault()
 
-        // if (idInput.length === 0 && pwInput.length === 0) {
-        //     console.log("모든 항목을 입력해야 합니다.")
-        // }
-
         axios
             .post(
                 url + "/login",
@@ -484,27 +473,29 @@ export default function Login() {
 
     useEffect(() => {
         //아이디 유효성검사
-        if (
-            // onlyNumberAndEnglish(inputSignUpData.idInput) &&
-            isMoreThan4Length(inputSignUpData.idInput)
-        ) {
-            setInputVaildMessage({ ...inputVaildMessage, idInput: "" })
+        if (isMoreThan4Length(inputSignUpData.idInput)) {
+            setInputVaildMessage(prev => {
+                return { ...inputVaildMessage, idInput: "" };
+            });
         } else {
-            setInputVaildMessage({
-                ...inputVaildMessage,
-                idInput: "사용 불가능한 아이디 입니다.",
-            })
+            setInputVaildMessage(prev => {
+                return {...inputVaildMessage, idInput: "사용 불가능한 아이디 입니다."};
+            });
         }
     }, [inputSignUpData.idInput])
 
     useEffect(() => {
         //닉네임 유효성검사
         if (nickIsMoreThan4Length(inputSignUpData.nickNameInput)) {
-            setInputVaildMessage({ ...inputVaildMessage, nickNameInput: "" })
+            setInputVaildMessage(prev => {
+                return { ...inputVaildMessage, nickNameInput: "" };
+            })
         } else {
-            setInputVaildMessage({
-                ...inputVaildMessage,
-                nickNameInput: "닉네임은 두글자 이상 입니다.",
+            setInputVaildMessage(prev => {
+                return {
+                    ...inputVaildMessage,
+                    nickNameInput: "닉네임은 두글자 이상 입니다."
+                };
             })
         }
     }, [inputSignUpData.nickNameInput])

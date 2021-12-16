@@ -47,7 +47,6 @@ const ProfileArea = styled.div`
     }
 
     @media screen and (max-width: 1081px) {
-        /* border-bottom: 1px solid #aaa;  // 구분선 추가 */
         margin: 0 auto;
         margin-top: 4vh;
         width: 100%;
@@ -138,7 +137,6 @@ const GridArea = styled.div`
 
     row-gap: 10px; /* row의 간격을 10px로 */
     column-gap: 20px; /* column의 간격을 20px로 */
-    // border-top: 1px solid #aaa; // 구분선 추가 // header와 외곽선이 겹쳐서 주석처리합니다 ㅜㅜ
 
     .item:nth-child(1) {
         border: none;
@@ -231,17 +229,15 @@ if (!url) {
 export default function MyPage() {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { isLogin, userInfo, postInfo, readPostId } = useSelector(
+    const { userInfo } = useSelector(
         (state) => state.itemReducer
     )
 
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [removeUser, setremoveUser] = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [removeUser, setremoveUser] = useState(false);
+    const [currentPosts, setcurrentPosts] = useState([]);
+    // const [ noIdWarning, setNoIdWarning ] = useState('');
 
-    const [currentPosts, setcurrentPosts] = useState([])
-
-  
-    const [ noIdWarning, setNoIdWarning ] = useState('');
     // 게시물 데이터 조회
     useEffect(() => {
         axios({
@@ -252,8 +248,7 @@ export default function MyPage() {
             setcurrentPosts(res.data)
             dispatch(userPosts(res.data))
         })
-    }, [])
-
+    }, []);
 
     // 정보수정
     const changeUserInfo = () => {
@@ -279,7 +274,6 @@ export default function MyPage() {
                 dispatch(changeIsLogin(false))
                 history.push("/")
             })
-        //setIsModalOpen(false)
     }
 
     const modalNoButtonHandler = () => {

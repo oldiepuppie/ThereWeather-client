@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { useState } from "react"
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux"
 import axios from "axios";
 import DaumPostcode from "react-daum-postcode"
 
@@ -10,7 +9,6 @@ const Outer = styled.div`
     overflow: scroll;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
     justify-content: start;
     align-items: center;
     width: 100vw;
@@ -32,7 +30,6 @@ const Button = styled.button`
     align-items: center;
     border: 1px solid black;
     border-radius: ${(props) => (props.round ? "50%" : null)};
-    /* background-color: var(--button-bg-normal); */
     background-color: #FEC0CB;
     font-size: 1.25rem;
     padding: ${(props) => (props.round ? ".5rem .5rem" : ".5rem 2rem")};
@@ -79,7 +76,6 @@ const PictureSection = styled.form`
 
     @media screen and (min-width: 1081px) {
         justify-content: center;
-        /* justify-content: flex-start; */
         width: 40vw;
     }
 `
@@ -106,7 +102,6 @@ const WriteText = styled.div`
     vertical-align: center;
     line-height: 1.2rem;
     font-size: 1.2rem;
-    /* margin: 2rem 1rem 4rem; */
     margin: 1.5rem;
     padding: 1rem;
 
@@ -170,9 +165,7 @@ let url = process.env.REACT_APP_LOCAL_URL
 if (!url) url = "https://thereweather.space"
 
 export default function Write() {
-    const dispatch = useDispatch()
     const history = useHistory();
-    const { userInfo, curLocation } = useSelector((state) => state.itemReducer)
     const [userRoadAddress, setRoadUserAddress] =
         useState("위 검색창에서 검색해주세요.")
     const [photo, setPhoto] = useState("")
@@ -183,8 +176,6 @@ export default function Write() {
     if (!url) {
         url = "https://thereweather.space"
     }
-  
-
 
     // 등록버튼 이벤트
     const submitButtonHandler = (e) => {
