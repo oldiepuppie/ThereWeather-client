@@ -1,6 +1,4 @@
 import styled from "styled-components"
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import { faHome, faHeart, faMapMarkerAlt, faPencilAlt, faUserAlt } from "@fortawesome/free-solid-svg-icons"
 
 const PostListContainer = styled.button`
     background-color: #d5d5d5;

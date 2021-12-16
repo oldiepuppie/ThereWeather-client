@@ -1,16 +1,7 @@
-// import { useState, useEffect } from "react"
-// import styled from "styled-components"
-// import { useDispatch } from "react-redux"
-// import { changeBookmark } from "../actions/index"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-// 북마크 하트 버튼
-// const Container = styled.img`
-
-// `;
-
-export const Bookmark = ({ like, bookmarkHandler, color })  => {
+export const Bookmark = ({ bookmarkHandler, color })  => {
 
   return(
     <button className="bookmarkContainer" onClick={bookmarkHandler}>

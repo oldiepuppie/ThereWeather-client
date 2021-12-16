@@ -1,15 +1,5 @@
-/* 사용자 지정 속성 */
-/*
-		[사용법] var(컬러이름)
-		[예시] div의 배경색을 바꿀 때,
-			div {
-				background-color: var(--page-bg-color);
-			}
-
-		스타일드 컴포넌트에서도 사용 가능합니다!
-	*/
-
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap");
+
 :root {
     /* 색상 */
     --page-bg-color: #fafafa;
