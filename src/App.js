@@ -20,15 +20,12 @@ import PostRead from "./pages/PostRead"
 import ReadBookMarkPost from "./pages/ReadBookMarkPost"
 import PostEdit from "./pages/PostEdit"
 import FirstPage from "./pages/FirstPage"
-import Messenger from "./pages/Messenger"
-import Messenger2 from "./pages/Messenger2"
 import Loading from "./pages/Loading"
 import EditUserInfo from "./pages/EditUserInfo"
-import ChatRoom from "./pages/ChatRoom"
 import { changeIsLogin, changeUser } from "./actions/index"
 import GlobalStyle from "./components/GlobalStyle"
 
-let url = process.env.REACT_APP_LOCAL_URL
+let url = process.env.REACT_APP_LOCAL_SERVER;
 
 export default function App() {
     if (!url) {
@@ -109,17 +106,8 @@ export default function App() {
                 <Route exact path="/first">
                     <FirstPage />
                 </Route>
-                <Route exact path="/Messenger">
-                    <Messenger />
-                </Route>
-                <Route exact path="/Messenger2">
-                    <Messenger2 />
-                </Route>
                 <Route exact path="/loading">
                     <Loading />
-                </Route>
-                <Route exact path="/chatroom">
-                    <ChatRoom />
                 </Route>
 
                 <Route exact path="/writeorlogin">

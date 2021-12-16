@@ -144,7 +144,7 @@ const BarGraphchild = styled.div`
     // }
 `
 
-let url = process.env.REACT_APP_LOCAL_URL
+let url = process.env.REACT_APP_LOCAL_SERVER;
 if (!url) url = "https://thereweather.space"
 
 export default function Location({ bottom }) {

@@ -274,7 +274,7 @@ const PhotoBox2 = styled.img`
 `
 
 ////////////////////////////////////////////////////
-let url = process.env.REACT_APP_LOCAL_URL || "http://localhost:3000";
+let url = process.env.REACT_APP_LOCAL_SERVER || "http://localhost:3000";
 
 export default function Login() {
     const dispatch = useDispatch();
