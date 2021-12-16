@@ -14,11 +14,11 @@ const FirstPageContainer = styled.div`
 `
 
 export default function FirstPage() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(changeMapPage(false))
-    }, [])
+    }, []);
 
     return (
         <>

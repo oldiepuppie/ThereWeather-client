@@ -1,7 +1,7 @@
 // 로그인 상태에서 뜨는 화면
 import { useHistory } from "react-router-dom"
 import styled from "styled-components"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import axios from "axios"
 import { changeIsLogin } from "../actions/index"
 
@@ -55,8 +55,8 @@ const InfoBox = styled.div`
     }
 
     @media screen and (max-width: 1081px) {
-        /* border: 1px solid green; */
     }
+
     @media screen and (max-width: 375px) {
     }
 `
@@ -68,7 +68,6 @@ if (!url) url = "https://thereweather.space"
 export default function UserInfo() {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { isLogin } = useSelector((state) => state.itemReducer)
     if (!url) {
         url = "https://thereweather.space"
     }
@@ -99,12 +98,6 @@ export default function UserInfo() {
             <InfoBoxes>
                 <InfoBox onClick={() => history.push("/mypage")}>
                     <p>마이페이지</p>
-                </InfoBox>
-
-                <InfoBox>
-                    <button onClick={() => history.push("/messenger")}>
-                        <p>메신져</p>
-                    </button>
                 </InfoBox>
                 <InfoBox>
                     <button onClick={logoutBtnHandler}>
