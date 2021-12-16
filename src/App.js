@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Switch, Route, Redirect, useHistory } from "react-router-dom"
+import { Switch, Route, Redirect } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import axios from "axios"
 import "./App.css"
@@ -25,10 +25,7 @@ import Messenger2 from "./pages/Messenger2"
 import Loading from "./pages/Loading"
 import EditUserInfo from "./pages/EditUserInfo"
 import ChatRoom from "./pages/ChatRoom"
-
 import { changeIsLogin, changeUser } from "./actions/index"
-
-import styled from "styled-components"
 import GlobalStyle from "./components/GlobalStyle"
 
 let url = process.env.REACT_APP_LOCAL_URL
@@ -38,7 +35,6 @@ export default function App() {
         url = "https://thereweather.space"
     }
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const isInput = true
     const { isLogin } = useSelector((state) => state.itemReducer)

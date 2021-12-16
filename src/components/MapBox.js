@@ -269,12 +269,12 @@ export default function Location({ bottom }) {
         //클릭이벤트 함수
         kakao.maps.event.addListener(map, "click", function (mouseEvent) {
             // 클릭한 위도, 경도 정보를 가져옵니다
-            var latlng = mouseEvent.latLng
+            // var latlng = mouseEvent.latLng
             // 마커 위치를 클릭한 위치로 옮깁니다
             // marker.setPosition(latlng)
             //클릭한 곳의 위치 경도를 콘솔로그 찍는 변수
-            var message = "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, "
-            message += "경도는 " + latlng.getLng() + " 입니다"
+            // var message = "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, "
+            // message += "경도는 " + latlng.getLng() + " 입니다"
         })
         //////////////////////////////////////////고정-hoon/////////////////////////////////////////
 
@@ -448,12 +448,12 @@ export default function Location({ bottom }) {
                 // 영역정보의 북동쪽 정보를 얻어옵니다
                 var neLatlng = bounds.getNorthEast()
 
-                var message =
-                    "영역좌표는 남서쪽 위도, 경도는  " +
-                    swLatlng.toString() +
-                    "이고"
-                message +=
-                    "북동쪽 위도, 경도는  " + neLatlng.toString() + "입니다 "
+                // var message =
+                //     "영역좌표는 남서쪽 위도, 경도는  " +
+                //     swLatlng.toString() +
+                //     "이고"
+                // message +=
+                //     "북동쪽 위도, 경도는  " + neLatlng.toString() + "입니다 "
 
                 // setTimeout(() => {
                 axios({

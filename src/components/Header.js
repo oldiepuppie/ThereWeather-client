@@ -4,7 +4,6 @@ import {
     faSun,
     faCloud,
     faCloudRain,
-    faPooStorm,
     faSnowflake,
     faSearch,
 } from "@fortawesome/free-solid-svg-icons"
@@ -49,18 +48,6 @@ const HeaderOuter = styled.div`
     }
     @media screen and (max-width: 375px) {
         /* border: 1px solid red;  // 확인용 */
-    }
-`
-
-const Wing = styled.div`
-    display: none;
-
-    @media screen and (min-width: 1081px) {
-        display: flex;
-        flex-growth: 1;
-        align-items: center;
-        justify-content: center;
-        width: 20vw;
     }
 `
 
