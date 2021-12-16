@@ -1,13 +1,6 @@
-// TODO 회원탈퇴, 글 수정, 글 삭제에 사용 예정
-
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-
-import { useSelector, useDispatch } from "react-redux"
-import axios from "axios"
-import { changeIsLogin } from "../actions/index"
-import { useHistory } from "react-router-dom"
 
 const Outer = styled.div`
   position: fixed;
@@ -74,10 +67,6 @@ const Button = styled.button`
 
 
 export default function ModalConfirm({ children, closeHandler, yesHandler, noHandler }) {
-  // const dispatch = useDispatch()
-  // const history = useHistory()
-  // const { isLogin } = useSelector((state) => state.itemReducer)
-  
   const yesButtonHandler = () => {
     yesHandler();
   }
@@ -109,7 +98,6 @@ export default function ModalConfirm({ children, closeHandler, yesHandler, noHan
     </Outer>
   );
 }
-
 
 /* 사용 예시
 - props
