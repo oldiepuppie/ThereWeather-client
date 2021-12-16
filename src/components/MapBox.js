@@ -14,6 +14,73 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"
 import { useHistory } from "react-router-dom"
 
+const Box = styled.div`
+    width: 50%;
+`
+
+const Box2 = styled.div`
+    width: 50%;
+`
+
+const EmoticonBox = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
+const PostTitle = styled.div`
+    text-align: center;
+    background-color: pink;
+    border-radius: 10%;
+`
+
+const PostContent = styled.div`
+`
+
+const PostBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0.5rem;
+
+    &:hover {
+        background-color: #f5f5f5;
+    }
+`
+
+const PostImg = styled.img`
+    width: 100%;
+    border-radius: 20%;
+`
+
+const IconImg = styled.img`
+    width: 20%;
+    cursor: pointer;
+`
+
+const LoadingBoxDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-item: center;
+    width: 100%;
+    flex-direction: column;
+    @media screen and (min-width: 1081px) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-item: center;
+        width: 100%;
+        border: 1px solid black;
+        flex-direction: column;
+    }
+`
+
+const Button = styled.button`
+    background-color: ${(props) => (props.bgGrey ? "#E0E0E0" : "white")};
+    color: ${(props) => (props.bgGrey || props.isText ? "black" : "grey")};
+    font-size: ${(props) => (props.isText ? "1.2rem" : "1.6rem")};
+    margin: 0.1rem;
+`
+
 const ImgContainer = styled.div`
     position: relative;
     width: 100%;
@@ -24,11 +91,8 @@ const ImgContainer = styled.div`
     }
 `
 const PostListModal = styled.div`
-    // border: 1px solid black;
-
     background-color: white;
     z-index: 999;
-    // position: absolute;
     position: fixed;
     right: 0;
     bottom: 115px;
@@ -47,17 +111,13 @@ const PostListModal = styled.div`
         overflow: auto;
     }
 `
+
 const SlideModal = styled.div`
-    // border: 1px solid black;
     background-color: white;
     z-index: 9999;
-    // position: absolute;
     position: fixed;
     right: 0;
-    // top: 0px;
     bottom: 70px;
-    // bottom: 130%;
-    // bottom: ${(props) => props.bottom || "52.9%"};
     width: 100%;
     height: 4%;
     overflow: auto;
@@ -67,11 +127,7 @@ const SlideModal = styled.div`
         background-color: white;
         z-index: 9999;
         position: absolute;
-        // position: fixed;
-        // right: 1%;
-
         bottom: 70px;
-        // bottom: ${(props) => props.bottom || "52.9%"};
         width: 35.3%;
         height: 4%;
         overflow: auto;
@@ -80,74 +136,40 @@ const SlideModal = styled.div`
     }
 `
 const GraphModal = styled.div`
-    // border: 1px solid black;
     width: 50%;
     display: flex;
-
-    @media screen and (min-width: 1081px) {
-        // border: 1px solid pink;
-    }
 `
 
 const GraphTitle = styled.div`
-    // border: 1px solid black;
     width: 100%;
     display: flex;
     flex-direction: row;
     font-weight: bold;
-
-    @media screen and (min-width: 1081px) {
-    }
 `
 const GraphTitleDiv = styled.div`
-    // border: 1px solid black;
-    // margin: 1px;
-    // margin-top: 0.5rem;
-    // margin-bottom: 0.5rem;
     width: 100%;
     text-align: center;
-    // font-size: 0.8rem;
     background-color: pink;
-
-    @media screen and (min-width: 1081px) {
-        // border: 1px solid pink;
-    }
 `
 const GraphTitleDiv2 = styled.div`
-    // border: 1px solid black;
-    // margin: 1px;
     width: 100%;
     text-align: center;
     font-size: 0.8rem;
-
-    @media screen and (min-width: 1081px) {
-        // border: 1px solid pink;
-    }
 `
 const BarGraphFlex = styled.div`
-    // border: 1px solid black;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    // @media screen and (min-width: 1081px) {
-    //     border: 1px solid pink;
-    // }
 `
 const BarGraphchild = styled.div`
-    // border: 1px solid black;
     width: 100%;
-
-    // @media screen and (min-width: 1081px) {
-    //     border: 1px solid pink;
-    // }
 `
 
 let url = process.env.REACT_APP_LOCAL_SERVER;
 if (!url) url = "https://thereweather.space"
 
-export default function Location({ bottom }) {
+export default function Location() {
     const { searchWord, weatherFilter } = useSelector(
         (state) => state.itemReducer
     )
@@ -301,36 +323,11 @@ export default function Location({ bottom }) {
                     })
                 })
                 $(data.positions).map((n, idx) => {
-                    // $(data.positions).map((el) => {
-                    //     if ($(data.positions)[el].weather === "sunny") {
-                    //         setWeatherCount({
-                    //             ...weatherCount,
-                    //             sunny: weatherCount.sunny + 1,
-                    //         })
-                    //     } else if ($(data.positions)[el].weather === "cloudy") {
-                    //         setWeatherCount({
-                    //             ...weatherCount,
-                    //             cloudy: weatherCount.cloudy + 1,
-                    //         })
-                    //     } else if ($(data.positions)[el].weather === "rainy") {
-                    //         setWeatherCount({
-                    //             ...weatherCount,
-                    //             rainy: weatherCount.rainy + 1,
-                    //         })
-                    //     } else if ($(data.positions)[el].weather === "snowy") {
-                    //         setWeatherCount({
-                    //             ...weatherCount,
-                    //             snowy: weatherCount.snowy + 1,
-                    //         })
-                    //     }
-                    // })
-
                     var iwContent = `
-                <container style="border:3px solid pink; padding:5px; height:20rem; width:15rem; display:flex; flex-direction: row; overflow: auto;">
+                    <container style="border:3px solid pink; padding:5px; height:20rem; width:15rem; display:flex; flex-direction: row; overflow: auto;">
                     <box style="">
                         <h3>${$(data.positions)[n].post_title}</h3>
                             <box style="display:flex; flex-direction: row;">
-                            
                         ${
                             $(data.positions)[n].weather === "sunny"
                                 ? "<img src='img/icons-write/sunny.png' style='width:2rem;'/>"
@@ -400,11 +397,8 @@ export default function Location({ bottom }) {
                         <div>${$(data.positions)[n].post_content}</div>
                     </box>
                 </container>
-
-
                              `, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                         iwRemoveable = true // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
                     // 인포윈도우를 생성합니다
                     var infowindow = new kakao.maps.InfoWindow({
                         content: iwContent,
@@ -433,12 +427,6 @@ export default function Location({ bottom }) {
             }
 
             timer = setTimeout(function () {
-                // setWeatherCount({
-                //     sunny: 0,
-                //     cloudy: 0,
-                //     rainy: 0,
-                //     snowy: 0,
-                // })
                 // 지도 영역정보를 얻어옵니다
                 var bounds = map.getBounds()
 
@@ -455,7 +443,6 @@ export default function Location({ bottom }) {
                 // message +=
                 //     "북동쪽 위도, 경도는  " + neLatlng.toString() + "입니다 "
 
-                // setTimeout(() => {
                 axios({
                     url:
                         url +
@@ -519,86 +506,6 @@ export default function Location({ bottom }) {
         weatherFilter,
     ])
 
-    const Box = styled.div`
-        width: 50%;
-        @media screen and (min-width: 1081px) {
-        }
-    `
-    const Box2 = styled.div`
-        width: 50%;
-
-        @media screen and (min-width: 1081px) {
-        }
-    `
-    const EmoticonBox = styled.div`
-        display: flex;
-        flex-direction: row;
-
-        @media screen and (min-width: 1081px) {
-        }
-    `
-    const PostTitle = styled.div`
-        text-align: center;
-        background-color: pink;
-        border-radius: 10%;
-
-        @media screen and (min-width: 1081px) {
-        }
-    `
-    const PostContent = styled.div`
-
-        @media screen and (min-width: 1081px) {
-        }
-    `
-    const PostBox = styled.div`
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-
-        padding: 0.5rem;
-
-        &:hover {
-            background-color: #f5f5f5;
-        }
-
-        @media screen and (min-width: 1081px) {
-        }
-    `
-    const PostImg = styled.img`
-        width: 100%;
-        border-radius: 20%;
-
-        @media screen and (min-width: 1081px) {
-        }
-    `
-    const IconImg = styled.img`
-        width: 20%;
-        cursor: pointer;
-        @media screen and (min-width: 1081px) {
-        }
-    `
-    const LoadingBoxDiv = styled.div`
-        display: flex;
-        justify-content: center;
-        align-item: center;
-        width: 100%;
-        flex-direction: column;
-        @media screen and (min-width: 1081px) {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-item: center;
-            width: 100%;
-            border: 1px solid black;
-            flex-direction: column;
-        }
-    `
-    const Button = styled.button`
-        background-color: ${(props) => (props.bgGrey ? "#E0E0E0" : "white")};
-        color: ${(props) => (props.bgGrey || props.isText ? "black" : "grey")};
-        font-size: ${(props) => (props.isText ? "1.2rem" : "1.6rem")};
-        margin: 0.1rem;
-    `
     const data = {
         labels: ["맑음", "구름", "비", "눈"],
         datasets: [
@@ -664,20 +571,14 @@ export default function Location({ bottom }) {
             <ImgContainer id="map"></ImgContainer>
             {isOnOff ? (
                 <SlideModal>
-                    <Button>
-                        <FontAwesomeIcon
-                            onClick={() => setisOnOff(false)}
-                            icon={faChevronDown}
-                        />
+                    <Button onClick={() => setisOnOff(false)}>
+                        <FontAwesomeIcon icon={faChevronDown} />
                     </Button>
                 </SlideModal>
             ) : (
                 <SlideModal bottom={"70px;"}>
-                    <Button>
-                        <FontAwesomeIcon
-                            onClick={() => setisOnOff(true)}
-                            icon={faChevronUp}
-                        />
+                    <Button onClick={() => setisOnOff(true)}>
+                        <FontAwesomeIcon icon={faChevronUp} />
                     </Button>
                 </SlideModal>
             )}
