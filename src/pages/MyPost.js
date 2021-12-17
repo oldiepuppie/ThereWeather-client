@@ -39,7 +39,6 @@ const Outer = styled.div`
 
 // 내가 쓴 글 (grid)
 const GridArea = styled.div`
-    // border: 1px solid blue;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 300px 300px ;
