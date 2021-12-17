@@ -34,7 +34,6 @@ const Button = styled.button`
     align-items: center;
     border: 1px solid black;
     border-radius: ${(props) => (props.round ? "50%" : null)};
-    /* background-color: var(--button-bg-normal); */
     background-color: #FEC0CB;
     font-size: 1.25rem;
     padding: ${(props) => (props.round ? ".5rem .5rem" : ".5rem 2rem")};
@@ -248,18 +247,6 @@ export default function Write() {
         setTitle((prev) => e.target.value)
     }
 
-    // 날씨 버튼
-    const weathers = [
-        "sunny",
-        "cloudy",
-        "rainy",
-        "snowy",
-        "breezy",
-        "windy",
-        "strong",
-        "cold",
-        "hot",
-    ]
     // 날씨 필터링용 state
     const [clickedWeatherButtons, setClickedWeatherButtons] = useState([])
     // 스타일 적용 state
@@ -278,36 +265,6 @@ export default function Write() {
         cold: false,
         hot: false,
     })
-
-    // 날씨 버튼 handler
-    const weatherBtnHandler = (e) => {
-        if (e.target.nodeName === "ARTICLE") return
-        let elem = e.target
-
-        while (!elem.classList.contains("weatherButton")) {
-            elem = elem.parentNode
-            setSelectWeather(elem.name)
-
-            if (elem.nodeName === "ARTICLE") {
-                elem = null
-                return
-            }
-        }
-
-        if (elem && clickedWeatherButtons.includes(elem.name)) {
-            setClickedWeatherButtons((arr) => [
-                ...arr.filter((btnName) => btnName !== elem.name),
-            ])
-            setIsFilteringBtnActive((btnListObj) => {
-                return { ...btnListObj, [elem.name]: false }
-            })
-        } else {
-            setClickedWeatherButtons((arr) => [...arr, elem.name])
-            setIsFilteringBtnActive((btnListObj) => {
-                return { ...btnListObj, [elem.name]: true }
-            })
-        }
-    }
 
     // 겉옷 더미데이터
     const outer = [
@@ -554,8 +511,6 @@ export default function Write() {
                     <FlexColumnCenter className="smallSection">
                         <p>날씨를 선택하세요.</p>
                         <FilteringButtons className="filteringButtons">
-                            {/* {weathers.map((weather, idx) => { */}
-                            {/* return ( */}
                             <FilteringBtn
                                 name={"sunny"}
                                 className="weatherButton"
@@ -682,8 +637,6 @@ export default function Write() {
                                     alt="icon"
                                 />
                             </FilteringBtn>
-                            {/* ) */}
-                            {/* })} */}
                         </FilteringButtons>
                     </FlexColumnCenter>
 
