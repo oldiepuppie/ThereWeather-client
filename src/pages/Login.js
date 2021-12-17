@@ -122,9 +122,6 @@ const Outer = styled.section`
         font-weight: bold;
         margin-bottom: 2rem;
     }
-
-    @media screen and (min-width: 1081px) {
-    }
 `
 
 const StyledArticle = styled.article`
@@ -247,8 +244,6 @@ const Button2 = styled.input`
 ////////////////////////
 
 const PhotoUploadSection = styled.form`
-    // border: 2px solid yellow;
-    // margin: auto 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -263,8 +258,6 @@ const PhotoBox = styled.div`
     font-size: 30px;
     color: palevioletred;
     border: 1px solid #b5b5b5;
-    /* width: 300px;
-height: 150px; */
     object-fit: cover;
 `
 const PhotoBox2 = styled.img`
@@ -307,6 +300,7 @@ export default function Login() {
         const urlinfo = new URL(window.location.href);
         const hash = urlinfo.hash;
 
+        //간편가입완료했거나, 예전에 간편가입완료했던 소셜로그인사용자는 자동으로 로그인이 진행되게 하는 함수-hoon
         function socialAutoLogin(id) {
             axios({
                 url: url + "/sociallogin",
@@ -434,8 +428,6 @@ export default function Login() {
             })
     }
 
-    //간편가입완료했거나, 예전에 간편가입완료했던 소셜로그인사용자는 자동으로 로그인이 진행되게 하는 함수-hoon
-
     function googleLoginButtonHandler() {
         if (isLogin) {
             alert("이미 로그인상태입니다.")
@@ -504,6 +496,7 @@ export default function Login() {
         setRoadUserAddress(complevent.roadAddress)
     }
 
+    //간편가입완료했거나, 예전에 간편가입완료했던 소셜로그인사용자는 자동으로 로그인이 진행되게 하는 함수-hoon
     function socialAutoLogin(id) {
         axios({
             url: url + "/sociallogin",
@@ -591,34 +584,6 @@ export default function Login() {
                                 <li>{inputVaildMessage.idInput}</li>
                             </ValidationListBox>
                         </StyledArticle>
-                        {/* <StyledArticle className="password">
-                            <InputAndTitle className="inputPwSection">
-                                <h3>비밀번호</h3>
-                                <InputText
-                                    type="password"
-                                    name="pwInput"
-                                    placeholder="비밀번호"
-                                    onChange={idOnChangeHanlder("pwInput")}
-                                />
-                            </InputAndTitle>
-                            <ValidationListBox className="pwValidationList">
-                                <li>{inputVaildMessage.pwInput}</li>
-                            </ValidationListBox>
-                        </StyledArticle>
-                        <StyledArticle className="password">
-                            <InputAndTitle className="inputPwSection">
-                                <h3>비밀번호 확인</h3>
-                                <InputText
-                                    type="password"
-                                    name="pwCheckInput"
-                                    placeholder="비밀번호 확인"
-                                    onChange={idOnChangeHanlder2}
-                                />
-                            </InputAndTitle>
-                            <ValidationListBox className="pwValidationList">
-                                <li>{pwCheckInputMessage}</li>
-                            </ValidationListBox>
-                        </StyledArticle> */}
                         <StyledArticle className="password">
                             <InputAndTitle className="inputPwSection">
                                 <h3>닉네임</h3>
