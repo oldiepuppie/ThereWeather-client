@@ -5,11 +5,6 @@ import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { changeMapPage } from "../actions/index"
 
-/*
-    [수정]
-    이미지 태그에 alt 추가 (없으면 콘솔에 오류 뜸)
-*/
-
 const Outer = styled.div`
     overflow: scroll;
     display: flex;
@@ -238,20 +233,6 @@ export default function Write() {
         setTitle((prev) => e.target.value)
     }
 
-    // 날씨 버튼
-    const weathers = [
-        "sunny",
-        "cloudy",
-        "rainy",
-        "snowy",
-        "breezy",
-        "windy",
-        "strong",
-        "cold",
-        "hot",
-    ]
-    // 날씨 필터링용 state
-    const [clickedWeatherButtons, setClickedWeatherButtons] = useState([])
     // 스타일 적용 state
     const [isFilteringBtnActive, setIsFilteringBtnActive] = useState({
         sunny: false,
@@ -268,36 +249,6 @@ export default function Write() {
         cold: false,
         hot: false,
     })
-
-    // 날씨 버튼 handler
-    const weatherBtnHandler = (e) => {
-        if (e.target.nodeName === "ARTICLE") return
-        let elem = e.target
-
-        while (!elem.classList.contains("weatherButton")) {
-            elem = elem.parentNode
-            setSelectWeather(elem.name)
-
-            if (elem.nodeName === "ARTICLE") {
-                elem = null
-                return
-            }
-        }
-
-        if (elem && clickedWeatherButtons.includes(elem.name)) {
-            setClickedWeatherButtons((arr) => [
-                ...arr.filter((btnName) => btnName !== elem.name),
-            ])
-            setIsFilteringBtnActive((btnListObj) => {
-                return { ...btnListObj, [elem.name]: false }
-            })
-        } else {
-            setClickedWeatherButtons((arr) => [...arr, elem.name])
-            setIsFilteringBtnActive((btnListObj) => {
-                return { ...btnListObj, [elem.name]: true }
-            })
-        }
-    }
 
     // 겉옷 더미데이터
     const outer = [
@@ -349,7 +300,6 @@ export default function Write() {
         setPostText(e.target.value)
     }
 
-    
     // 기존 데이터 렌더링
     useEffect(() => {
         axios({
@@ -376,8 +326,7 @@ export default function Write() {
             setPostText(res.data.post_content)
         })
         .catch(err => err)
-    }, [])
-
+    }, [postIds, userInfo.postIds])
 
     // 등록버튼 이벤트
     const submitButtonHandler = (e) => {
@@ -388,7 +337,6 @@ export default function Write() {
             title.length > 0 &&
             postText.length > 0 &&
             uploadedImg.fileName !== "blankPost.png" &&
-            // selectValueOuter !== "default" &&
             selectValueTop !== "default" &&
             selectValueBottom !== "default" &&
             selectWeather &&
@@ -396,7 +344,6 @@ export default function Write() {
             selectTemp &&
             curLocation
         ) {
-            //&& !photo && !selectWeather && !selectWind && !setSelectTemp
 
             axios({
                 url: url + "/editpost",

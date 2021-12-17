@@ -230,9 +230,7 @@ export default function MyPage() {
     )
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    // const [removeUser, setremoveUser] = useState(false);
     const [currentPosts, setcurrentPosts] = useState([]);
-    // const [ noIdWarning, setNoIdWarning ] = useState('');
 
     // 게시물 데이터 조회
     useEffect(() => {
@@ -244,7 +242,7 @@ export default function MyPage() {
             setcurrentPosts(res.data)
             dispatch(userPosts(res.data))
         })
-    }, []);
+    }, [userInfo.user_id]);
 
     // 정보수정
     const changeUserInfo = () => {

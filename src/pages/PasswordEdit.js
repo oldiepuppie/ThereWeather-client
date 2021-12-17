@@ -172,9 +172,6 @@ export default function PasswordEdit() {
 
   // 버튼 클릭 이벤트
   const editButtonHandler = (e) => {
-    // e.prevntDefault()
-
-    let newPwdValid = validationReg.test(newPwd)
     // TODO
     // 클라이언트 로컬스토리지에 있는 토큰을 찾아서 
     // 헤더에 담아서 서버에 전달 

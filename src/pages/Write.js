@@ -247,8 +247,6 @@ export default function Write() {
         setTitle((prev) => e.target.value)
     }
 
-    // 날씨 필터링용 state
-    const [clickedWeatherButtons, setClickedWeatherButtons] = useState([])
     // 스타일 적용 state
     const [isFilteringBtnActive, setIsFilteringBtnActive] = useState({
         sunny: false,

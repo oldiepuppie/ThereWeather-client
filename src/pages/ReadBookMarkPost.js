@@ -307,7 +307,7 @@ let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function PostRead(){
   const history = useHistory()
-  const { readPostId, userInfo, postInfo } = useSelector(state => state.itemReducer);
+  const { readPostId, userInfo } = useSelector(state => state.itemReducer);
   const postIds = Number(readPostId)
 
   // postData state 변수
@@ -367,7 +367,7 @@ export default function PostRead(){
     } else {
       getOnePost(id);
     }
-  }, [])
+  }, [history.location.state, readPostId])
 
   // 북마크 상태
   const [bookmarked, setBookmarked] = useState(false);
