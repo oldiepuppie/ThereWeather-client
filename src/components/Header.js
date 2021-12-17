@@ -186,7 +186,7 @@ const Button3 = styled.button`
     }
 }
 `
-const Buttons3 = styled.button`
+const Buttons3 = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
@@ -238,12 +238,13 @@ export default function Header({ isInput, isMobileLogo, isText }) {
         setOnFocus(false)
     }
 
-    const [weatherFilter, setweatherFilter] = useState("")
+    const [weatherFilter, setweatherFilter] = useState("");
+
     useEffect(() => {
         setweatherFilter(weatherFilter)
         dispatch(changeWeatherFilter(weatherFilter))
 
-    }, [weatherFilter])
+    }, [weatherFilter, dispatch]);
 
     const logoutBtnHandler = (e) => {
         const token = JSON.parse(localStorage.getItem("ATOKEN"))
@@ -378,7 +379,6 @@ export default function Header({ isInput, isMobileLogo, isText }) {
 
             {isLogin ? (
                 <Buttons3 className="loginAndSingupButtons">
-                    {/* className="login" isText */}
                     <Button3
                         className="login"
                         onClick={logoutBtnHandler}

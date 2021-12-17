@@ -97,17 +97,15 @@ export default function MenuBar() {
 	return (
 		<Outer className="menuBar">
 			<Buttons>
-				<Button1>
+				<Button1 onClick={() => history.push("/homeorlogin")}>
 					<img
 						src={url1}
-						onClick={() => history.push("/homeorlogin")}
 						alt="home button icon"
 					/>
 				</Button1>
-				<Button2>
+				<Button2 onClick={() => history.push("/bookmarkorlogin")}>
 					<img
 						src="https://img.icons8.com/ios/45/000000/like--v1.png"
-						onClick={() => history.push("/bookmarkorlogin")}
 						alt="bookmark button icon"
 					/>
 				</Button2>
@@ -118,17 +116,15 @@ export default function MenuBar() {
 						alt="map button icon"
 					/>
 				</Button3>
-				<Button4>
+				<Button4 onClick={() => history.push("/writeorlogin")}>
 					<img
 						src="https://img.icons8.com/ios/45/000000/pencil--v1.png"
-						onClick={() => history.push("/writeorlogin")}
 						alt="write button icon"
 					/>
 				</Button4>
-				<Button5>
+				<Button5 onClick={() => history.push("/moreoruserinfo")}>
 					<img
 						src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/45/000000/external-user-interface-kiranshastry-lineal-kiranshastry.png"
-						onClick={() => history.push("/moreoruserinfo")}
 						alt="settings button icon"
 					/>
 				</Button5>

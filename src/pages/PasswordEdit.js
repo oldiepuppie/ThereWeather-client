@@ -247,28 +247,6 @@ export default function PasswordEdit() {
           <Button onClick={cancelButtonHandler}>취소</Button>
         </div>
       </Buttons>
-
-      {/* <TextButton className="removeUserInfo" onClick={withdrawButtonHandler}>회원탈퇴</TextButton> */}
-
-      {/* {
-        isModalOpen?
-          <ModalConfirm
-            yesHandler={modalYesButtonHandler}
-            noHandler={modalNoButtonHandler}
-            closeHandler={modalCloseButtonHandler}
-          >
-            <p>탈퇴하시겠습니까?</p>
-            <select name="reasons" className="reason-select" onChange={handleChangeSelect} value={modalSelected}>
-              {
-                modalSelectList.map((elem, idx) => {
-                  return (<option value={elem[0]} key={idx}>{elem[1]}</option>);
-                })
-              }
-            </select>
-          </ModalConfirm>
-        :
-          ''
-      } */}
     </Outer>
   );
 }

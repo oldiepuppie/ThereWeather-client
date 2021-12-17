@@ -5,9 +5,6 @@ import { TwoPictures } from "./Three"
 import styled from "styled-components"
 
 const Button = styled.button`
-// width: 140px;
-// height: 45px;
-// font-size: 11px;
 border:3px solid pink;
 font-size: ${(props) => (props.isText ? "1.6rem" : "1.6rem")};
 font-family: 'IBM Plex Sans KR', sans-serif;

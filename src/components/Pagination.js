@@ -73,7 +73,7 @@ export default function Pagination({dataLength, itemsPerPage, numberButtonClickH
       const result = numberArr.slice(startIdx, lastIdx);
       setCutArr(prev => result);
     }
-  }, [startIdx, lastIdx])
+  }, [startIdx, lastIdx, itemsPerPage, numberArr, unit])
 
   return (
     <PaginationContainer>

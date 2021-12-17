@@ -18,7 +18,7 @@ export default function FirstPage() {
 
     useEffect(() => {
         dispatch(changeMapPage(false))
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

@@ -242,7 +242,7 @@ export default function MyPage() {
             setcurrentPosts(res.data)
             dispatch(userPosts(res.data))
         })
-    }, [userInfo.user_id]);
+    }, [userInfo.user_id, dispatch]);
 
     // 정보수정
     const changeUserInfo = () => {

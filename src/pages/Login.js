@@ -281,24 +281,50 @@ export default function Login() {
     const history = useHistory();
 
     // input 상태 관리, 유효성 검사
-    const [idInput, setIdInput] = useState("")
-    const [pwInput, setPwInput] = useState("")
-    const [idInputMessage, setIdInputMessage] = useState("아이디를 입력하세요.")
+    const [idInput, setIdInput] = useState("");
+    const [pwInput, setPwInput] = useState("");
+    const [idInputMessage, setIdInputMessage] = useState("아이디를 입력하세요.");
     const [pwInputMessage, setPwInputMessage] =
-        useState("비밀번호를 입력하세요.")
-    const GOOGLE_LOGIN_URL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=1079927639813-87e5g0991msheh50mt77eclt2vij4kks.apps.googleusercontent.com&response_type=token&redirect_uri=${url}/login&scope=https://www.googleapis.com/auth/userinfo.email`
-    const { isLogin } = useSelector((state) => state.itemReducer)
+        useState("비밀번호를 입력하세요.");
 
-    const [socialLogined, setSocialLogined] = useState(false)
+    const GOOGLE_LOGIN_URL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=1079927639813-87e5g0991msheh50mt77eclt2vij4kks.apps.googleusercontent.com&response_type=token&redirect_uri=${url}/login&scope=https://www.googleapis.com/auth/userinfo.email`;
+    const { isLogin } = useSelector((state) => state.itemReducer);
+    const [socialLogined, setSocialLogined] = useState(false);
+
     const [inputSignUpData, setInputSignUpData] = useState({
         idInput: "",
         pwInput: "",
         nickNameInput: "",
+    });
+    const [inputVaildMessage, setInputVaildMessage] = useState({
+        idInput: "아이디를 입력해주세요.",
+        pwInput: "패스워드를 입력해주세요.",
+        nickNameInput: "닉네임을 입력해주세요.",
     })
+
     useEffect(() => {
-        dispatch(changeMapPage(false))
-        const urlinfo = new URL(window.location.href)
-        const hash = urlinfo.hash
+        dispatch(changeMapPage(false));
+        const urlinfo = new URL(window.location.href);
+        const hash = urlinfo.hash;
+
+        function socialAutoLogin(id) {
+            axios({
+                url: url + "/sociallogin",
+                method: "post",
+                data: {
+                    user_id: id,
+                },
+            }).then((res) => {
+                localStorage.setItem(
+                    "ATOKEN",
+                    JSON.stringify(res.data.data.accessToken)
+                )
+                dispatch(changeIsLogin(true))
+                alert("소셜 로그인 완료, 환영합니다")
+                history.push("/")
+            })
+        }
+
         if (hash) {
             const accessToken = hash.split("=")[1].split("&")[0]
             axios({
@@ -360,7 +386,8 @@ export default function Login() {
                 }
             })
         }
-    }, [])
+    }, [dispatch, history, inputSignUpData, inputVaildMessage]);
+
     const loginidOnChangeHanlder = (e) => {
         setIdInput((prevInput) => e.target.value)
 
@@ -406,7 +433,77 @@ export default function Login() {
                 history.push("/")
             })
     }
+
     //간편가입완료했거나, 예전에 간편가입완료했던 소셜로그인사용자는 자동으로 로그인이 진행되게 하는 함수-hoon
+
+    function googleLoginButtonHandler() {
+        if (isLogin) {
+            alert("이미 로그인상태입니다.")
+        } else {
+            window.location.assign(GOOGLE_LOGIN_URL)
+        }
+    }
+    //////////////////socialLogined.page코드//////////////
+
+    const [userRoadAddress, setRoadUserAddress] =
+        useState("위 검색창에서 검색해주세요.")
+    const { genderToggle } = useSelector((state) => state.itemReducer)
+    const [photo, setPhoto] = useState("")
+    const [uploadedImg, setUploadedImg] = useState({
+        fileName: "blankProfile.png",
+        filePath: `${url}/img/blankProfile.png`,
+    })
+
+    const idOnChangeHanlder = (key) => (e) => {
+        setInputSignUpData({
+            ...inputSignUpData,
+            [key]: e.target.value,
+        })
+    }
+
+    //아이디길이가 4자이상인가
+    function isMoreThan4Length(word) {
+        return word.length >= 4
+    }
+
+    //닉네임 길이 2글자 이상인가
+    function nickIsMoreThan4Length(word) {
+        return word.length >= 2
+    }
+
+    useEffect(() => {
+        //아이디 유효성검사
+        if (isMoreThan4Length(inputSignUpData.idInput)) {
+            setInputVaildMessage(prev => {
+                return { ...inputVaildMessage, idInput: "" };
+            });
+        } else {
+            setInputVaildMessage(prev => {
+                return {...inputVaildMessage, idInput: "사용 불가능한 아이디 입니다."};
+            });
+        }
+    }, [inputSignUpData.idInput, inputVaildMessage])
+
+    useEffect(() => {
+        //닉네임 유효성검사
+        if (nickIsMoreThan4Length(inputSignUpData.nickNameInput)) {
+            setInputVaildMessage(prev => {
+                return { ...inputVaildMessage, nickNameInput: "" };
+            })
+        } else {
+            setInputVaildMessage(prev => {
+                return {
+                    ...inputVaildMessage,
+                    nickNameInput: "닉네임은 두글자 이상 입니다."
+                };
+            })
+        }
+    }, [inputSignUpData.nickNameInput, inputVaildMessage])
+
+    function handleComplete(complevent) {
+        setRoadUserAddress(complevent.roadAddress)
+    }
+
     function socialAutoLogin(id) {
         axios({
             url: url + "/sociallogin",
@@ -425,86 +522,10 @@ export default function Login() {
         })
     }
 
-    function googleLoginButtonHandler() {
-        if (isLogin) {
-            alert("이미 로그인상태입니다.")
-        } else {
-            window.location.assign(GOOGLE_LOGIN_URL)
-        }
-    }
-    //////////////////socialLogined.page코드//////////////
-
-    const [inputVaildMessage, setInputVaildMessage] = useState({
-        idInput: "아이디를 입력해주세요.",
-        pwInput: "패스워드를 입력해주세요.",
-        nickNameInput: "닉네임을 입력해주세요.",
-    })
-    const [userRoadAddress, setRoadUserAddress] =
-        useState("위 검색창에서 검색해주세요.")
-    const { genderToggle } = useSelector((state) => state.itemReducer)
-    const [photo, setPhoto] = useState("")
-    const [uploadedImg, setUploadedImg] = useState({
-        fileName: "blankProfile.png",
-        filePath: `${url}/img/blankProfile.png`,
-        // fileName: null,
-        // filePath: null,
-    })
-
-    const idOnChangeHanlder = (key) => (e) => {
-        setInputSignUpData({
-            ...inputSignUpData,
-            [key]: e.target.value,
-        })
-    }
-
-    //아이디길이가 4자이상인가
-    function isMoreThan4Length(word) {
-        return word.length >= 4
-    }
-    //닉네임 길이 2글자 이상인가
-    function nickIsMoreThan4Length(word) {
-        return word.length >= 2
-    }
-
-    useEffect(() => {
-        //아이디 유효성검사
-        if (isMoreThan4Length(inputSignUpData.idInput)) {
-            setInputVaildMessage(prev => {
-                return { ...inputVaildMessage, idInput: "" };
-            });
-        } else {
-            setInputVaildMessage(prev => {
-                return {...inputVaildMessage, idInput: "사용 불가능한 아이디 입니다."};
-            });
-        }
-    }, [inputSignUpData.idInput])
-
-    useEffect(() => {
-        //닉네임 유효성검사
-        if (nickIsMoreThan4Length(inputSignUpData.nickNameInput)) {
-            setInputVaildMessage(prev => {
-                return { ...inputVaildMessage, nickNameInput: "" };
-            })
-        } else {
-            setInputVaildMessage(prev => {
-                return {
-                    ...inputVaildMessage,
-                    nickNameInput: "닉네임은 두글자 이상 입니다."
-                };
-            })
-        }
-    }, [inputSignUpData.nickNameInput])
-
-    function handleComplete(complevent) {
-        setRoadUserAddress(complevent.roadAddress)
-    }
-
     function signupFunc(e) {
         if (
             inputVaildMessage.idInput ||
-            // inputVaildMessage.pwInput ||
             inputVaildMessage.nickNameInput ||
-            // pwCheckInputMessage ||
             userRoadAddress === "위 검색창에서 검색해주세요."
         ) {
         } else {
@@ -520,15 +541,12 @@ export default function Login() {
                 },
             }).then((res) => {
                 if (res.status === 211) {
-                    alert("아이디 중복입니다.")
+                    alert("아이디 중복입니다.");
                 } else if (res.status === 212) {
-                    alert("닉네임 중복입니다.!")
+                    alert("닉네임 중복입니다.!");
                 } else if (res.status === 210) {
-                    alert("회원가입 완료 입니다.")
-                    socialAutoLogin(inputSignUpData.idInput)
-                    // dispatch(changeIsLogin(res.data.verified_email))
-                    // alert("소셜 간편가입 및 소셜 로그인 완료")
-                    // history.push("/")
+                    alert("회원가입 완료 입니다.");
+                    socialAutoLogin(inputSignUpData.idInput);
                 }
             })
         }

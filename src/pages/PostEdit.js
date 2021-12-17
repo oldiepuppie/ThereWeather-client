@@ -376,7 +376,7 @@ export default function Write() {
     }
     useEffect(() => {
         dispatch(changeMapPage(false))
-    }, [])
+    }, [dispatch])
     useEffect(() => {
         setIsFilteringBtnActive({
             sunny: false,

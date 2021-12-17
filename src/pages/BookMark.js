@@ -189,7 +189,7 @@ export default function BookMark() {
 		}).then((res) => {
 			setBookmarkList(res.data);
 		})
-	}, []);
+	}, [postId, postInfo, userInfo.id]);
 
     const formatDate = (dateString) => {
 			// 예시 : 2021. 11. 5. 22:02
@@ -216,15 +216,15 @@ export default function BookMark() {
     }
 
 	// 시작 - 페이지네이션 변수들
-	const [currentPage, setCurrentPage] = useState(1)
+	const [, setCurrentPage] = useState(1)
 	// 1페이지로 시작
-	const itemsPerPage = 6
-	// 한 페이지에 8개씩 보여준다
-	const lastIdx = currentPage * itemsPerPage
-	const firstIdx = lastIdx - itemsPerPage
-	const slicedData = (dataArr) => {
-			return dataArr.slice(firstIdx, lastIdx)
-	}
+	// const itemsPerPage = 6
+	// // 한 페이지에 8개씩 보여준다
+	// const lastIdx = currentPage * itemsPerPage
+	// const firstIdx = lastIdx - itemsPerPage
+	// const slicedData = (dataArr) => {
+	// 		return dataArr.slice(firstIdx, lastIdx)
+	// }
 	// 끝 - 페이지네이션 변수들
 
 	return (
