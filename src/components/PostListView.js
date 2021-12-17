@@ -7,8 +7,6 @@ const PostListContainer = styled.button`
 const PostPhoto = styled.img`
     width: 90px;
     height: 50px;
-    // display: flex;
-    // flex-direction: column;
 `
 const PostPhotoDivideContents = styled.button`
     padding: 0.5rem;

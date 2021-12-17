@@ -287,8 +287,7 @@ const RightNav1 = styled.nav`
     }
 `
 
-let url = process.env.REACT_APP_LOCAL_SERVER;
-if (!url) url = "https://thereweather.space"
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function Home() {
   const dispatch = useDispatch()

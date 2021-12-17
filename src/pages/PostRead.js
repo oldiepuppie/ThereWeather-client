@@ -43,8 +43,6 @@ const Outer = styled.div`
       font-weight: bold;
     }
   }
-  @media screen and (max-width: 375px) {
-  }
 `
 // 제목, 유저프로필사진,닉네임 북마크버튼
 const PostHeader = styled.div`
@@ -89,7 +87,6 @@ const BookmarkIcon = styled(Bookmark)`
   }
 `
 
-
 // 프로필
 const Profile = styled.div`
   width: 60rem;
@@ -105,14 +102,16 @@ const Profile = styled.div`
   .profileInfo{
     display: flex; 
     align-items: center;
-    /* margin-left: 1vh; */
   }
+
   .location{
     font-size: 1.2rem;
   }
+
   span{
     margin-left: 1vh;
   }
+
   span.date {
     font-size: .8rem;
     color: #707B7C;
@@ -121,12 +120,14 @@ const Profile = styled.div`
   @media screen and (max-width: 1081px) {
     width: 70%;
   }
+
   @media screen and (max-width: 594px) {
     .location{
       margin-top: 1.2vh;
       font-size: 1.2rem;
     }
   }
+
   @media screen and (max-width: 375px) {
     width: 80%;
     margin-top: 4vh;
@@ -143,6 +144,7 @@ const Profile = styled.div`
     }
   }
 `
+
 // 프로필 이미지
 const ProfileImg = styled.img`
   border: 1px solid #aaa;
@@ -157,8 +159,6 @@ const ProfileImg = styled.img`
 
 // 게시물 사진 (있을 때, 없을때)
 const PostImg = styled.img`
-  // 이미지 사이즈(1000*750) 
-  // 다시 확인필요
   width: 60rem;
   height: 40rem;
   display: block;
@@ -315,8 +315,7 @@ const Buttons = styled.div`
   }
 `
 
-let url = process.env.REACT_APP_LOCAL_SERVER;
-if (!url) url = "https://thereweather.space"
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function PostRead(){
   const history = useHistory()

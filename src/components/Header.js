@@ -46,9 +46,6 @@ const HeaderOuter = styled.div`
         flex-direction: row;
         justify-content: space-around;
     }
-    @media screen and (max-width: 375px) {
-        /* border: 1px solid red;  // 확인용 */
-    }
 `
 
 const TitleAndLogo = styled.div`
@@ -101,6 +98,7 @@ const InputAndSubmit = styled.div`
         }
     }
 `
+
 // 주소검색창 부분
 const StyledPostCode = styled(DaumPostcode)`
     position: absolute;
@@ -158,12 +156,8 @@ const Button = styled.button`
 `
 
 const Button3 = styled.button`
-    // width: 140px;
-    // height: 45px;
-    // font-size: 11px;
     font-size: ${(props) => (props.isText ? "1.6rem" : "1.6rem")};
-  font-family: 'IBM Plex Sans KR', sans-serif;
-
+    font-family: 'IBM Plex Sans KR', sans-serif;
     padding: ${(props) => (props.bgGrey ? ".6rem" : ".4rem")};
     margin: 0.5rem;
     border-radius: 10%;
@@ -175,8 +169,6 @@ const Button3 = styled.button`
     font-weight: 500;
     color: #000;
     background-color: #fff;
-    // border:3px solid pink;
-    // border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
@@ -187,7 +179,7 @@ const Button3 = styled.button`
         background-color: pink;
         box-shadow: 0px 15px 20px #f7cac9;
         color: #fff;
-    transform: translateY(-4px);
+        transform: translateY(-4px);
 
     @media screen and (max-width: 1081px) { // 임시 추가
         display: none;
@@ -204,24 +196,10 @@ const Buttons3 = styled.button`
         display: none;
     }
 `
-// const SearchBarAndDaumPost = styled.div`
-//     // display: flex;
-//     // flex-direction: row;
-//     position: relative;
-//     margin: "100px solid green";
-// `
-// const DaumPostcodeWrap = styled.div`
-//     height: 3.5rem;
-//     width: 100%;
-//     // padding-right: 2.5rem;
-// `
+
 const Cancel = styled.button`
-    // height: 3.5rem;
-    // width: 100%;
-    // padding-right: 2.5rem;
     margin-bottom: 0.5rem;
     font-size: 0.8rem;
-    /* padding: 0.3rem; */
 `
 
 const Buttons2 = styled.div`
@@ -241,8 +219,7 @@ const Buttons2 = styled.div`
     }
 `
 
-let url = process.env.REACT_APP_LOCAL_SERVER
-if (!url) url = "https://thereweather.space"
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function Header({ isInput, isMobileLogo, isText }) {
     const dispatch = useDispatch()
@@ -253,13 +230,14 @@ export default function Header({ isInput, isMobileLogo, isText }) {
     const [onFocus, setOnFocus] = useState(false)
 
     // const [postOnFocus, setOnFocus] = useState(false)
-
     // isInput : Map 페이지 사용시 true
     // isMobileLogo : Map 페이지 사용시 false
+
     function handleComplete(e) {
         setSearchEvent(e.roadAddress)
         setOnFocus(false)
     }
+
     const [weatherFilter, setweatherFilter] = useState("")
     useEffect(() => {
         setweatherFilter(weatherFilter)

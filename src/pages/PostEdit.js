@@ -214,20 +214,17 @@ const Secret = styled.div`
     color: white;
 `
 
-
-let url = process.env.REACT_APP_LOCAL_SERVER;
-if (!url) url = "https://thereweather.space"
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function Write() {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { userInfo, curLocation, postInfo, readPostId } = useSelector((state) => state.itemReducer)
-    const [postId, setPostId] = useState(readPostId)
+    const { userInfo, curLocation, readPostId } = useSelector((state) => state.itemReducer)
+    const [postId, ] = useState(readPostId)
     const [selectWeather, setSelectWeather] = useState()    // 날씨
     const [selectWind, setSelectWind] = useState()  // 바람
     const [selectTemp, setSelectTemp] = useState()  // 온도
     const [photo, setPhoto] = useState("")
-    const [userPosts, setUserPosts] = useState()
     const [uploadedImg, setUploadedImg] = useState({
         fileName: "blankPost.png",
         filePath: `${url}/img/blankPost.png`,

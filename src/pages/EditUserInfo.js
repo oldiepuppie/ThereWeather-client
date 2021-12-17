@@ -161,8 +161,7 @@ const ValidationListBox = styled.ul`
     }
 `
 
-let url = process.env.REACT_APP_LOCAL_SERVER;
-if (!url) url = "https://thereweather.space"
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function Write() {
     const history = useHistory();
@@ -173,9 +172,6 @@ export default function Write() {
         fileName: "blankPost.png",
         filePath: `${url}/img/blankPost.png`,
     })
-    if (!url) {
-        url = "https://thereweather.space"
-    }
 
     // 등록버튼 이벤트
     const submitButtonHandler = (e) => {

@@ -226,8 +226,7 @@ const Secret = styled.div`
     color: white;
 `
 
-let url = process.env.REACT_APP_LOCAL_SERVER;
-if (!url) url = "https://thereweather.space"
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function Write() {
     const dispatch = useDispatch()
@@ -237,15 +236,11 @@ export default function Write() {
     const [selectWind, setSelectWind] = useState()
     const [selectTemp, setSelectTemp] = useState()
     const [photo, setPhoto] = useState("")
-    const [userPosts, setUserPosts] = useState()
     const [uploadedImg, setUploadedImg] = useState({
         fileName: "blankPost.png",
         filePath: `${url}/img/blankPost.png`,
     })
 
-    if (!url) {
-        url = "https://thereweather.space"
-    }
     // 제목 handler
     const [title, setTitle] = useState("")
 

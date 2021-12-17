@@ -29,7 +29,6 @@ const InfoBox = styled.div`
     width: 30vw;
     height: 10vh;
     text-align: center;
-    // border: 1px solid #dbdbdb;
     border: 1px solid black;
 
     p {
@@ -45,18 +44,10 @@ const InfoBox = styled.div`
         margin-top: 3vh;
     }
     &:hover {
-        // border: 1px solid #262626;
         border: 1px solid pink;
         p {
-            // color: #262626;
             color: pink;
         }
-    }
-
-    @media screen and (max-width: 1081px) {
-        /* border: 1px solid green; */
-    }
-    @media screen and (max-width: 375px) {
     }
 `
 

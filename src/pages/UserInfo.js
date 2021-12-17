@@ -53,24 +53,13 @@ const InfoBox = styled.div`
             color: #FEC0CB;
         }
     }
-
-    @media screen and (max-width: 1081px) {
-    }
-
-    @media screen and (max-width: 375px) {
-    }
 `
 
-
-let url = process.env.REACT_APP_LOCAL_SERVER;
-if (!url) url = "https://thereweather.space"
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function UserInfo() {
-    const dispatch = useDispatch()
-    const history = useHistory()
-    if (!url) {
-        url = "https://thereweather.space"
-    }
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const logoutBtnHandler = (e) => {
         const token = JSON.parse(localStorage.getItem("ATOKEN"))

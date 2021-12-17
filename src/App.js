@@ -25,13 +25,10 @@ import EditUserInfo from "./pages/EditUserInfo"
 import { changeIsLogin, changeUser } from "./actions/index"
 import GlobalStyle from "./components/GlobalStyle"
 
-let url = process.env.REACT_APP_LOCAL_SERVER;
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function App() {
-    if (!url) {
-        url = "https://thereweather.space"
-    }
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const isInput = true
     const { isLogin } = useSelector((state) => state.itemReducer)

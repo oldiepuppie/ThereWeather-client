@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components"
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import { faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { Toggle } from "../components/Toggle"
 import DaumPostcode from "react-daum-postcode"
 import { useSelector, useDispatch } from "react-redux"
@@ -24,7 +22,6 @@ import { changeMapPage } from "../actions/index"
 const Outer = styled.section`
     position: relative;
     width: 100vw;
-    // height: var(--mobile-page-height);
     background-color: var(--page-bg-color);
     display: flex;
     flex-direction: column;
@@ -39,10 +36,6 @@ const Outer = styled.section`
         font-weight: bold;
         margin-bottom: 2rem;
     }
-
-    @media screen and (min-width: 1081px) {
-        // height: calc(100vh - 125px);
-    }
 `
 
 const StyledArticle = styled.article`
@@ -52,7 +45,6 @@ const StyledArticle = styled.article`
 `
 
 const InputAndTitle = styled.div`
-    // display: flex;
     justify-content: flex-end;
     align-items: center;
     margin: 1rem;
@@ -64,14 +56,10 @@ const InputAndTitle = styled.div`
     }
 `
 const InputAndTitle2 = styled.div`
-    // border: 1px solid blue;
-
     display: flex;
     flex-direction: row;
-    // margin-top: -7rem;
-    // padding-top: -5rem;
-
     align-items: center;
+
     h3,
     div {
         font-size: 1.4rem;
@@ -108,7 +96,6 @@ const Buttons = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // margin: 0.5rem auto;
 `
 
 const Button = styled.button`
@@ -146,9 +133,9 @@ const Button3 = styled.button`
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
-    /* background-color: ${(props) => (props.google ? "#EA4335" : "#2f6ecb")}; */
     background-color: #FEC0CB;
     border-radius: 1rem;
+
     &:hover {
         background-color: #FF7F9F;
     }
@@ -166,9 +153,9 @@ const Button2 = styled.input`
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
-    /* background-color: ${(props) => (props.google ? "#EA4335" : "#2f6ecb")}; */
     border-radius: 1rem;
     background-color: #FEC0CB;
+
     &:hover {
         background-color: #FF7F9F;
     }
@@ -178,8 +165,6 @@ const Button2 = styled.input`
 `
 ////////////////////////
 const PhotoUploadSection = styled.form`
-    // border: 2px solid yellow;
-    // margin: auto 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -194,8 +179,6 @@ const PhotoBox = styled.div`
     font-size: 30px;
     color: palevioletred;
     border: 1px solid #b5b5b5;
-    /* width: 300px;
-height: 150px; */
     object-fit: cover;
 `
 const PhotoBox2 = styled.img`
@@ -203,16 +186,13 @@ const PhotoBox2 = styled.img`
     width: 30vh;
     height: 30vh;
 `
-////////////////////////
-let url = process.env.REACT_APP_LOCAL_SERVER;
-// const url = process.env.REACT_APP_LOCAL_URL || process.env.REACT_APP_URL
+
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function SignUp() {
     const dispatch = useDispatch()
     // input 상태 관리, 유효성 검사
-    if (!url) {
-        url = "https://thereweather.space"
-    }
+
     const [inputSignUpData, setInputSignUpData] = useState({
         idInput: "",
         pwInput: "",

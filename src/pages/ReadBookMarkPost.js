@@ -46,6 +46,7 @@ const Outer = styled.div`
   @media screen and (max-width: 375px) {
   }
 `
+
 // 제목, 유저프로필사진,닉네임 북마크버튼
 const PostHeader = styled.div`
   padding-top: 8vh;
@@ -55,6 +56,7 @@ const PostHeader = styled.div`
     padding-top: 5vh;
   }
 `
+
 // 제목 // 제목글자수 제한 필요?
 const Title = styled.div`
   display: flex;
@@ -88,7 +90,6 @@ const BookmarkIcon = styled(Bookmark)`
   }
 `
 
-
 // 프로필
 const Profile = styled.div`
   width: 60rem;
@@ -104,7 +105,6 @@ const Profile = styled.div`
   .profileInfo{
     display: flex; 
     align-items: center;
-    /* margin-left: 1vh; */
   }
   .location{
     font-size: 1.2rem;
@@ -303,8 +303,7 @@ const Buttons = styled.div`
   }
 `
 
-let url = process.env.REACT_APP_LOCAL_SERVER;
-if (!url) url = "https://thereweather.space"
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function PostRead(){
   const history = useHistory()

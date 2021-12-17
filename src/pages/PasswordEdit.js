@@ -1,8 +1,7 @@
 import styled from "styled-components"
 import { useState } from "react"
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux"
-import ModalConfirm from "../components/ModalConfirm";
+import { useDispatch } from "react-redux"
 import axios from "axios";
 import { changeUserPw } from "../actions/index"
 
@@ -52,7 +51,6 @@ const InputAndTitle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  // margin: .5rem;
 
   h3 {
     font-size: 1.3rem;
@@ -78,7 +76,6 @@ const StyledLi = styled.li`
   height: 1.2rem;
   padding: .3rem 2rem;
   font-size: .9rem;
-  // font-weight: bold;
   color: ${ props => props.valid ? `var(--font-validation-positive)` : `var(--font-validation-negative)` };
   font-weight: ${ props => props.valid ? `bold` : `null` };
   `;
@@ -99,32 +96,19 @@ const Button = styled.button`
   font-size: 1.2rem;
   font-weight: bold;
   color: white;
-  /* background-color: ${ props => props.edit ? `var(--button-bg-edit)` : `var(--button-bg-negative)` }; */
   border-radius: 1rem;
   background-color: #FEC0CB;
+
   &:hover {
     background-color: #FF7F9F;
   }
 `;
 
-// const TextButton = styled.button`
-//   // align-self: flex-end;
-//   margin: 1rem 3rem;
-//   font-size: 1rem;
-//   color: grey;
-//   text-decoration: underline;
-// `;
-
-
-let url = process.env.REACT_APP_LOCAL_SERVER;
-if (!url) url = "https://thereweather.space"
-
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function PasswordEdit() {
-  // const { password } = useSelector((state) => state.itemReducer)
   const dispatch = useDispatch()
   const history = useHistory()
-  
 
   const [ curPwd, setCurPwd ] = useState('');
   const [ newPwd, setNewPwd ] = useState('');

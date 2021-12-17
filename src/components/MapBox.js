@@ -166,8 +166,8 @@ const BarGraphchild = styled.div`
     width: 100%;
 `
 
-let url = process.env.REACT_APP_LOCAL_SERVER;
-if (!url) url = "https://thereweather.space"
+let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
+
 
 export default function Location() {
     const { searchWord, weatherFilter } = useSelector(
