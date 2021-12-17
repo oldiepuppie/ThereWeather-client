@@ -221,15 +221,18 @@ export default function SignUp() {
     const [codeOn, setCodeOn] = useState(false)
 
     const history = useHistory()
+
     useEffect(() => {
         dispatch(changeMapPage(false))
-    }, [])
+    }, [dispatch]);
+
     const idOnChangeHanlder = (key) => (e) => {
         setInputSignUpData({
             ...inputSignUpData,
             [key]: e.target.value,
         })
     }
+
     const idOnChangeHanlder2 = (e) => {
         setPwCheckInput(e.target.value)
     }
@@ -238,20 +241,24 @@ export default function SignUp() {
     function onlyNumberAndEnglish(str) {
         return /^[A-Za-z][A-Za-z0-9]*$/.test(str)
     }
+
     // [유효성 검증 함수]: 최소 6자 이상하면서, 알파벳과 숫자 및 특수문자(@$!%*#?&) 는 하나 이상 포함
     function strongPassword(str) {
         return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/.test(
             str
         )
     }
+
     //아이디길이가 4자이상인가
     function isMoreThan4Length(word) {
         return word.length >= 4
     }
+
     //패스워드가 같은가
     function isMatch(pwd1, pwd2) {
         return pwd1 === pwd2
     }
+
     //닉네임 길이 2글자 이상인가
     function nickIsMoreThan4Length(word) {
         return word.length >= 2
@@ -270,7 +277,7 @@ export default function SignUp() {
                 idInput: "사용 불가능한 아이디 입니다.",
             })
         }
-    }, [inputSignUpData.idInput])
+    }, [inputSignUpData.idInput, inputVaildMessage])
 
     useEffect(() => {
         //패스워드 유효성
@@ -293,7 +300,7 @@ export default function SignUp() {
         } else {
             setPwCheckInputMessage("비밀번호가 일치 하지 않습니다.")
         }
-    }, [inputSignUpData.pwInput, pwCheckInput])
+    }, [inputSignUpData.pwInput, pwCheckInput, inputVaildMessage])
 
     useEffect(() => {
         //닉네임 유효성검사
@@ -305,7 +312,8 @@ export default function SignUp() {
                 nickNameInput: "닉네임은 두글자 이상 입니다.",
             })
         }
-    }, [inputSignUpData.nickNameInput])
+    }, [inputSignUpData.nickNameInput, inputVaildMessage])
+
     useEffect(() => {
         //이메일 유효성검사
         if (
@@ -319,7 +327,8 @@ export default function SignUp() {
                 emailInput: "이메일은 5글자 이상이며, @를 포함합니다.",
             })
         }
-    }, [inputSignUpData.emailInput])
+    }, [inputSignUpData.emailInput, inputVaildMessage])
+
     useEffect(() => {
         //이메일인증 코드 유효성검사
         if (inputSignUpData.emailVaildCode.length >= 1) {
@@ -330,7 +339,7 @@ export default function SignUp() {
                 emailVaildCode: "코드를 기입하세요.",
             })
         }
-    }, [inputSignUpData.emailVaildCode])
+    }, [inputSignUpData.emailVaildCode, inputVaildMessage])
 
     function handleComplete(complevent) {
         setRoadUserAddress(complevent.roadAddress)

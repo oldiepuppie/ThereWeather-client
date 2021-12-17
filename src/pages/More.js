@@ -54,9 +54,11 @@ const InfoBox = styled.div`
 export default function More() {
     const dispatch = useDispatch()
     const history = useHistory()
+
     useEffect(() => {
         dispatch(changeMapPage(false))
-    }, [])
+    }, [dispatch])
+
     return (
         <Outer>
             <InfoBoxes>

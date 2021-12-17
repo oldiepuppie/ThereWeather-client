@@ -314,7 +314,7 @@ export default function Home() {
           })
       })
     };
-  }, [])
+  }, [dispatch])
 
   // 현재 위치 주소
   const [curAddress, setcurAddress] = useState('');

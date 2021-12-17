@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { useHistory } from "react-router-dom"
 import axios from "axios"
 import { userPosts, updatePostId } from "../actions/index"
-// UPDATE_CURRENT_PAGE, UPDATE_START_END_PAGE
 import GoBackButton from "../components/GoBackButton"
 import Pagination from "../components/Pagination"
 
@@ -35,9 +34,6 @@ const Outer = styled.div`
   }
   @media screen and (max-width: 375px) {
     padding-top: 2vh;
-  }
-  @media screen and (max-width: 1081px) {
-    // 1080이하
   }
 `
 
@@ -85,7 +81,6 @@ const GridArea = styled.div`
 
 // 게시물 사진
 const PostImg = styled.img`
-  // border: 1px solid red;
   width: 100%;
   height: 100%;
   background-color: #FFFFFF;
@@ -100,68 +95,12 @@ const PostImg = styled.img`
   }
 `
 
-//   @media screen and (max-width: 1081px) {
-//     padding: 1vh 2vw 2vh 2vw;
-//     font-size: 1.5rem;
-//   }
-//   @media screen and (max-width: 375px) {
-//     font-size: 1rem;
-//     padding-left: 3vw;
-//   }
-// `
-
-// 페이지네이션
-const Page = styled.div`
-    display: flex;
-    justify-content: center;
-    li {
-      /* margin: 3px; */
-      list-style: none;
-      padding: 3px;
-      /* border: 1px solid red; */
-    }
-    button {
-      margin: 0 1vw;
-      padding: 1rem 1.5rem;
-      border-radius: 50%;
-    }
-    button:focus{
-      background-color: var(--modal-bg-color);
-    }
-    #prev,
-    #next{
-      background: none;
-    }
-    @media screen and (max-width: 1081px) {
-      margin-top: 10rem;
-      padding-bottom: 5rem;
-
-    }
-
-    @media screen and (max-width: 375px) {
-      margin-top: 3rem;
-      padding-bottom: 3rem;
-      li {
-        /* margin: 0 1vw; */
-        /* margin: 1vh; */
-        padding: 0;
-
-      }
-      button {
-        /* margin: 0 1.5vw; */
-        font-size: 1.5rem;
-        margin: 0;
-        padding: 1px 7px;
-      }
-    }
-`
-
 let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function MyPost() {
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const { start, end, current, isLogin, userInfo, postInfo, readPostId } = useSelector((state) => state.itemReducer)
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { userInfo } = useSelector((state) => state.itemReducer);
 
   const [currentPosts, setcurrentPosts] = useState([]);
 
@@ -174,7 +113,7 @@ export default function MyPost() {
         setcurrentPosts(res.data)
         dispatch(userPosts(res.data))
     })
-  }, [])
+  }, [dispatch, userInfo.user_id])
 
   // 페이지네이션 시작
   const [ currentPage, setCurrentPage ] = useState(1);

@@ -48,7 +48,7 @@ export default function App() {
                 dispatch(changeIsLogin(res.data.login))
             })
         }
-    }, [isLogin])
+    }, [isLogin, dispatch])
 
     return (
         <>

@@ -322,7 +322,7 @@ export default function Location() {
                         ),
                     })
                 })
-                $(data.positions).map((n, idx) => {
+                $(data.positions).forEach((n, idx) => {
                     var iwContent = `
                     <container style="border:3px solid pink; padding:5px; height:20rem; width:15rem; display:flex; flex-direction: row; overflow: auto;">
                     <box style="">
@@ -497,14 +497,7 @@ export default function Location() {
             }, 1000)
             setisLoading(true)
         })
-    }, [
-        kakao.maps.LatLng,
-        kakao.maps.Marker,
-        kakao.maps.event,
-        kakao.maps.Map,
-        searchWord,
-        weatherFilter,
-    ])
+    }, [kakao.maps, dispatch, searchWord, weatherFilter]);
 
     const data = {
         labels: ["맑음", "구름", "비", "눈"],

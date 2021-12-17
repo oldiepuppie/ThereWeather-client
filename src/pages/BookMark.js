@@ -189,7 +189,7 @@ export default function BookMark() {
 		}).then((res) => {
 			setBookmarkList(res.data);
 		})
-	}, []);
+	}, [postId, postInfo, userInfo.id]);
 
     const formatDate = (dateString) => {
 			// 예시 : 2021. 11. 5. 22:02

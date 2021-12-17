@@ -20,7 +20,7 @@ export default function Map() {
 
     useEffect(() => {
         dispatch(changeMapPage(true));
-    }, [])
+    }, [dispatch])
 
     return (
         <Container className="mapcontainer">
