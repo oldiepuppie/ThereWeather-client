@@ -72,8 +72,23 @@ export default function TopButton() {
   });
 
   return (
+    /* prettier-ignore */
     <Button>
-      {btnStatus ? <img src={`${process.env.PUBLIC_URL}img/scroll-up.png`} alt='top' onClick={scrollToTop} /> : null}
+      {
+        btnStatus ?
+          <img
+            src={`${process.env.PUBLIC_URL}img/scroll-up.png`}
+            alt='top'
+            onClick={scrollToTop}
+          />
+      :
+        null
+      }
+    {/*
+      TODO
+      - attribute가 한 줄씩 보이게 린트 가능한지 찾아보기
+      - airbnb eslint
+    */}
     </Button>
   );
 }
