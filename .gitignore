@@ -1,13 +1,25 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-# https://github.com/naver/react-sample-code
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-node_modules
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
 
 # production
-build
+/build
+/.github
 
 # misc
-.env
 .DS_Store
-npm-debug.log
+.env
+.env.development
+.env.test.local
+.env.production
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+node_modules
