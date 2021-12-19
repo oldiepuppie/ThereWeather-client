@@ -13,7 +13,7 @@ export const postData = [
     xLocation: '36.33137396067648',
     yLocation: '127.432663208451',
     createdAt: '2021-11-01 12:43:54',
-    updatedAt: '2021-11-01 12:43:54'
+    updatedAt: '2021-11-01 12:43:54',
   },
   {
     id: '1',
@@ -29,7 +29,7 @@ export const postData = [
     xLocation: '33.239870687580776',
     yLocation: '126.56301210682774',
     createdAt: '2021-10-02 08:13:04',
-    updatedAt: '2021-10-02 08:13:04'
+    updatedAt: '2021-10-02 08:13:04',
   },
   {
     id: '2',
@@ -45,14 +45,15 @@ export const postData = [
     xLocation: '35.20566651132445',
     yLocation: '129.07727389715518',
     createdAt: '2021-10-15 19:45:50',
-    updatedAt: '2021-10-15 19:45:50'
+    updatedAt: '2021-10-15 19:45:50',
   },
   {
     id: '3',
     userId: 'soonday',
     photo: 'img/img3.png',
     postTitle: '[전라남도 고흥군] 별 헤는 밤',
-    postContent: '계절이 지나가는 하늘에는 가을로 가득 차 있습니다. 나는 아무 걱정도 없이 가을 속의 별들을 다 헤일 듯합니다...',
+    postContent:
+      '계절이 지나가는 하늘에는 가을로 가득 차 있습니다. 나는 아무 걱정도 없이 가을 속의 별들을 다 헤일 듯합니다...',
     weather: 'sunny',
     wind: '0',
     temp: '21',
@@ -61,7 +62,7 @@ export const postData = [
     xLocation: '34.4416978367808',
     yLocation: '127.53434162136203',
     createdAt: '2021-10-07 11:00:00',
-    updatedAt: '2021-10-07 11:00:00'
+    updatedAt: '2021-10-07 11:00:00',
   },
   {
     id: '4',
@@ -77,7 +78,7 @@ export const postData = [
     xLocation: '38.05133447064806',
     yLocation: '128.35132360115665',
     createdAt: '2021-10-21 15:23:34',
-    updatedAt: '2021-10-21 15:23:34'
+    updatedAt: '2021-10-21 15:23:34',
   },
   {
     id: '5',
@@ -93,6 +94,6 @@ export const postData = [
     xLocation: '37.487632807752604',
     yLocation: '130.90215229573613',
     createdAt: '2020-12-25 18:05:19',
-    updatedAt: '2020-12-25 18:05:19'
-  }
-]
+    updatedAt: '2020-12-25 18:05:19',
+  },
+];

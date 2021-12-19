@@ -1,14 +1,13 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-*, *::before, *::after {
-  box-sizing: border-box;   
-}
-
-body { 
-  font-family: 'IBM Plex Sans KR', sans-serif;
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
-  
-`
 
-export default GlobalStyle
+  body {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+  }
+`;
+
+export default GlobalStyle;

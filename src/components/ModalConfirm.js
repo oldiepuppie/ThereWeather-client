@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Outer = styled.div`
   position: fixed;
@@ -31,7 +31,7 @@ const Popup = styled.section`
   border-radius: 1.5rem;
 
   & > article {
-    margin: .5rem;
+    margin: 0.5rem;
   }
 
   & .closeButtonArea {
@@ -42,8 +42,8 @@ const Popup = styled.section`
 
   & select {
     font-size: 1rem;
-    margin: .5rem;
-    padding: .3rem;
+    margin: 0.5rem;
+    padding: 0.3rem;
   }
 `;
 
@@ -51,48 +51,48 @@ const Button = styled.button`
   width: 30%;
   min-width: 80px;
   max-width: 120px;
-  margin: .8rem;
-  padding: .5rem;
+  margin: 0.8rem;
+  padding: 0.5rem;
   font-size: 1.2rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: var(--modal-confirm-button-bg);
 
-  &:active{
+  &:active {
     border: none;
-    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
-    inset -4px -4px 6px 0 rgba(255,255,255,.2),
-    inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+      inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
   }
 `;
-
 
 export default function ModalConfirm({ children, closeHandler, yesHandler, noHandler }) {
   const yesButtonHandler = () => {
     yesHandler();
-  }
+  };
 
   const noButtonHandler = () => {
     noHandler();
-  }
+  };
 
   const closeButtonHandler = () => {
     closeHandler();
-  }
+  };
 
   return (
-    <Outer className="modalBackground">
-      <Popup className="modalConfirm">
-        <article className="closeButtonArea">
-          <button className="modalCloseButton" onClick={closeButtonHandler}>
+    <Outer className='modalBackground'>
+      <Popup className='modalConfirm'>
+        <article className='closeButtonArea'>
+          <button className='modalCloseButton' onClick={closeButtonHandler}>
             <FontAwesomeIcon icon={faTimes} />
           </button>
         </article>
-        <article className="confirmText">
-          {children}
-        </article>
-        <article className="modalConfirmButtons">
-          <Button className="modalButtonYes" onClick={yesButtonHandler}>예</Button>
-          <Button className="modalButtonNo" onClick={noButtonHandler}>아니오</Button>
+        <article className='confirmText'>{children}</article>
+        <article className='modalConfirmButtons'>
+          <Button className='modalButtonYes' onClick={yesButtonHandler}>
+            예
+          </Button>
+          <Button className='modalButtonNo' onClick={noButtonHandler}>
+            아니오
+          </Button>
         </article>
       </Popup>
     </Outer>
