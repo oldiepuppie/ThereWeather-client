@@ -7,7 +7,6 @@ import styled from 'styled-components';
 const Button = styled.button`
 	border:3px solid pink;
 	font-size: ${(props) => (props.isText ? '1.6rem' : '1.6rem')};
-	font-family: 'IBM Plex Sans KR', sans-serif;
 	padding: ${(props) => (props.bgGrey ? '.6rem' : '.4rem')};
 	margin: 0.5rem;
 	border-radius: 10%;

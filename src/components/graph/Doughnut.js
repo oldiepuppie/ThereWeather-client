@@ -11,7 +11,7 @@ const data = {
   ],
 };
 
-function App() {
+function DoughnutComponent() {
   return (
     <div>
       <h2>Doughnut Example</h2>
@@ -20,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default DoughnutComponent;

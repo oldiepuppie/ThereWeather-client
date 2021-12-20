@@ -16,7 +16,7 @@ const data = {
   ],
 };
 
-function App() {
+function BarComponent() {
   return (
     <div>
       <h2>Bar Example (custom size)</h2>
@@ -32,4 +32,4 @@ function App() {
   );
 }
 
-export default App;
+export default BarComponent;

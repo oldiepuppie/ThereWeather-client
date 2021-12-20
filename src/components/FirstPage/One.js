@@ -61,7 +61,6 @@ export const AnimatedImg = styled.img`
   animation-delay: ${(props) => props.delay || null};
 `;
 const Button = styled.button`
-font-family: 'IBM Plex Sans KR', sans-serif;
 font-size: ${(props) => (props.isText ? '1.6rem' : '1.6rem')};
 padding: ${(props) => (props.bgGrey ? '.6rem' : '.4rem')};
 margin: 0.5rem;

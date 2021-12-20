@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeSearchword, changeCurLocation, updatePostId } from '../actions/index';
 import $ from 'jquery';
 import axios from 'axios';
-import { Doughnut, Bar } from 'react-chartjs-2';
+import { Doughnut, Bar } from './graph';
 import LoadingSpinner from './LoadingSpinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
@@ -426,11 +426,9 @@ export default function Location() {
 
         axios({
           url: url + `/post/list?top=${neLatlng.La}&bottom=${swLatlng.La}&left=${swLatlng.Ma}&right=${neLatlng.Ma}`,
-          // url: url + "/signup",
           method: 'get',
           headers: {
             'Content-Type': 'application/json',
-            // "Content-Type": "text/plain",
           },
           withCredentials: true,
         }).then((res) => {
@@ -463,11 +461,9 @@ export default function Location() {
 
         axios({
           url: url + `/map2?lat=${latlng.Ma}&lon=${latlng.La}`,
-          // url: url + "/signup",
           method: 'get',
           headers: {
             'Content-Type': 'application/json',
-            // "Content-Type": "text/plain",
           },
           withCredentials: true,
         }).then((res) => {
@@ -478,7 +474,7 @@ export default function Location() {
     });
   }, [kakao.maps, dispatch, searchWord, weatherFilter]);
 
-  const data = {
+  const DoughnutData = {
     labels: ['맑음', '구름', '비', '눈'],
     datasets: [
       {
@@ -488,7 +484,7 @@ export default function Location() {
       },
     ],
   };
-  const data2 = {
+  const BarData = {
     labels: ['동네 예보', '기상청'],
     datasets: [
       {
@@ -560,10 +556,10 @@ export default function Location() {
                 <GraphTitleDiv2>동네 예보 vs 기상청예보</GraphTitleDiv2>
               </GraphTitle>
               <GraphModal>
-                <Doughnut data={data} />
+                <Doughnut data={DoughnutData} />
                 <BarGraphFlex>
                   <BarGraphchild>
-                    <Bar data={data2} />
+                    <Bar data={BarData} />
                   </BarGraphchild>
                 </BarGraphFlex>
               </GraphModal>

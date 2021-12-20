@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import './App.css';
 import Map from './pages/Map';
 import Home from './pages/Home';
 import BookMark from './pages/BookMark';
