@@ -8,10 +8,3 @@ export const Bookmark = ({ bookmarkHandler, color }) => {
     </button>
   );
 };
-
-// 사용 예시
-// const [bookmarked, setBookmarked] = useState(false);
-// const bookmarkHandler = (e) => {
-//   setBookmarked(prev => !prev);
-// }
-// <Bookmark bookmarkHandler={bookmarkHandler} color={bookmarked ? '#eb425b' : '#aaa'}/>

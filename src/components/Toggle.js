@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeGender } from '../actions/index';
-//회원가입시 남녀 선택 토글
 
 const ToggleContainer = styled.div`
   position: relative;
@@ -16,9 +15,9 @@ const ToggleContainer = styled.div`
     height: 24px;
     border-radius: 30px;
     background-color: skyblue;
-    /* background-color: red; */
     margin-right: -10rem;
   }
+
   > .toggle-container.toggle--checked {
     width: 50px;
     height: 24px;

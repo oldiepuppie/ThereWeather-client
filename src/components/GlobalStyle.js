@@ -36,10 +36,6 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  // body {
-  //   font-family: 'IBM Plex Sans KR', sans-serif;
-  // }
-
   @keyframes add-spin {
     to {
       transform: rotate(360deg);

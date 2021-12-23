@@ -89,7 +89,6 @@ const InputAndSubmit = styled.div`
   }
 `;
 
-// 주소검색창 부분
 const StyledPostCode = styled(DaumPostcode)`
   position: absolute;
   top: 50px;
@@ -174,6 +173,7 @@ const Button3 = styled.button`
     }
   }
 `;
+
 const Buttons3 = styled.div`
   height: 100%;
   display: flex;
@@ -210,17 +210,12 @@ const Buttons2 = styled.div`
 
 let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
-export default function Header({ isInput, isMobileLogo, isText }) {
+export default function Header({ isInput, isMobileLogo }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const { isLogin, mapPage } = useSelector((state) => state.itemReducer);
   const [searchEvent, setSearchEvent] = useState('');
-  //검색창에 사용할 포커스변수-hoon
   const [onFocus, setOnFocus] = useState(false);
-
-  // const [postOnFocus, setOnFocus] = useState(false)
-  // isInput : Map 페이지 사용시 true
-  // isMobileLogo : Map 페이지 사용시 false
 
   function handleComplete(e) {
     setSearchEvent(e.roadAddress);

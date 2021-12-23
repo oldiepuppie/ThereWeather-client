@@ -1,4 +1,3 @@
-// 스크롤 탑 버튼
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -72,23 +71,8 @@ export default function TopButton() {
   });
 
   return (
-    /* prettier-ignore */
     <Button>
-      {
-        btnStatus ?
-          <img
-            src={`${process.env.PUBLIC_URL}img/scroll-up.png`}
-            alt='top'
-            onClick={scrollToTop}
-          />
-      :
-        null
-      }
-    {/*
-      TODO
-      - attribute가 한 줄씩 보이게 린트 가능한지 찾아보기
-      - airbnb eslint
-    */}
+      {btnStatus ? <img src={`${process.env.PUBLIC_URL}img/scroll-up.png`} alt='top' onClick={scrollToTop} /> : null}
     </Button>
   );
 }

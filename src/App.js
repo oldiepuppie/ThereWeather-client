@@ -32,7 +32,6 @@ export default function App() {
   const isInput = true;
   const { isLogin } = useSelector((state) => state.itemReducer);
   useEffect(() => {
-    //auth할차례
     if (localStorage.getItem('ATOKEN')) {
       axios({
         url: url + '/users/auth',
@@ -53,49 +52,49 @@ export default function App() {
       <Header isInput={isInput} />
       <Switch>
         <Route exact path='/map'>
-          <Map></Map>
+          <Map />
         </Route>
         <Route exact path='/home'>
-          <Home></Home>
+          <Home />
         </Route>
         <Route exact path='/bookmark'>
-          <BookMark></BookMark>
+          <BookMark />
         </Route>
         <Route exact path='/userinfo'>
-          <UserInfo></UserInfo>
+          <UserInfo />
         </Route>
         <Route exact path='/edituserinfo'>
-          <EditUserInfo></EditUserInfo>
+          <EditUserInfo />
         </Route>
         <Route exact path='/more'>
-          <More></More>
+          <More />
         </Route>
         <Route exact path='/mypage'>
-          <MyPage></MyPage>
+          <MyPage />
         </Route>
         <Route exact path='/login'>
-          <Login></Login>
+          <Login />
         </Route>
         <Route exact path='/signup'>
-          <SignUp></SignUp>
+          <SignUp />
         </Route>
         <Route exact path='/editpassword'>
-          <PasswordEdit></PasswordEdit>
+          <PasswordEdit />
         </Route>
         <Route exact path='/write'>
-          <Write></Write>
+          <Write />
         </Route>
         <Route exact path='/mypost'>
-          <MyPost></MyPost>
+          <MyPost />
         </Route>
         <Route exact path='/postread'>
-          <PostRead></PostRead>
+          <PostRead />
         </Route>
         <Route exact path='/bookmarkpost'>
-          <ReadBookMarkPost></ReadBookMarkPost>
+          <ReadBookMarkPost />
         </Route>
         <Route exact path='/postedit'>
-          <PostEdit></PostEdit>
+          <PostEdit />
         </Route>
         <Route exact path='/first'>
           <FirstPage />
@@ -117,13 +116,13 @@ export default function App() {
           {isLogin ? <Redirect to='/userinfo' /> : <Redirect to='/more' />}
         </Route>
         <Route exact path='/editpost'>
-          <PostEdit></PostEdit>
+          <PostEdit />
         </Route>
         <Route exact path='/'>
           <Redirect to='/first' />
         </Route>
       </Switch>
-      <MenuBar></MenuBar>
+      <MenuBar />
     </>
   );
 }

@@ -41,14 +41,16 @@ const PageNumberItem = styled.li.attrs({
 `;
 
 export default function Pagination({ dataLength, itemsPerPage, numberButtonClickHandler }) {
-  const numberOfPages = Math.ceil(dataLength / itemsPerPage); // 총 페이지 수
-  const numberArr = new Array(numberOfPages).fill(0).map((el, idx) => idx + 1); // 1~총페이지 수로 채워진 배열
+  const numberOfPages = Math.ceil(dataLength / itemsPerPage);
+  const numberArr = new Array(numberOfPages).fill(0).map((el, idx) => idx + 1);
+
   let unit;
   if (numberOfPages < 5) {
     unit = numberOfPages + 1;
   } else {
     unit = 5;
   }
+
   const [startIdx, setStartIdx] = useState(0);
   const [lastIdx, setLastIdx] = useState(unit);
   const cutArrInit = new Array(unit).fill(0).map((el, idx) => idx + 1);

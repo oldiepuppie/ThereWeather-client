@@ -1,4 +1,3 @@
-// 모바일 뒤로가기 버튼
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +18,7 @@ const Button = styled.button`
   @media screen and (max-width: 1081px) {
     display: inline;
   }
+
   @media screen and (max-width: 375px) {
     .fa-fw {
       font-size: 35px;
@@ -31,6 +31,7 @@ export default function GoBackButton() {
   const goBackHandler = () => {
     history.goBack();
   };
+
   return (
     <Button>
       <FontAwesomeIcon icon={faChevronLeft} className='fa-fw' color='#ACB5BD' onClick={goBackHandler} />

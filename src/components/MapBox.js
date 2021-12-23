@@ -408,21 +408,9 @@ export default function Location() {
       }
 
       timer = setTimeout(function () {
-        // 지도 영역정보를 얻어옵니다
         var bounds = map.getBounds();
-
-        // 영역정보의 남서쪽 정보를 얻어옵니다
         var swLatlng = bounds.getSouthWest();
-
-        // 영역정보의 북동쪽 정보를 얻어옵니다
         var neLatlng = bounds.getNorthEast();
-
-        // var message =
-        //     "영역좌표는 남서쪽 위도, 경도는  " +
-        //     swLatlng.toString() +
-        //     "이고"
-        // message +=
-        //     "북동쪽 위도, 경도는  " + neLatlng.toString() + "입니다 "
 
         axios({
           url: url + `/post/list?top=${neLatlng.La}&bottom=${swLatlng.La}&left=${swLatlng.Ma}&right=${neLatlng.Ma}`,
@@ -433,10 +421,12 @@ export default function Location() {
           withCredentials: true,
         }).then((res) => {
           setPostList(res.data);
+
           let sunny = 0;
           let cloudy = 0;
           let rainy = 0;
           let snowy = 0;
+
           for (let n = 0; n < res.data.length; n++) {
             if (res.data[n].weather === 'sunny') {
               sunny = sunny + 1;
@@ -448,6 +438,7 @@ export default function Location() {
               snowy++;
             }
           }
+
           setWeatherCount({
             sunny: sunny,
             cloudy: cloudy,
@@ -456,7 +447,6 @@ export default function Location() {
           });
         });
 
-        //지도중심좌표 기준으로 기상청 데이터를 받아올예정 -hoon
         var latlng = map.getCenter();
 
         axios({
@@ -484,6 +474,7 @@ export default function Location() {
       },
     ],
   };
+
   const BarData = {
     labels: ['동네 예보', '기상청'],
     datasets: [
@@ -506,7 +497,6 @@ export default function Location() {
 
   const [isOnOff, setisOnOff] = useState(true);
 
-  // postbox를 클릭하면 postread로 연결됩니다
   const postBoxHandler = (e) => {
     let elem = e.target;
 
@@ -524,7 +514,6 @@ export default function Location() {
       state: { postId: elem.id },
     });
   };
-  // postbox를 클릭하면 postread로 연결됩니다
 
   return (
     <>
