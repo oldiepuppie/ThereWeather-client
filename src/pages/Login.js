@@ -9,17 +9,6 @@ import { changeIsLogin, changeMapPage } from '../actions/index';
 import { Toggle } from '../components/Toggle';
 import DaumPostcode from 'react-daum-postcode';
 
-/*
-  TODO
-  [] 유효성 검사
-    - [x] ul, li 추가
-    - [] 함수로 구현
-      - [x] input이 없는 경우
-      - [] 등록되지 않은 정보인 경우 (버튼과 연결?)
-        - [] 악시오스
-        - [] 모달? alert? 페이지에 렌더링?
-*/
-
 const LoginOuter = styled.section`
   position: relative;
   width: 100vw;
@@ -29,12 +18,14 @@ const LoginOuter = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   h2 {
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
     margin: 2rem auto;
   }
+
   @media screen and (min-width: 1081px) {
     height: calc(100vh - 125px);
   }
@@ -51,6 +42,7 @@ const LoginInputAndTitle = styled.div`
   justify-content: center;
   align-items: center;
   margin: 1rem;
+
   h3 {
     font-size: 1.4rem;
     margin: 1rem;
@@ -69,6 +61,7 @@ const LoginValidationListBox = styled.ul`
   list-style: none;
   padding: 0 1.5rem;
   font-size: 1rem;
+
   li {
     height: 1.2rem;
     padding: 0 1.5rem;
@@ -95,15 +88,16 @@ const LoginButton = styled.button`
   color: black;
   background-color: pink;
   border-radius: 1rem;
+
   &:hover {
     background-color: #ff7f9f;
     color: white;
   }
+
   > span {
     margin: 0.25rem;
   }
 `;
-/////////////////socialSignup스타일/////////////////////////////////
 
 const Outer = styled.section`
   position: relative;
@@ -141,6 +135,7 @@ const InputAndTitle = styled.div`
     font-weight: bold;
   }
 `;
+
 const InputAndTitle2 = styled.div`
   display: flex;
   flex-direction: row;
@@ -201,6 +196,7 @@ const Button = styled.button`
     margin: 0.25rem;
   }
 `;
+
 const Buttons2 = styled.div`
   display: flex;
   flex-direction: column;
@@ -242,7 +238,6 @@ const Button2 = styled.input`
     margin: 0.25rem;
   }
 `;
-////////////////////////
 
 const PhotoUploadSection = styled.form`
   display: flex;
@@ -267,7 +262,6 @@ const PhotoBox2 = styled.img`
   height: 30vh;
 `;
 
-////////////////////////////////////////////////////
 let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function Login() {
@@ -283,7 +277,6 @@ export default function Login() {
   const GOOGLE_LOGIN_URL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=1079927639813-87e5g0991msheh50mt77eclt2vij4kks.apps.googleusercontent.com&response_type=token&redirect_uri=${url}/login&scope=https://www.googleapis.com/auth/userinfo.email`;
   const { isLogin } = useSelector((state) => state.itemReducer);
   const [socialLogined, setSocialLogined] = useState(false);
-
   const [inputSignUpData, setInputSignUpData] = useState({
     idInput: '',
     pwInput: '',
@@ -530,7 +523,7 @@ export default function Login() {
       });
     }
   }
-  ////////////////////////////////////////////////
+
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -553,7 +546,6 @@ export default function Login() {
   const addFile = (e) => {
     setPhoto(e.target.files[0]);
   };
-  ////////////////////////////////
 
   return (
     <>
@@ -601,13 +593,11 @@ export default function Login() {
               <InputAndTitle className='inputPwSection'>
                 <h3>프로필사진</h3>
                 <Buttons2>
-                  {/* /////////////////////////////// */}
                   <PhotoUploadSection onSubmit={onSubmit} className='photoUploadSection'>
                     <PhotoBox>{uploadedImg ? <PhotoBox2 src={uploadedImg.filePath} /> : <div></div>}</PhotoBox>
                     <Button2 type='file' className='photoButton' onChange={addFile} />
                     <Button3 type='submit'>업로드</Button3>
                   </PhotoUploadSection>
-                  {/* /////////////////////////////// */}
                 </Buttons2>
               </InputAndTitle>
             </StyledArticle>
@@ -655,8 +645,6 @@ export default function Login() {
 
           <LoginButtons className='login--Loginbuttons'>
             <LoginButton onClick={loginButtonHandler}>로그인</LoginButton>
-
-            {/* 소셜로그인 */}
             <LoginButton onClick={googleLoginButtonHandler} google>
               <FontAwesomeIcon icon={faGoogle} />
               <span>구글 로그인</span>

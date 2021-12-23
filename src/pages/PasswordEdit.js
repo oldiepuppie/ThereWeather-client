@@ -5,20 +5,6 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { changeUserPw } from '../actions/index';
 
-/*
-  TODO - 비밀번호 수정 페이지
-  [x] 여러개의 Input 상태 관리
-  [] 유효성 검사
-    - [x] ul, li 추가
-    - [x] 함수로 구현
-      - [x] (둘 다) input이 없는 경우 - li
-      - [x] (새 비밀번호) 조건에 안 맞는 경우 - li
-      - [] (현재 비밀번호) 등록되지 않은 정보인 경우
-        - [] 악시오스
-        - [] 모달? alert? 페이지에 렌더링?
-  [] 최종 결과 모아서 악시오스 요청
-*/
-
 const Outer = styled.section`
   position: relative;
   width: 100vw;
@@ -136,7 +122,6 @@ export default function PasswordEdit() {
   const newInputHandler = (e) => {
     setNewPwd((prev) => e.target.value);
 
-    // 유효성 검사
     if (e.target.value.length === 0) {
       setNewPwdInputWarning((prev) => {
         return { ...prev, isNoInput: '비밀번호를 입력해주세요.' };
@@ -172,11 +157,7 @@ export default function PasswordEdit() {
 
   // 버튼 클릭 이벤트
   const editButtonHandler = (e) => {
-    // TODO
-    // 클라이언트 로컬스토리지에 있는 토큰을 찾아서
-    // 헤더에 담아서 서버에 전달
-    // const token = localStorage.getItem("ATOKEN")  //문자열
-    const token = JSON.parse(localStorage.getItem('ATOKEN')); //문자열벗긴 토큰
+    const token = JSON.parse(localStorage.getItem('ATOKEN'));
     axios({
       url: url + '/password',
       method: 'put',
@@ -196,7 +177,7 @@ export default function PasswordEdit() {
     setCurPwd((prev) => '');
     setNewPwd((prev) => '');
     setIsValid((prev) => '');
-    // TODO 이전 페이지로
+
     history.push('/home');
   };
 

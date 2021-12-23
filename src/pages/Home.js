@@ -13,6 +13,7 @@ const HomeContainer = styled.div`
   height: 100vh;
   padding-right: 5vh;
   background-color: var(--page-bg-color);
+
   ul {
     list-style: none;
   }
@@ -26,6 +27,7 @@ const HomeContainer = styled.div`
     width: 90%;
     border: 1px solid #aaa;
   }
+
   @media screen and (max-width: 1081px) {
     flex-direction: column;
     margin: 0 auto;
@@ -34,12 +36,12 @@ const HomeContainer = styled.div`
     width: 85%;
     height: 100%;
   }
+
   @media screen and (max-width: 900px) {
     width: 100%;
   }
 `;
 
-// 날짜
 const TodaysDate = styled.div`
   background-color: var(--page-bg-color);
   margin: 0 auto;
@@ -51,6 +53,7 @@ const TodaysDate = styled.div`
   #curDate {
     padding-left: 2vw;
   }
+
   #curLocation {
     padding-right: 2vw;
   }
@@ -64,27 +67,31 @@ const TodaysDate = styled.div`
       padding-right: 0;
     }
   }
+
   @media screen and (max-width: 1081px) {
     width: 85%;
   }
+
   @media screen and (max-width: 900px) {
     width: 100%;
   }
+
   @media screen and (max-width: 500px) {
     font-size: 15px;
   }
+
   @media screen and (max-width: 375px) {
     font-size: 12px;
   }
 `;
 
-// 왼쪽 container
 const LeftContainer1 = styled.div`
   display: flex;
   gap: 0.1rem;
   flex-direction: row;
   width: 40vw;
   flex-wrap: wrap;
+
   .weatherInfo {
     text-align: center;
     line-height: 3rem;
@@ -97,13 +104,16 @@ const LeftContainer1 = styled.div`
       vertical-align: middle;
     }
   }
+
   .codiInfo {
     text-align: center;
   }
+
   @media screen and (max-width: 1081px) {
     margin: 0 auto;
     width: 100%;
   }
+
   @media screen and (max-width: 300px) {
     img {
       width: 3rem;
@@ -112,7 +122,6 @@ const LeftContainer1 = styled.div`
   }
 `;
 
-// 00구 주민예보
 const LeftNav1 = styled.nav`
   text-align: center;
   flex-basis: 310px;
@@ -122,10 +131,12 @@ const LeftNav1 = styled.nav`
   line-height: 3vh;
   height: 25%;
   background-color: var(--page-bg-color);
+
   p {
     font-size: 1.2rem;
     margin-bottom: 1vh;
   }
+
   @media screen and (max-width: 1081px) {
     margin-top: 5px;
   }
@@ -136,7 +147,7 @@ const LeftNav1 = styled.nav`
     border-bottom: 1px solid #8e8e8e;
   }
 `;
-// 기상청 일기예보
+
 const LeftNav2 = styled.div`
   text-align: center;
   flex-basis: 310px;
@@ -146,16 +157,18 @@ const LeftNav2 = styled.div`
   line-height: 3vh;
   height: 35%;
   background-color: var(--page-bg-color);
+
   p {
     font-size: 1.2rem;
     margin-bottom: 1vh;
   }
+
   @media screen and (max-width: 375px) {
     line-height: 4vh;
     border-bottom: 1px solid #8e8e8e;
   }
 `;
-// 00구 날씨 기반 추천 코디
+
 const LeftNav3 = styled.div`
   text-align: center;
   flex-basis: 310px;
@@ -164,28 +177,31 @@ const LeftNav3 = styled.div`
   padding: 10px;
   background-color: var(--page-bg-color);
   height: 35%;
+
   p {
     font-size: 1.2rem;
     margin: 2vh 0;
   }
+
   .codiInfo {
     height: 80%;
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
+
   @media screen and (max-width: 1081px) {
     height: 30vh;
     flex-basis: 100vh;
     flex-grow: 2;
   }
+
   @media screen and (max-width: 375px) {
     p {
       font-size: 1.2rem;
       margin: 2vh 0;
     }
     .codiInfo {
-      /* border: 1px solid hotpink; */
       height: 80%;
       display: flex;
       justify-content: space-around;
@@ -205,21 +221,20 @@ const LeftNav3 = styled.div`
     }
   }
 `;
-// 코디 이미지
+
 const Codi = styled.img`
   width: 7rem;
   height: 7rem;
   border: purple;
+
   @media screen and (max-width: 400px) {
     width: 5rem;
     height: 5rem;
   }
 `;
 
-// 오른쪽 container
 const RightContainer = styled.div`
   display: grid;
-  /* height:100vh; */
   width: 80vw;
   grid-template-rows: 0.5fr 2.3fr 2.3fr 2.3fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -242,20 +257,22 @@ const RightContainer = styled.div`
       'nav'
       'main';
   }
+
   .userPost {
     text-align: center;
   }
+
   img {
     width: 100%;
     height: 100%;
   }
+
   @media screen and (max-width: 1081px) {
     margin: 0 auto;
     width: 100%;
   }
 `;
 
-// '00구 주민예보글'
 const RightNav1 = styled.nav`
   margin-top: 0.8rem;
   text-align: center;
@@ -267,13 +284,16 @@ const RightNav1 = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 1vh 1vh;
+
   #location {
     font-size: 1.5rem;
     color: #8e8e8e;
   }
+
   #moreView {
     color: #336fc9;
   }
+
   @media screen and (max-width: 600px) {
     grid-column: 1 / 3;
     #location {
@@ -289,14 +309,13 @@ export default function Home() {
   const history = useHistory();
   const { curLocation } = useSelector((state) => state.itemReducer);
 
-  const [weatherData, setWeatherData] = useState();
+  const [weatherData, setWeatherData] = useState([]);
 
   useEffect(() => {
     if (navigator.geolocation) {
-      // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       navigator.geolocation.getCurrentPosition(function (position) {
-        let lat = position.coords.latitude, // 위도
-          lon = position.coords.longitude; // 경도
+        let lat = position.coords.latitude,
+          lon = position.coords.longitude;
         axios({
           url: url + '/map',
           method: 'post',
@@ -310,25 +329,14 @@ export default function Home() {
     }
   }, [dispatch]);
 
-  // 현재 위치 주소
   const [curAddress, setcurAddress] = useState('');
-  // 최근 게시물(위도, 경도, 지역범위 확인)
   const [currentPosts, setcurrentPosts] = useState([]);
+
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function () {
-        let lat = curLocation.lat, // 위도
-          lon = curLocation.lon; // 경도
-        /*
-          소수 7째자리까지 : Math.floor(a * 10000000) /10000000
-
-          남서쪽 위도, 경도는  (37.5262196, 127.0449971)이고
-          북동쪽 위도, 경도는  (37.5684781, 127.1200016)입니다 
-        */
-
-        // left(37.5262196) , right(37.5684781) : 0.0422585(0.04225850000000264), 각 0.02112925
-        // bottom(127.0449971) , top(127.1200016) : 0.0750045(0.07500449999999148), 각 0.03750225
-        // 현재 위도, 경도의 동,서,남,북 범위 설정 (소수 7째자리까지)
+        let lat = curLocation.lat,
+          lon = curLocation.lon;
         let right = lat + 0.02112925;
         let left = lat - 0.02112925;
         let top = lon + 0.03750225;
@@ -347,25 +355,26 @@ export default function Home() {
           },
           withCredentials: true,
         }).then((res) => {
-          setcurrentPosts(res.data.curtPost); // 주민예보글 렌더링 부분
+          setcurrentPosts(res.data.curtPost);
           setcurAddress(res.data.address);
         });
       });
     }
   }, [curLocation.lat, curLocation.lon]);
 
-  // 날짜
   const [todaysDate, setTodaysDate] = useState('');
+
   useEffect(() => {
     let date = new Date();
     const formatDate = (currentDate) => {
       let formatted = `${currentDate.getFullYear()}년 ${currentDate.getMonth() + 1}월 ${currentDate.getDate()}일`;
       return formatted;
     };
+
     setTodaysDate(formatDate(date));
   }, []);
 
-  // 날씨, 코디 가져오기, 추후 수정
+  // TODO 날씨, 코디 가져오기, 추후 수정
   let [currentTemp, setcurrentTemp] = useState('');
   let [currentWind, setcurrentWind] = useState('');
   let [currentWeather, setcurrentWeather] = useState('');
@@ -374,25 +383,22 @@ export default function Home() {
   let [currentBottom, setcurrentBottom] = useState('');
 
   useEffect(() => {
-    let tempArr = []; // 체감온도
-    let windArr = []; // 바람세기
-    let weatherArr = []; // 날씨상태
-    let outerArr = []; // 겉옷
-    let topArr = []; // 상의
-    let bottomArr = []; // 하의
+    let tempArr = [];
+    let windArr = [];
+    let weatherArr = [];
+    let outerArr = [];
+    let topArr = [];
+    let bottomArr = [];
 
-    // 해당 key만 가져오기
     for (let i = 0; i < currentPosts.length; i++) {
       tempArr.push(currentPosts[i].temp); // temp키만 가져옴
       windArr.push(currentPosts[i].wind);
       weatherArr.push(currentPosts[i].weather);
-
       outerArr.push(currentPosts[i].outer_id);
       topArr.push(currentPosts[i].top_id);
       bottomArr.push(currentPosts[i].bottom_id);
     }
 
-    // 해당 키의 중복개수세는 함수
     function getCount(arr) {
       return arr.reduce((pv, cv) => {
         pv[cv] = (pv[cv] || 0) + 1;
@@ -400,21 +406,20 @@ export default function Home() {
       }, {});
     }
 
-    let tempObj = getCount(tempArr); // {hot: 6, cold: 3}
+    let tempObj = getCount(tempArr);
     let windObj = getCount(windArr);
     let weatherObj = getCount(weatherArr);
     let outerObj = getCount(outerArr);
     let topObj = getCount(topArr);
     let bottomObj = getCount(bottomArr);
 
-    // 최대값구하기 : 객체 -> 배열
     let newTempArr = Object.values(tempObj); // [6, 3]
     let newWindArr = Object.values(windObj);
     let newWeatherArr = Object.values(weatherObj);
     let newOuterArr = Object.values(outerObj);
     let newTopArr = Object.values(topObj);
     let newBottomArr = Object.values(bottomObj);
-    // 최대값
+
     let tempMaxNum = Math.max(...newTempArr); // 6
     let windMaxNum = Math.max(...newWindArr);
     let weatherMaxNum = Math.max(...newWeatherArr);
@@ -422,9 +427,7 @@ export default function Home() {
     let topMaxNum = Math.max(...newTopArr);
     let bottomMaxNum = Math.max(...newBottomArr);
 
-    // 최대값과 일치하는 key 추출
     function matchKey(obj, maxNum) {
-      // 객체, 최대값
       for (let key in obj) {
         if (obj[key] === maxNum) {
           return key;
@@ -432,7 +435,6 @@ export default function Home() {
       }
     }
 
-    // 화면에 나타날 key
     let maxTemp = matchKey(tempObj, tempMaxNum);
     let maxWind = matchKey(windObj, windMaxNum);
     let maxWeather = matchKey(weatherObj, weatherMaxNum);
@@ -448,7 +450,6 @@ export default function Home() {
     setcurrentBottom(maxBottom);
   }, [currentPosts]);
 
-  // 게시물 사진 클릭
   const photoClickHandler = (e) => {
     let elem = e.target;
 
@@ -461,7 +462,6 @@ export default function Home() {
 
   return (
     <div className='homecontainer'>
-      {/* <Loading /> */}
       <TopButton />
       <TodaysDate>
         <p id='curDate'>날짜 : {todaysDate}</p>
@@ -473,7 +473,7 @@ export default function Home() {
             <p>주민예보</p>
             <div className='weatherInfo'>
               {currentTemp === undefined && currentWind === undefined && currentWeather === undefined ? (
-                <p>현재 날씨 데이터가 없습니다 :(</p>
+                <p>현재 날씨 데이터가 없습니다. </p>
               ) : (
                 <ul>
                   <li>
@@ -493,34 +493,25 @@ export default function Home() {
             </div>
           </LeftNav1>
           <LeftNav2>
-            {/* <p>기상청 일기예보</p>
-                      { weatherData && weatherData.item.map((info, index) => {
-                        return (
-                          <div className="weatherInfo" key={index}>
-                           <ul>
-                            <li className="weathers date">날짜: {info.baseDate[0]}</li> 
-                            <li className="weathers time">기준 예보시각: {info.baseTime[0]}</li> 
-                           </ul>
-                          </div>
-
-                        )
-                      })} */}
             <p>기상청 일기예보</p>
             <div className='weatherInfo'>
               <ul>
-                {weatherData &&
+                {
                   weatherData.item.map((info) => {
                     return <li key={nanoid()}>날짜:{info.baseDate}</li>;
-                  })[0]}
-                {weatherData &&
+                  })[0]
+                }
+                {
                   weatherData.item.map((info) => {
                     return <li key={nanoid()}>기준 예보시각: {info.baseTime}</li>;
-                  })[0]}
-                {weatherData &&
+                  })[0]
+                }
+                {
                   weatherData.item.map((info) => {
                     return <li key={nanoid()}>현재위치 기온: {info.fcstValue}℃</li>;
-                  })[24]}
-                {weatherData &&
+                  })[24]
+                }
+                {
                   weatherData.item.map((info) => {
                     return (
                       <li key={nanoid()}>
@@ -532,8 +523,9 @@ export default function Home() {
                           : '바람세기 매우 강함'}
                       </li>
                     );
-                  })[54]}
-                {weatherData &&
+                  })[54]
+                }
+                {
                   weatherData.item.map((info) => {
                     return (
                       <li key={nanoid()}>
@@ -549,7 +541,8 @@ export default function Home() {
                           : '눈날림'}
                       </li>
                     );
-                  })[6]}
+                  })[6]
+                }
               </ul>
             </div>
           </LeftNav2>

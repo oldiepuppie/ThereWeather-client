@@ -7,7 +7,6 @@ import { useHistory } from 'react-router';
 import { default as PaginationWithArrow } from '../components/Pagination';
 
 const Outer = styled.div`
-  // 데스크탑
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -15,12 +14,8 @@ const Outer = styled.div`
   background-color: var(--page-bg-color);
   width: 100vw;
   min-height: 100vh;
-
-  @media screen and (max-width: 1081px) {
-  }
 `;
 
-// 그리드
 const Container = styled.div`
   display: grid;
   justify-content: center;
@@ -57,7 +52,6 @@ const Container = styled.div`
   }
 `;
 
-// 게시물 사진
 const BookMarkPhoto = styled.div`
   .postItem {
     display: flex;
@@ -96,7 +90,6 @@ const BookMarkPhoto = styled.div`
   }
 `;
 
-// 00구,날짜,날씨이모티콘
 const BookMarkList = styled.div`
   margin: 1rem;
   line-height: 3rem;
@@ -196,7 +189,6 @@ export default function BookMark() {
   };
 
   const postClickHandler = (e) => {
-    //"PostBookMarkList"
     let elem = e.target;
     while (!elem.classList.contains('postItem')) {
       elem = elem.parentNode;
@@ -212,7 +204,7 @@ export default function BookMark() {
     });
   };
 
-  // 시작 - 페이지네이션 변수들
+  // FIXME 시작 - 페이지네이션 변수들
   const [, setCurrentPage] = useState(1);
   // 1페이지로 시작
   // const itemsPerPage = 6
@@ -248,7 +240,7 @@ export default function BookMark() {
         })}
       </Container>
 
-      {/* 시작 - 페이지네이션 새로 추가 */}
+      {/* FIXME 시작 - 페이지네이션 새로 추가 */}
       <PaginationWithArrow
         // dataLength={bookmarkList.length} // 본래
         dataLength={6} // 테스트용

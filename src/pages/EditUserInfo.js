@@ -39,6 +39,7 @@ const Button = styled.button`
   &:hover {
     background-color: #ff7f9f;
   }
+
   & > img {
     height: 1.5rem;
     width: 1.5rem;
@@ -56,9 +57,11 @@ const Button2 = styled.input`
   font-weight: bold;
   color: white;
   background-color: #fec0cb;
+
   &:hover {
     background-color: #ff7f9f;
   }
+
   > span {
     margin: 0.25rem;
   }
@@ -138,9 +141,11 @@ const Button3 = styled.button`
   color: white;
   background-color: #fec0cb;
   border-radius: 1rem;
+
   &:hover {
     background-color: #ff7f9f;
   }
+
   > span {
     margin: 0.25rem;
   }
@@ -169,7 +174,6 @@ export default function Write() {
     filePath: `${url}/img/blankPost.png`,
   });
 
-  // 등록버튼 이벤트
   const submitButtonHandler = (e) => {
     const token = JSON.parse(localStorage.getItem('ATOKEN'));
     axios({
@@ -213,6 +217,7 @@ export default function Write() {
         console.error(err);
       });
   };
+
   const addFile = (e) => {
     setPhoto(e.target.files[0]);
   };

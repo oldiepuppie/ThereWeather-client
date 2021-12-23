@@ -20,17 +20,18 @@ const Outer = styled.div`
     min-height: calc(100vh - 125px - 70px);
   }
 `;
-/* 프로필 정보 */
+
 const ProfileArea = styled.div`
   width: 30%;
   padding: 15vh 1vw 1vh 1vw;
   text-align: center;
+
   button {
-    // 비밀번호 수정, 회원탈퇴
     color: #336fc9;
     font-size: 1.5rem;
     margin-top: 1vh;
   }
+
   .mediaBox {
     margin-top: 2vh;
     margin-bottom: 2vh;
@@ -51,6 +52,7 @@ const ProfileArea = styled.div`
     margin-top: 4vh;
     width: 100%;
     padding: 0 1vw 3vh 1vw;
+
     .mediaBox {
       width: 40%;
       display: inline-block;
@@ -68,6 +70,7 @@ const ProfileArea = styled.div`
     button {
       font-size: 1rem;
     }
+
     .mediaBox {
       width: 50%;
       display: inline-block;
@@ -83,22 +86,23 @@ const ProfileArea = styled.div`
     }
   }
 `;
-/* 프로필 사진 */
+
 const ProfileImg = styled.img`
   width: 200px;
   height: 200px;
   padding: 10px 10px;
   border-radius: 50%;
+
   @media screen and (max-width: 1081px) {
     margin-right: 5vw;
   }
+
   @media screen and (max-width: 375px) {
     width: 7rem;
     height: 7rem;
   }
 `;
 
-/* 비밀번호수정, 탈퇴 */
 const ButtonArea = styled.div`
   height: 10vh;
   display: flex;
@@ -111,7 +115,7 @@ const ButtonArea = styled.div`
   }
 
   @media screen and (max-width: 1081px) {
-    width: 100vw; // 가운데로 맞춤
+    width: 100vw;
     align-items: center;
     height: 10vh;
     position: absolute;
@@ -127,7 +131,6 @@ const ButtonArea = styled.div`
   }
 `;
 
-// 내가 쓴 예보 (grid)
 const GridArea = styled.div`
   width: 100vw;
   padding: 2vh 3vw 2vh 5vw;
@@ -147,25 +150,30 @@ const GridArea = styled.div`
   div {
     background-color: rgba(255, 255, 255, 0.5); // 추가
   }
+
   div:hover {
     border: 1px solid var(--page-bg-color);
   }
+
   img {
     width: 100%;
     height: 100%;
   }
+
   .more {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     background-color: transparent;
   }
+
   p {
     font-size: 2rem;
     margin: 0 auto;
     font-weight: bold;
     color: #8e8e8e;
   }
+
   .moreView {
     font-size: 1.5rem;
     color: #336fc9;
@@ -230,7 +238,6 @@ export default function MyPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPosts, setcurrentPosts] = useState([]);
 
-  // 게시물 데이터 조회
   useEffect(() => {
     axios({
       url: url + `/mypage?searchID=${userInfo.user_id}`,
@@ -242,7 +249,6 @@ export default function MyPage() {
     });
   }, [userInfo.user_id, dispatch]);
 
-  // 정보수정
   const changeUserInfo = () => {
     history.push('/edituserinfo');
   };
@@ -271,11 +277,11 @@ export default function MyPage() {
   const modalNoButtonHandler = () => {
     setIsModalOpen(false);
   };
+
   const modalCloseButtonHandler = () => {
     setIsModalOpen(false);
   };
 
-  // 게시물 클릭했을 때
   const postClickHandler = (e) => {
     let elem = e.target;
     while (!elem.classList.contains('postItem')) {
@@ -292,7 +298,6 @@ export default function MyPage() {
     });
   };
 
-  // 더보기
   const moreViewHandler = () => {
     history.push('/mypost');
   };

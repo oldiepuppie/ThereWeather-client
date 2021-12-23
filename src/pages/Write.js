@@ -5,11 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { changeMapPage } from '../actions/index';
 
-/*
-    [수정]
-    이미지 태그에 alt 추가 (없으면 콘솔에 오류 뜸)
-*/
-
 const Outer = styled.div`
   overflow: scroll;
   display: flex;
@@ -50,6 +45,7 @@ const Button = styled.button`
     width: 1.5rem;
   }
 `;
+
 const Button2 = styled.input`
   width: 50vw;
   min-width: 100px;
@@ -183,6 +179,7 @@ const WriteText = styled.textarea`
     max-width: ${(props) => (props.small ? '500px' : '800px')};
   }
 `;
+
 const PhotoBox = styled.div`
   display: flex;
   justify-content: center;
@@ -240,14 +237,12 @@ export default function Write() {
     filePath: `${url}/img/blankPost.png`,
   });
 
-  // 제목 handler
   const [title, setTitle] = useState('');
 
   const titleInputHandler = (e) => {
     setTitle((prev) => e.target.value);
   };
 
-  // 스타일 적용 state
   const [isFilteringBtnActive, setIsFilteringBtnActive] = useState({
     sunny: false,
     cloudy: false,
@@ -264,7 +259,6 @@ export default function Write() {
     hot: false,
   });
 
-  // 겉옷 더미데이터
   const outer = [
     ['default', '겉옷 선택'],
     ['가디건', '가디건'],
@@ -274,7 +268,6 @@ export default function Write() {
     ['패딩', '패딩'],
   ];
 
-  // 상의 더미데이터 (state 변수가 필요하게 될까?)
   const clothesTop = [
     ['default', '상의 선택'],
     ['민소매', '민소매'],
@@ -284,14 +277,12 @@ export default function Write() {
     ['니트', '니트'],
   ];
 
-  // 하의 더미데이터
   const clothesBottom = [
     ['default', '하의 선택'],
     ['반바지', '반바지'],
     ['긴바지', '긴 바지'],
   ];
 
-  // select 상태 관리 & 이벤트 핸들러
   const [selectValueOuter, setSelectValueOuter] = useState('default');
   const [selectValueTop, setSelectValueTop] = useState('default');
   const [selectValueBottom, setSelectValueBottom] = useState('default');
@@ -308,13 +299,11 @@ export default function Write() {
     setSelectValueBottom(e.target.value);
   };
 
-  // textarea state & handler
   const [postText, setPostText] = useState('');
   const postTextHandler = (e) => {
     setPostText(e.target.value);
   };
 
-  // 등록버튼 이벤트
   const submitButtonHandler = (e) => {
     if (curLocation.lat === '') {
       alert('gps활용 허용하신 회원만 예보를 작성 할 수 있습니다.');
@@ -331,14 +320,9 @@ export default function Write() {
       selectTemp &&
       curLocation
     ) {
-      //&& !photo && !selectWeather && !selectWind && !setSelectTemp
-
       axios({
         url: url + '/post/write',
         method: 'post',
-        // headers: {
-        //     // accept: "application/json",
-        // },
         data: {
           user_id: userInfo.user_id,
           post_photo: uploadedImg.filePath,
@@ -364,9 +348,11 @@ export default function Write() {
       alert('모든 항목은 필수입니다:)');
     }
   };
+
   useEffect(() => {
     dispatch(changeMapPage(false));
   }, [dispatch]);
+
   useEffect(() => {
     setIsFilteringBtnActive({
       sunny: false,
@@ -376,6 +362,7 @@ export default function Write() {
       [selectWeather]: true,
     });
   }, [selectWeather]);
+
   useEffect(() => {
     setIsFilteringBtnActive2({
       breezy: false,
@@ -384,6 +371,7 @@ export default function Write() {
       [selectWind]: true,
     });
   }, [selectWind]);
+
   useEffect(() => {
     setIsFilteringBtnActive3({
       cold: false,
@@ -391,19 +379,24 @@ export default function Write() {
       [selectTemp]: true,
     });
   }, [selectTemp]);
+
   function weatherFunc(select) {
     setSelectWeather(select);
   }
+
   function weatherFunc2(select) {
     setSelectWind(select);
   }
+
   function weatherFunc3(select) {
     setSelectTemp(select);
   }
+
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('img', photo);
+
     axios
       .post(url + '/post/photo', formData, {
         'Content-Type': 'application/json',
@@ -421,9 +414,11 @@ export default function Write() {
         console.error(err);
       });
   };
+
   const addFile = (e) => {
     setPhoto(e.target.files[0]);
   };
+
   function sFunc() {
     function random(min, max) {
       return parseFloat((Math.random() * (max - min) + min).toFixed(7));

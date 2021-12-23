@@ -39,6 +39,7 @@ const Button = styled.button`
     width: 1.5rem;
   }
 `;
+
 const Button2 = styled.input`
   width: 50vw;
   min-width: 100px;
@@ -169,6 +170,7 @@ const WriteText = styled.textarea`
     max-width: ${(props) => (props.small ? '500px' : '800px')};
   }
 `;
+
 const PhotoBox = styled.div`
   display: flex;
   justify-content: center;
@@ -216,9 +218,9 @@ export default function Write() {
   const history = useHistory();
   const { userInfo, curLocation, readPostId } = useSelector((state) => state.itemReducer);
   const [postId] = useState(readPostId);
-  const [selectWeather, setSelectWeather] = useState(); // 날씨
-  const [selectWind, setSelectWind] = useState(); // 바람
-  const [selectTemp, setSelectTemp] = useState(); // 온도
+  const [selectWeather, setSelectWeather] = useState();
+  const [selectWind, setSelectWind] = useState();
+  const [selectTemp, setSelectTemp] = useState();
   const [photo, setPhoto] = useState('');
   const [uploadedImg, setUploadedImg] = useState({
     fileName: 'blankPost.png',
@@ -226,31 +228,30 @@ export default function Write() {
   });
   const postIds = Number(readPostId);
 
-  // 제목 handler
   const [title, setTitle] = useState('');
 
   const titleInputHandler = (e) => {
     setTitle((prev) => e.target.value);
   };
 
-  // 스타일 적용 state
   const [isFilteringBtnActive, setIsFilteringBtnActive] = useState({
     sunny: false,
     cloudy: false,
     rainy: false,
     snowy: false,
   });
+
   const [isFilteringBtnActive2, setIsFilteringBtnActive2] = useState({
     breezy: false,
     windy: false,
     strong: false,
   });
+
   const [isFilteringBtnActive3, setIsFilteringBtnActive3] = useState({
     cold: false,
     hot: false,
   });
 
-  // 겉옷 더미데이터
   const outer = [
     ['default', '겉옷 선택'],
     ['가디건', '가디건'],
@@ -260,7 +261,6 @@ export default function Write() {
     ['패딩', '패딩'],
   ];
 
-  // 상의 더미데이터 (state 변수가 필요하게 될까?)
   const clothesTop = [
     ['default', '상의 선택'],
     ['민소매', '민소매'],
@@ -270,14 +270,12 @@ export default function Write() {
     ['니트', '니트'],
   ];
 
-  // 하의 더미데이터
   const clothesBottom = [
     ['default', '하의 선택'],
     ['반바지', '반바지'],
     ['긴바지', '긴 바지'],
   ];
 
-  // select 상태 관리 & 이벤트 핸들러
   const [selectValueOuter, setSelectValueOuter] = useState('default');
   const [selectValueTop, setSelectValueTop] = useState('default');
   const [selectValueBottom, setSelectValueBottom] = useState('default');
@@ -294,13 +292,11 @@ export default function Write() {
     setSelectValueBottom(e.target.value);
   };
 
-  // textarea state & handler
   const [postText, setPostText] = useState('');
   const postTextHandler = (e) => {
     setPostText(e.target.value);
   };
 
-  // 기존 데이터 렌더링
   useEffect(() => {
     axios({
       url: url + `/readpost?searchID=${userInfo.postIds}`,
@@ -309,26 +305,21 @@ export default function Write() {
       withCredentials: true,
     })
       .then((res) => {
-        // 제목
         setTitle(res.data.post_title);
-        // 사진
         setUploadedImg({ filePath: res.data.post_photo });
-        // 날씨
         setIsFilteringBtnActive({ [res.data.weather]: true });
         setIsFilteringBtnActive2({ [res.data.wind]: true });
         setIsFilteringBtnActive3({ [res.data.temp]: true });
 
-        // 코디
         setSelectValueOuter(res.data.outer_id);
         setSelectValueTop(res.data.top_id);
         setSelectValueBottom(res.data.bottom_id);
-        // 내용
+
         setPostText(res.data.post_content);
       })
       .catch((err) => err);
   }, [postIds, userInfo.postIds]);
 
-  // 등록버튼 이벤트
   const submitButtonHandler = (e) => {
     if (curLocation.lat === '') {
       alert('gps활용 허용하신 회원만 예보를 작성 할 수 있습니다.');
@@ -373,9 +364,11 @@ export default function Write() {
       alert('모든 항목은 필수입니다:)');
     }
   };
+
   useEffect(() => {
     dispatch(changeMapPage(false));
   }, [dispatch]);
+
   useEffect(() => {
     setIsFilteringBtnActive({
       sunny: false,
@@ -385,6 +378,7 @@ export default function Write() {
       [selectWeather]: true,
     });
   }, [selectWeather]);
+
   useEffect(() => {
     setIsFilteringBtnActive2({
       breezy: false,
@@ -393,6 +387,7 @@ export default function Write() {
       [selectWind]: true,
     });
   }, [selectWind]);
+
   useEffect(() => {
     setIsFilteringBtnActive3({
       cold: false,
@@ -400,15 +395,19 @@ export default function Write() {
       [selectTemp]: true,
     });
   }, [selectTemp]);
+
   function weatherFunc(select) {
     setSelectWeather(select);
   }
+
   function weatherFunc2(select) {
     setSelectWind(select);
   }
+
   function weatherFunc3(select) {
     setSelectTemp(select);
   }
+
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -430,9 +429,11 @@ export default function Write() {
         console.error(err);
       });
   };
+
   const addFile = (e) => {
     setPhoto(e.target.files[0]);
   };
+
   function sFunc() {
     function random(min, max) {
       return parseFloat((Math.random() * (max - min) + min).toFixed(7));
@@ -481,8 +482,6 @@ export default function Write() {
           <FlexColumnCenter className='smallSection'>
             <p>날씨를 선택하세요.</p>
             <FilteringButtons className='filteringButtons'>
-              {/* {weathers.map((weather, idx) => { */}
-              {/* return ( */}
               <FilteringBtn
                 name={'sunny'}
                 className='weatherButton'
@@ -555,8 +554,6 @@ export default function Write() {
                 onClick={() => weatherFunc3('cold')}>
                 <img src={`${process.env.PUBLIC_URL}img/icons-write/${'cold'}.png`} alt='icon' />
               </FilteringBtn>
-              {/* ) */}
-              {/* })} */}
             </FilteringButtons>
           </FlexColumnCenter>
 

@@ -181,7 +181,6 @@ const Buttons3 = styled.div`
   justify-content: center;
 
   @media screen and (max-width: 1081px) {
-    // 임시 추가
     display: none;
   }
 `;
@@ -284,44 +283,16 @@ export default function Header({ isInput, isMobileLogo }) {
           {onFocus ? <StyledPostCode className='daumPostCodeContainer' onComplete={handleComplete} /> : <></>}
           {mapPage.mapPage ? (
             <Buttons className='headerButtons'>
-              <Button
-                onClick={() => {
-                  if (weatherFilter === 'sunny') {
-                    return setweatherFilter('');
-                  }
-                  return setweatherFilter('sunny');
-                }}
-                isText={weatherFilter === 'sunny' ? true : false}>
+              <Button onClick={() => (weatherFilter === 'sunny' ? '' : 'sunny')} isText={weatherFilter === 'sunny'}>
                 <FontAwesomeIcon icon={faSun} />
               </Button>
-              <Button
-                onClick={() => {
-                  if (weatherFilter === 'cloudy') {
-                    return setweatherFilter('');
-                  }
-                  return setweatherFilter('cloudy');
-                }}
-                isText={weatherFilter === 'cloudy' ? true : false}>
+              <Button onClick={() => (weatherFilter === 'cloudy' ? '' : 'cloudy')} isText={weatherFilter === 'cloudy'}>
                 <FontAwesomeIcon icon={faCloud} />
               </Button>
-              <Button
-                onClick={() => {
-                  if (weatherFilter === 'rainy') {
-                    return setweatherFilter('');
-                  }
-                  return setweatherFilter('rainy');
-                }}
-                isText={weatherFilter === 'rainy' ? true : false}>
+              <Button onClick={() => (weatherFilter === 'rainy' ? '' : 'rainy')} isText={weatherFilter === 'rainy'}>
                 <FontAwesomeIcon icon={faCloudRain} />
               </Button>
-              <Button
-                onClick={() => {
-                  if (weatherFilter === 'snowy') {
-                    return setweatherFilter('');
-                  }
-                  return setweatherFilter('snowy');
-                }}
-                isText={weatherFilter === 'snowy' ? true : false}>
+              <Button onClick={() => (weatherFilter === 'snowy' ? '' : 'snowy')} isText={weatherFilter === 'snowy'}>
                 <FontAwesomeIcon icon={faSnowflake} />
               </Button>
             </Buttons>

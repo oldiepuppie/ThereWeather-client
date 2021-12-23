@@ -8,20 +8,10 @@ import GoBackButton from '../components/GoBackButton';
 import { useHistory } from 'react-router-dom';
 import TopButton from '../components/TopButton';
 
-/*
-  [수정사항]
-  - 옷차림 아이콘 경로 수정
-  - select 태그용 배열 테스트
-  - 게시물 작성 위치를 기준으로 주소 렌더링
-  - 하단의 주석 제거
-  - '잘못된 요청입니다' 메시지 h2에 margin 추가
-*/
-
 const Outer = styled.div`
   width: 100vw;
   background-color: var(--page-bg-color);
 
-  // 오늘의 코디
   .todayCodi {
     margin: 0 auto;
     width: 60%;
@@ -43,11 +33,8 @@ const Outer = styled.div`
       font-weight: bold;
     }
   }
-  @media screen and (max-width: 375px) {
-  }
 `;
 
-// 제목, 유저프로필사진,닉네임 북마크버튼
 const PostHeader = styled.div`
   padding-top: 8vh;
   align-items: center;
@@ -57,7 +44,6 @@ const PostHeader = styled.div`
   }
 `;
 
-// 제목 // 제목글자수 제한 필요?
 const Title = styled.div`
   display: flex;
   justify-content: space-between;
@@ -80,7 +66,6 @@ const Title = styled.div`
   }
 `;
 
-// 북마크 아이콘
 const BookmarkIcon = styled(Bookmark)`
   float: right;
 
@@ -90,7 +75,6 @@ const BookmarkIcon = styled(Bookmark)`
   }
 `;
 
-// 프로필
 const Profile = styled.div`
   width: 60rem;
   margin: 0 auto;
@@ -137,7 +121,7 @@ const Profile = styled.div`
     }
   }
 `;
-// 프로필 이미지
+
 const ProfileImg = styled.img`
   border: 1px solid #aaa;
   width: 4rem;
@@ -149,10 +133,7 @@ const ProfileImg = styled.img`
   }
 `;
 
-// 게시물 사진 (있을 때, 없을때)
 const PostImg = styled.img`
-  // 이미지 사이즈(1000*750)
-  // 다시 확인필요
   width: 60rem;
   height: 40rem;
   display: block;
@@ -162,13 +143,13 @@ const PostImg = styled.img`
     width: 70%;
     height: 30rem;
   }
+
   @media screen and (max-width: 375px) {
     width: 80%;
     height: 18rem;
   }
 `;
 
-// 날씨,바람세기,온도 이모티콘 부분
 const WeatherInfo = styled.div`
   width: 330px;
   margin-top: 4vh;
@@ -182,6 +163,7 @@ const WeatherInfo = styled.div`
     margin-bottom: 1vw;
     justify-content: space-around;
   }
+
   @media screen and (max-width: 375px) {
     width: 50%;
     margin-bottom: 3vh;
@@ -192,12 +174,12 @@ const Icon = styled.img`
   @media screen and (max-width: 1081px) {
     width: 4rem;
   }
+
   @media screen and (max-width: 375px) {
     width: 3rem;
   }
 `;
 
-// 오늘의 코디 (있을 때, 없을 때)
 const TodayCodi = styled.div`
   width: 20%;
   text-align: center;
@@ -207,9 +189,11 @@ const TodayCodi = styled.div`
   margin: auto;
   margin-top: 3vh;
   margin-bottom: 3vh;
+
   .warning {
     display: none;
   }
+
   & p.warning {
     font-size: 0.9rem;
     width: 6rem;
@@ -225,12 +209,12 @@ const TodayCodi = styled.div`
   @media screen and (max-width: 1081px) {
     width: 50%;
   }
+
   @media screen and (max-width: 375px) {
     width: 50vw;
   }
 `;
 
-// 게시물 내용 scroll
 const Post = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
   margin: 0 auto;
@@ -246,6 +230,7 @@ const Post = styled.div`
   @media screen and (max-width: 1081px) {
     width: 70%;
   }
+
   @media screen and (max-width: 375px) {
     width: 85%;
     margin-top: 4vh;
@@ -256,7 +241,6 @@ const Post = styled.div`
   }
 `;
 
-// 삭제, 수정 버튼
 const Buttons = styled.div`
   width: 15rem;
   margin: 0 auto;
@@ -309,7 +293,6 @@ export default function PostRead() {
   const { readPostId, userInfo } = useSelector((state) => state.itemReducer);
   const postIds = Number(readPostId);
 
-  // postData state 변수
   const [postData, setPostData] = useState({
     id: null,
     post_title: '',
@@ -340,7 +323,6 @@ export default function PostRead() {
     return `${dateOnly} ${hourAndMin}`;
   };
 
-  // 글 불러오기
   useEffect(() => {
     function getOnePost(postId) {
       axios
@@ -369,26 +351,18 @@ export default function PostRead() {
     }
   }, [history.location.state, readPostId]);
 
-  // 북마크 상태
   const [bookmarked, setBookmarked] = useState(false);
-
-  // const [isOpen, setIsOpen] = useState(false);
-  // 게시물 수정
   const [edit, setEdit] = useState(false);
-  // 게시물 삭제
   const [removePost, setRemovePost] = useState(false);
 
-  // 게시물 수정
   const editPost = () => {
     setEdit(true);
   };
 
-  // 게시물 삭제
   const deletePost = (e) => {
     setRemovePost(true);
   };
 
-  //게시물 수정 yse버튼
   const editModalYes = () => {
     axios({
       url: url + '/editpost',
@@ -409,7 +383,6 @@ export default function PostRead() {
     setEdit(false);
   };
 
-  //게시물 삭제 yes버튼
   const removeModalYes = () => {
     const token = JSON.parse(localStorage.getItem('ATOKEN'));
     axios({
@@ -423,7 +396,6 @@ export default function PostRead() {
       withCredentials: true,
     }).then((res) => {
       alert(res.data);
-      // alert("삭제 완료")
       history.push('/mypage');
     });
     setRemovePost(false);
@@ -440,18 +412,14 @@ export default function PostRead() {
   };
 
   const bookmarkHandler = (e) => {
-    //눌렀을 때 북마크에 저장
-    //다시 누르면 해제
     axios({
       url: url + '/bookmark',
       method: 'post',
       data: { user_id: userInfo.id, post_id: postIds },
-      // data: { post_id: postId },
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     }).then((res) => {
       setBookmarked((prev) => !prev);
-      // history.push("/bookmark")
     });
   };
 
@@ -474,8 +442,6 @@ export default function PostRead() {
           </div>
           <div>
             <p className='location'>{postData.address}</p>
-            {/* <p className="location">{postData.xLocation.slice(0, -8)}</p>
-            <p className="location">{postData.yLocation.slice(0, -8)}</p> */}
           </div>
         </Profile>
       </PostHeader>
@@ -499,34 +465,30 @@ export default function PostRead() {
         )}
       </WeatherInfo>
 
-      {/* 코디가 있을 때, 없을 때 */}
-      {
-        // 코디 3개 없을때
-        (!postData.outer_id || postData.outer_id === 'default') &&
-        (!postData.top_id || postData.top_id === 'default') &&
-        (!postData.bottom_id || postData.top_id === 'default') ? null : (
-          <>
-            <h2 className='todayCodi'>오늘의 코디</h2>
-            <TodayCodi>
-              {!postData.outer_id || postData.outer_id === 'default' ? (
-                <p className='warning'>겉옷 데이터가 없습니다</p>
-              ) : (
-                <Icon src={`${process.env.PUBLIC_URL}img/codi/${postData.outer_id}.png`} alt='겉옷' />
-              )}
-              {!postData.top_id || postData.top_id === 'default' ? (
-                <p className='warning'>상의 데이터가 없습니다</p>
-              ) : (
-                <Icon src={`${process.env.PUBLIC_URL}img/codi/${postData.top_id}.png`} alt='상의' />
-              )}
-              {!postData.bottom_id || postData.top_id === 'default' ? (
-                <p className='warning'>하의 데이터가 없습니다</p>
-              ) : (
-                <Icon src={`${process.env.PUBLIC_URL}img/codi/${postData.bottom_id}.png`} alt='하의' />
-              )}
-            </TodayCodi>
-          </>
-        )
-      }
+      {(!postData.outer_id || postData.outer_id === 'default') &&
+      (!postData.top_id || postData.top_id === 'default') &&
+      (!postData.bottom_id || postData.top_id === 'default') ? null : (
+        <>
+          <h2 className='todayCodi'>오늘의 코디</h2>
+          <TodayCodi>
+            {!postData.outer_id || postData.outer_id === 'default' ? (
+              <p className='warning'>겉옷 데이터가 없습니다</p>
+            ) : (
+              <Icon src={`${process.env.PUBLIC_URL}img/codi/${postData.outer_id}.png`} alt='겉옷' />
+            )}
+            {!postData.top_id || postData.top_id === 'default' ? (
+              <p className='warning'>상의 데이터가 없습니다</p>
+            ) : (
+              <Icon src={`${process.env.PUBLIC_URL}img/codi/${postData.top_id}.png`} alt='상의' />
+            )}
+            {!postData.bottom_id || postData.top_id === 'default' ? (
+              <p className='warning'>하의 데이터가 없습니다</p>
+            ) : (
+              <Icon src={`${process.env.PUBLIC_URL}img/codi/${postData.bottom_id}.png`} alt='하의' />
+            )}
+          </TodayCodi>
+        </>
+      )}
 
       <Post>
         <p>{postData.post_content}</p>

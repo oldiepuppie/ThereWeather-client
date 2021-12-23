@@ -7,18 +7,6 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { changeMapPage } from '../actions/index';
 
-/*
-  TODO
-  [x] 여러개의 Input 상태 관리
-  [] 유효성 검사
-    - [x] ul, li 추가
-    - [] 함수로 구현
-      - [x] input이 없는 경우
-      - [] 등록되지 않은 정보인 경우
-        - [] 악시오스
-        - [] 모달? alert? 페이지에 렌더링?
-*/
-
 const Outer = styled.section`
   position: relative;
   width: 100vw;

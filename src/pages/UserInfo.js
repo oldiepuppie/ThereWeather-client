@@ -6,7 +6,6 @@ import axios from 'axios';
 import { changeIsLogin } from '../actions/index';
 
 const Outer = styled.div`
-  // 여기는 데스크탑
   margin: 0 auto;
   background-color: var(--page-bg-color);
   width: 100vw;
@@ -15,7 +14,6 @@ const Outer = styled.div`
   align-items: center;
 
   @media screen and (max-width: 1081px) {
-    // 여기가 모바일
     height: calc(100vh - 125px - 70px);
   }
 `;

@@ -1,21 +1,6 @@
 import styled from 'styled-components';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-// 부모요소에 postion: relative 필요함
-// props
-// duration : 따옴표 안에 s(초) 단위로 지정
-// ex) duration={'3s'}
-// 지정하지 않은 경우 기본값 2s
-// 숫자가 작을수록 빨리 돌아간다
-// size : 따옴표 안에 px 단위로 지정
-// ex) size={'30px'}
-// 지정하지 않은 경우 기본값 (가로 === 세로)
-// 모바일 50px
-// 데스크탑 100px
-// hide
-// true -> display: none;
-// false(지정하지 않은 경우 포함) -> display: flex;
-
 const LoadingContainer = styled.div`
   position: fixed;
   top: 0;

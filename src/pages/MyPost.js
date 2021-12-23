@@ -28,7 +28,6 @@ const Outer = styled.div`
   }
 
   @media screen and (min-width: 1500px) {
-    // 제일 큰 사이즈
     padding-left: 3vh;
     padding-right: 3vh;
   }
@@ -37,7 +36,6 @@ const Outer = styled.div`
   }
 `;
 
-// 내가 쓴 글 (grid)
 const GridArea = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -56,16 +54,19 @@ const GridArea = styled.div`
   .postItem:hover {
     border: 1px solid #d5d8dc;
   }
+
   @media screen and (min-width: 2100px) {
     height: 50vh;
     width: 300px;
   }
+
   @media screen and (max-width: 1081px) {
     padding-left: 5vw;
     padding-right: 5vw;
     height: auto;
     grid-template-columns: 1fr 1fr;
   }
+
   @media screen and (max-width: 600px) {
     padding-left: 2vw;
     padding-right: 2vw;
@@ -73,12 +74,12 @@ const GridArea = styled.div`
       font-size: 20px;
     }
   }
+
   @media screen and (max-width: 375px) {
     height: auto;
   }
 `;
 
-// 게시물 사진
 const PostImg = styled.img`
   width: 100%;
   height: 100%;
@@ -90,7 +91,7 @@ const PostImg = styled.img`
   }
 
   @media screen and (max-width: 1081px) {
-    // 이미지 크기 수정 필요
+    // FIXME 이미지 크기 수정 필요
   }
 `;
 
@@ -113,7 +114,7 @@ export default function MyPost() {
     });
   }, [dispatch, userInfo.user_id]);
 
-  // 페이지네이션 시작
+  // TODO 페이지네이션 시작
   const [currentPage, setCurrentPage] = useState(1);
   // 1페이지로 시작
   const itemsPerPage = 8;
@@ -125,7 +126,6 @@ export default function MyPost() {
   };
   // 페이지네이션 끝
 
-  // 게시물사진 클릭했을 때
   const postClickHandler = (e) => {
     let elem = e.target;
     while (!elem.classList.contains('postItem')) {
@@ -150,14 +150,11 @@ export default function MyPost() {
       </div>
 
       <GridArea className='myPostList'>
-        {
-          /* 페이지 분할 및 적용 */
-          slicedData(currentPosts).map((el) => (
-            <div className={['postItem']} id={el.id} onClick={postClickHandler} key={el.id}>
-              <PostImg src={el.post_photo} alt='posts' />
-            </div>
-          ))
-        }
+        {slicedData(currentPosts).map((el) => (
+          <div className={['postItem']} id={el.id} onClick={postClickHandler} key={el.id}>
+            <PostImg src={el.post_photo} alt='posts' />
+          </div>
+        ))}
       </GridArea>
 
       <div className='paginationContainer'>

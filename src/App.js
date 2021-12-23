@@ -104,16 +104,16 @@ export default function App() {
         </Route>
 
         <Route exact path='/writeorlogin'>
-          {isLogin ? <Redirect to='/write' /> : <Redirect to='/login' />}
+          <Redirect to={isLogin ? '/write' : '/login'} />
         </Route>
         <Route exact path='/bookmarkorlogin'>
-          {isLogin ? <Redirect to='/bookmark' /> : <Redirect to='/login' />}
+          <Redirect to={isLogin ? '/bookmark' : '/login'} />
         </Route>
         <Route exact path='/homeorlogin'>
-          {isLogin ? <Redirect to='/home' /> : <Redirect to='/login' />}
+          <Redirect to={isLogin ? '/home' : '/login'} />
         </Route>
         <Route exact path='/moreoruserinfo'>
-          {isLogin ? <Redirect to='/userinfo' /> : <Redirect to='/more' />}
+          <Redirect to={isLogin ? '/userinfo' : '/more'} />
         </Route>
         <Route exact path='/editpost'>
           <PostEdit />
