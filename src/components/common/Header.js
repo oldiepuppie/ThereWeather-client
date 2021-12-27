@@ -4,7 +4,7 @@ import { faSun, faCloud, faCloudRain, faSnowflake, faSearch } from '@fortawesome
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { changeIsLogin, changeSearchword, changeWeatherFilter } from '../actions/index';
+import { changeIsLogin, changeSearchword, changeWeatherFilter } from '../../actions/index';
 import React, { useState, useEffect } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 

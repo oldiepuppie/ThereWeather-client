@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { changeGender } from '../actions/index';
+import { changeGender } from '../../actions/index';
 
 const ToggleContainer = styled.div`
   position: relative;

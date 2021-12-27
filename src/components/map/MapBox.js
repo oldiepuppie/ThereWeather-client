@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeSearchword, changeCurLocation, updatePostId } from '../actions/index';
+import { changeSearchword, changeCurLocation, updatePostId } from '../../actions/index';
 import $ from 'jquery';
 import axios from 'axios';
-import { Doughnut, Bar } from './graph';
+import { Doughnut, Bar } from '../graph';
 import LoadingSpinner from './LoadingSpinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
