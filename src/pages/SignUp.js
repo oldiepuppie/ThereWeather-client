@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Toggle } from '../components/Toggle';
+import Toggle from '../components/common/Toggle';
 import DaumPostcode from 'react-daum-postcode';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';

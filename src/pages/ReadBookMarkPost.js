@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { Bookmark } from '../components/Heart';
-import ModalConfirm from '../components/ModalConfirm';
-import GoBackButton from '../components/GoBackButton';
+import { default as Bookmark } from '../components/common/Heart';
+import ModalConfirm from '../components/common/ModalConfirm';
+import GoBackButton from '../components/common/GoBackButton';
 import { useHistory } from 'react-router-dom';
-import TopButton from '../components/TopButton';
+import TopButton from '../components/common/TopButton';
 
 const Outer = styled.div`
   width: 100vw;

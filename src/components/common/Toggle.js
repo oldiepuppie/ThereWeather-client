@@ -53,7 +53,7 @@ const Desc = styled.div`
   text-align: center;
 `;
 
-export const Toggle = () => {
+const Toggle = () => {
   const dispatch = useDispatch();
   const [isOn, setisOn] = useState(2);
 
@@ -72,3 +72,5 @@ export const Toggle = () => {
     </>
   );
 };
+
+export default Toggle;

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import One from '../components/FirstPage/One';
-import Two from '../components/FirstPage/Two';
-import Three from '../components/FirstPage/Three';
-import Four from '../components/FirstPage/Four';
+import One from '../components/firstPage/One';
+import Two from '../components/firstPage/Two';
+import Three from '../components/firstPage/Three';
+import Four from '../components/firstPage/Four';
 import { changeMapPage } from '../actions/index';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';

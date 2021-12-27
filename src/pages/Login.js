@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { changeIsLogin, changeMapPage } from '../actions/index';
-import { Toggle } from '../components/Toggle';
+import Toggle from '../components/common/Toggle';
 import DaumPostcode from 'react-daum-postcode';
 
 const LoginOuter = styled.section`

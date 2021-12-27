@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import MapBox from '../components/MapBox';
+import MapBox from '../components/map/MapBox';
 import { changeMapPage } from '../actions/index';
 
 const Container = styled.div`

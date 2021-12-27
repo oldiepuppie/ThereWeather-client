@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { userPosts, updatePostId } from '../actions/index';
-import GoBackButton from '../components/GoBackButton';
-import Pagination from '../components/Pagination';
+import GoBackButton from '../components/common/GoBackButton';
+import Pagination from '../components/common/Pagination';
 
 const Outer = styled.div`
   position: relative;

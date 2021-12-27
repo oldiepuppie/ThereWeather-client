@@ -4,7 +4,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { updatePostId } from '../actions/index';
 import { useHistory } from 'react-router';
-import { default as PaginationWithArrow } from '../components/Pagination';
+import { default as PaginationWithArrow } from '../components/common/Pagination';
 
 const Outer = styled.div`
   display: flex;

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import ModalConfirm from '../components/ModalConfirm';
+import ModalConfirm from '../components/common/ModalConfirm';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { changeIsLogin, userPosts, updatePostId } from '../actions/index';
-import GoBackButton from '../components/GoBackButton';
+import GoBackButton from '../components/common/GoBackButton';
 
 const Outer = styled.div`
   background-color: var(--page-bg-color);

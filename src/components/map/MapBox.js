@@ -5,7 +5,7 @@ import { changeSearchword, changeCurLocation, updatePostId } from '../../actions
 import $ from 'jquery';
 import axios from 'axios';
 import { Doughnut, Bar } from '../graph';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from '../common/LoadingSpinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
