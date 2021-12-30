@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { changeMapPage } from '../actions/index';
+import { changeMapPage } from '../../actions/index';
 
 const Outer = styled.div`
   overflow: scroll;

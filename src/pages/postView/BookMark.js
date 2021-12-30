@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import styled from 'styled-components';
-import { updatePostId } from '../actions/index';
+import { updatePostId } from '../../actions/index';
 import { useHistory } from 'react-router';
-import { default as PaginationWithArrow } from '../components/common/Pagination';
+import { default as PaginationWithArrow } from '../../components/common/Pagination';
 
 const Outer = styled.div`
   display: flex;
@@ -204,17 +204,17 @@ export default function BookMark() {
     });
   };
 
-  // FIXME 시작 - 페이지네이션 변수들
+  // FIXME 시작 - 페이지네이션 변수들 - setCurrentPage 외에는 필요없어보임 // TODO 컴포넌트 재확인
   const [, setCurrentPage] = useState(1);
-  // 1페이지로 시작
-  // const itemsPerPage = 6
+  // // 1페이지로 시작
+  // const itemsPerPage = 6;
   // // 한 페이지에 8개씩 보여준다
-  // const lastIdx = currentPage * itemsPerPage
-  // const firstIdx = lastIdx - itemsPerPage
+  // const lastIdx = currentPage * itemsPerPage;
+  // const firstIdx = lastIdx - itemsPerPage;
   // const slicedData = (dataArr) => {
-  // 		return dataArr.slice(firstIdx, lastIdx)
-  // }
-  // 끝 - 페이지네이션 변수들
+  //   return dataArr.slice(firstIdx, lastIdx);
+  // };
+  // // 끝 - 페이지네이션 변수들
 
   return (
     <Outer>
@@ -242,8 +242,7 @@ export default function BookMark() {
 
       {/* FIXME 시작 - 페이지네이션 새로 추가 */}
       <PaginationWithArrow
-        // dataLength={bookmarkList.length} // 본래
-        dataLength={6} // 테스트용
+        dataLength={bookmarkList.length} // 본래
         itemsPerPage={8}
         numberButtonClickHandler={setCurrentPage}
       />

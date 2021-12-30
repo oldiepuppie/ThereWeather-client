@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import One from '../components/firstPage/One';
-import Two from '../components/firstPage/Two';
-import Three from '../components/firstPage/Three';
-import Four from '../components/firstPage/Four';
-import { changeMapPage } from '../actions/index';
+import One from '../../components/firstPage/One';
+import Two from '../../components/firstPage/Two';
+import Three from '../../components/firstPage/Three';
+import Four from '../../components/firstPage/Four';
+import { changeMapPage } from '../../actions/index';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Loading from '../pages/Loading';
+import Loading from './Loading';
 
 const FirstPageContainer = styled.div`
   background: linear-gradient(#fff, #fef9ef, #fff5dc, #d7f9ff, #aaf2ff);

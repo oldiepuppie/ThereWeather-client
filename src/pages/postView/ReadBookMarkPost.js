@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { default as Bookmark } from '../components/common/Heart';
-import ModalConfirm from '../components/common/ModalConfirm';
-import GoBackButton from '../components/common/GoBackButton';
+import { default as Bookmark } from '../../components/common/Heart';
+import ModalConfirm from '../../components/common/ModalConfirm';
+import GoBackButton from '../../components/common/GoBackButton';
 import { useHistory } from 'react-router-dom';
-import TopButton from '../components/common/TopButton';
+import TopButton from '../../components/common/TopButton';
 
 const Outer = styled.div`
   width: 100vw;
@@ -60,7 +60,6 @@ const Title = styled.div`
     width: 70%;
   }
   @media screen and (max-width: 375px) {
-    width: 80%; // 추가
     span {
       font-size: 1.2rem;
     }
@@ -91,15 +90,12 @@ const Profile = styled.div`
     display: flex;
     align-items: center;
   }
-
   .location {
     font-size: 1.2rem;
   }
-
   span {
     margin-left: 1vh;
   }
-
   span.date {
     font-size: 0.8rem;
     color: #707b7c;
@@ -108,26 +104,19 @@ const Profile = styled.div`
   @media screen and (max-width: 1081px) {
     width: 70%;
   }
-
   @media screen and (max-width: 594px) {
     .location {
       margin-top: 1.2vh;
       font-size: 1.2rem;
     }
   }
-
   @media screen and (max-width: 375px) {
     width: 80%;
     margin-top: 4vh;
     span {
       font-size: 0.5rem;
     }
-    span.date {
-      font-size: 0.5rem;
-      color: #707b7c;
-    }
     .location {
-      margin-top: 0;
       font-size: 0.5rem;
     }
   }
@@ -154,6 +143,7 @@ const PostImg = styled.img`
     width: 70%;
     height: 30rem;
   }
+
   @media screen and (max-width: 375px) {
     width: 80%;
     height: 18rem;
@@ -173,6 +163,7 @@ const WeatherInfo = styled.div`
     margin-bottom: 1vw;
     justify-content: space-around;
   }
+
   @media screen and (max-width: 375px) {
     width: 50%;
     margin-bottom: 3vh;
@@ -183,6 +174,7 @@ const Icon = styled.img`
   @media screen and (max-width: 1081px) {
     width: 4rem;
   }
+
   @media screen and (max-width: 375px) {
     width: 3rem;
   }
@@ -197,9 +189,11 @@ const TodayCodi = styled.div`
   margin: auto;
   margin-top: 3vh;
   margin-bottom: 3vh;
+
   .warning {
     display: none;
   }
+
   & p.warning {
     font-size: 0.9rem;
     width: 6rem;
@@ -215,6 +209,7 @@ const TodayCodi = styled.div`
   @media screen and (max-width: 1081px) {
     width: 50%;
   }
+
   @media screen and (max-width: 375px) {
     width: 50vw;
   }
@@ -235,6 +230,7 @@ const Post = styled.div`
   @media screen and (max-width: 1081px) {
     width: 70%;
   }
+
   @media screen and (max-width: 375px) {
     width: 85%;
     margin-top: 4vh;
@@ -246,25 +242,19 @@ const Post = styled.div`
 `;
 
 const Buttons = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 15rem;
   margin: 0 auto;
   padding-bottom: 10vh;
 
   .button {
-    width: 7rem;
+    width: 5rem;
     height: 3rem;
-    border-radius: 1rem;
-    background-color: #ffbfcb;
+    border-radius: 5px;
+    background-color: var(--button-bg-normal);
     font-size: 1.2rem;
-    font-weight: bold;
   }
   .button2 {
     margin-left: 5rem;
-  }
-  .button:hover {
-    background-color: #ff7f9f;
   }
   .button:before {
     height: 0%;
@@ -406,7 +396,6 @@ export default function PostRead() {
       withCredentials: true,
     }).then((res) => {
       alert(res.data);
-      // alert("삭제 완료")
       history.push('/mypage');
     });
     setRemovePost(false);
@@ -427,7 +416,6 @@ export default function PostRead() {
       url: url + '/bookmark',
       method: 'post',
       data: { user_id: userInfo.id, post_id: postIds },
-      // data: { post_id: postId },
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     }).then((res) => {
@@ -443,7 +431,7 @@ export default function PostRead() {
       <PostHeader className='postHeader'>
         <Title className='title'>
           <span>{postData.post_title}</span>
-          <BookmarkIcon bookmarkHandler={bookmarkHandler} color={bookmarked ? '#ED4956' : '#aaa'} />
+          <BookmarkIcon bookmarkHandler={bookmarkHandler} color={bookmarked ? '#aaa' : '#ED4956'} />
         </Title>
 
         <Profile className='userProfile'>

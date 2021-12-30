@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateWeatherInfo, updatePostId } from '../actions/index';
+import { updateWeatherInfo, updatePostId } from '../../actions/index';
 import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import TopButton from '../components/common/TopButton';
+import TopButton from '../../components/common/TopButton';
 
 const HomeContainer = styled.div`
   display: flex;

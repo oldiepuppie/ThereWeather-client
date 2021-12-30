@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { changeIsLogin } from '../actions/index';
+import { changeIsLogin } from '../../actions/index';
 
 const Outer = styled.div`
   margin: 0 auto;

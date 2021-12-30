@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { changeMapPage } from '../actions/index';
+import { changeMapPage } from '../../actions/index';
 import { useDispatch } from 'react-redux';
 
 const Outer = styled.div`

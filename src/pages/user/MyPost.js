@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import { userPosts, updatePostId } from '../actions/index';
-import GoBackButton from '../components/common/GoBackButton';
-import Pagination from '../components/common/Pagination';
+import { userPosts, updatePostId } from '../../actions/index';
+import GoBackButton from '../../components/common/GoBackButton';
+import Pagination from '../../components/common/Pagination';
 
 const Outer = styled.div`
   position: relative;

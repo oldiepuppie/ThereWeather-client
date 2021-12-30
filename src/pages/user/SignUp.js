@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Toggle from '../components/common/Toggle';
+import Toggle from '../../components/common/Toggle';
 import DaumPostcode from 'react-daum-postcode';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import { changeMapPage } from '../actions/index';
+import { changeMapPage } from '../../actions/index';
 
 const Outer = styled.section`
   position: relative;

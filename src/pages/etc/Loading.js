@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import LoadingSpinner from '../components/common/LoadingSpinner';
+import LoadingSpinner from '../../components/common/LoadingSpinner';
 
 const LoadingContainer = styled.div`
   position: fixed;

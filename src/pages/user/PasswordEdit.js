@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { changeUserPw } from '../actions/index';
+import { changeUserPw } from '../../actions/index';
 
 const Outer = styled.section`
   position: relative;
