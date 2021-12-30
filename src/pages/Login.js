@@ -268,13 +268,12 @@ export default function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // input 상태 관리, 유효성 검사
   const [idInput, setIdInput] = useState('');
   const [pwInput, setPwInput] = useState('');
   const [idInputMessage, setIdInputMessage] = useState('아이디를 입력하세요.');
   const [pwInputMessage, setPwInputMessage] = useState('비밀번호를 입력하세요.');
 
-  const GOOGLE_LOGIN_URL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=1079927639813-87e5g0991msheh50mt77eclt2vij4kks.apps.googleusercontent.com&response_type=token&redirect_uri=${url}/login&scope=https://www.googleapis.com/auth/userinfo.email`;
+  const GOOGLE_LOGIN_URL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}.apps.googleusercontent.com&response_type=token&redirect_uri=${url}/login&scope=https://www.googleapis.com/auth/userinfo.email`;
   const { isLogin } = useSelector((state) => state.itemReducer);
   const [socialLogined, setSocialLogined] = useState(false);
   const [inputSignUpData, setInputSignUpData] = useState({
@@ -293,7 +292,6 @@ export default function Login() {
     const urlinfo = new URL(window.location.href);
     const hash = urlinfo.hash;
 
-    //간편가입완료했거나, 예전에 간편가입완료했던 소셜로그인사용자는 자동으로 로그인이 진행되게 하는 함수-hoon
     function socialAutoLogin(id) {
       axios({
         url: url + '/sociallogin',
@@ -319,9 +317,7 @@ export default function Login() {
           accept: 'application/json',
         },
       }).then((res) => {
-        //구글에 정상 인증완료시-hoon
         if (res.data.verified_email) {
-          //구글측의 정상인증 회원이지만, 우리사이트 간편가입 되어있는지 확인 요청 -hoon
           axios({
             url: url + `/users/socialcheck?user_id=${res.data.email}`,
             method: 'get',
@@ -329,7 +325,6 @@ export default function Login() {
               accept: 'application/json',
             },
           }).then((res2) => {
-            // 소셜인증 되었으나 회원등록은 안된경우-hoon
             if (!res2.data) {
               alert('소셜 간편 가입 필요');
               setSocialLogined(true);
@@ -341,15 +336,11 @@ export default function Login() {
                 ...inputVaildMessage,
                 idInput: '',
               });
-              //구글에서 준 프로필이미지를 우리사이트의 이미지로 기본값으로 사용
-              //사용자가 새로 업로드도 가능함
               setUploadedImg({
                 fileName: 'default-user=s96-c',
                 filePath: `https://lh3.googleusercontent.com/a/default-user=s96-c`,
               });
-            }
-            //소셜인증 되었으며, 회원등록 된경우-hoon
-            else {
+            } else {
               // dispatch(changeIsLogin(res.data.verified_email))
               alert('소셜 간편 가입 되어있는 회원');
               setInputVaildMessage({
@@ -359,9 +350,7 @@ export default function Login() {
               socialAutoLogin(res.data.email);
             }
           });
-        }
-        //구글 인증실패시 로그인 불가-hoon
-        else {
+        } else {
           alert('구글에 인증된 사용자가 아님');
         }
       });
@@ -418,7 +407,6 @@ export default function Login() {
       window.location.assign(GOOGLE_LOGIN_URL);
     }
   }
-  //////////////////socialLogined.page코드//////////////
 
   const [userRoadAddress, setRoadUserAddress] = useState('위 검색창에서 검색해주세요.');
   const { genderToggle } = useSelector((state) => state.itemReducer);
@@ -435,18 +423,15 @@ export default function Login() {
     });
   };
 
-  //아이디길이가 4자이상인가
   function isMoreThan4Length(word) {
     return word.length >= 4;
   }
 
-  //닉네임 길이 2글자 이상인가
   function nickIsMoreThan4Length(word) {
     return word.length >= 2;
   }
 
   useEffect(() => {
-    //아이디 유효성검사
     if (isMoreThan4Length(inputSignUpData.idInput)) {
       setInputVaildMessage((prev) => {
         return { ...inputVaildMessage, idInput: '' };
@@ -459,7 +444,6 @@ export default function Login() {
   }, [inputSignUpData.idInput, inputVaildMessage]);
 
   useEffect(() => {
-    //닉네임 유효성검사
     if (nickIsMoreThan4Length(inputSignUpData.nickNameInput)) {
       setInputVaildMessage((prev) => {
         return { ...inputVaildMessage, nickNameInput: '' };
@@ -478,7 +462,6 @@ export default function Login() {
     setRoadUserAddress(complevent.roadAddress);
   }
 
-  //간편가입완료했거나, 예전에 간편가입완료했던 소셜로그인사용자는 자동으로 로그인이 진행되게 하는 함수-hoon
   function socialAutoLogin(id) {
     axios({
       url: url + '/sociallogin',

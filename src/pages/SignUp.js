@@ -43,6 +43,7 @@ const InputAndTitle = styled.div`
     font-weight: bold;
   }
 `;
+
 const InputAndTitle2 = styled.div`
   display: flex;
   flex-direction: row;
@@ -104,6 +105,7 @@ const Button = styled.button`
     margin: 0.25rem;
   }
 `;
+
 const Buttons2 = styled.div`
   display: flex;
   flex-direction: column;
@@ -151,7 +153,7 @@ const Button2 = styled.input`
     margin: 0.25rem;
   }
 `;
-////////////////////////
+
 const PhotoUploadSection = styled.form`
   display: flex;
   flex-direction: column;
@@ -169,6 +171,7 @@ const PhotoBox = styled.div`
   border: 1px solid #b5b5b5;
   object-fit: cover;
 `;
+
 const PhotoBox2 = styled.img`
   min-width: 300px;
   width: 30vh;
@@ -179,7 +182,6 @@ let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function SignUp() {
   const dispatch = useDispatch();
-  // input 상태 관리, 유효성 검사
 
   const [inputSignUpData, setInputSignUpData] = useState({
     idInput: '',
@@ -188,6 +190,7 @@ export default function SignUp() {
     emailInput: '',
     emailVaildCode: '',
   });
+
   const [inputVaildMessage, setInputVaildMessage] = useState({
     idInput: '아이디를 입력하세요.',
     pwInput: '패스워드를 입력하세요.',
@@ -195,6 +198,7 @@ export default function SignUp() {
     emailInput: '이메일을 입력하세요.',
     emailVaildCode: '이메일 인증 코드 기입 후 인증하기 하세요.',
   });
+
   const [pwCheckInput, setPwCheckInput] = useState('');
   const [pwCheckInputMessage, setPwCheckInputMessage] = useState('패스워드를 다시한번 입력하세요.');
   const [userRoadAddress, setRoadUserAddress] = useState('위 검색창에서 검색하세요.');
@@ -223,33 +227,27 @@ export default function SignUp() {
     setPwCheckInput(e.target.value);
   };
 
-  //영어랑 숫자만 가능
   function onlyNumberAndEnglish(str) {
     return /^[A-Za-z][A-Za-z0-9]*$/.test(str);
   }
 
-  // [유효성 검증 함수]: 최소 6자 이상하면서, 알파벳과 숫자 및 특수문자(@$!%*#?&) 는 하나 이상 포함
   function strongPassword(str) {
     return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/.test(str);
   }
 
-  //아이디길이가 4자이상인가
   function isMoreThan4Length(word) {
     return word.length >= 4;
   }
 
-  //패스워드가 같은가
   function isMatch(pwd1, pwd2) {
     return pwd1 === pwd2;
   }
 
-  //닉네임 길이 2글자 이상인가
   function nickIsMoreThan4Length(word) {
     return word.length >= 2;
   }
 
   useEffect(() => {
-    //아이디 유효성검사
     if (onlyNumberAndEnglish(inputSignUpData.idInput) && isMoreThan4Length(inputSignUpData.idInput)) {
       setInputVaildMessage({ ...inputVaildMessage, idInput: '' });
     } else {
@@ -261,7 +259,6 @@ export default function SignUp() {
   }, [inputSignUpData.idInput, inputVaildMessage]);
 
   useEffect(() => {
-    //패스워드 유효성
     if (strongPassword(inputSignUpData.pwInput)) {
       setInputVaildMessage({ ...inputVaildMessage, pwInput: '' });
     } else if (!strongPassword(inputSignUpData.pwInput)) {
@@ -270,7 +267,7 @@ export default function SignUp() {
         pwInput: '사용 불가능한 패스워드 입니다.',
       });
     }
-    //패스워드 학인 유효성
+
     if (isMatch(inputSignUpData.pwInput, pwCheckInput) && pwCheckInput.length === 0) {
       setPwCheckInputMessage('패스워드를 다시한번 입력해주세요.');
     } else if (isMatch(inputSignUpData.pwInput, pwCheckInput)) {
@@ -281,7 +278,6 @@ export default function SignUp() {
   }, [inputSignUpData.pwInput, pwCheckInput, inputVaildMessage]);
 
   useEffect(() => {
-    //닉네임 유효성검사
     if (nickIsMoreThan4Length(inputSignUpData.nickNameInput)) {
       setInputVaildMessage({ ...inputVaildMessage, nickNameInput: '' });
     } else {
@@ -293,7 +289,6 @@ export default function SignUp() {
   }, [inputSignUpData.nickNameInput, inputVaildMessage]);
 
   useEffect(() => {
-    //이메일 유효성검사
     if (inputSignUpData.emailInput.length >= 5 && inputSignUpData.emailInput.indexOf('@') !== -1) {
       setInputVaildMessage({ ...inputVaildMessage, emailInput: '' });
     } else {
@@ -305,7 +300,6 @@ export default function SignUp() {
   }, [inputSignUpData.emailInput, inputVaildMessage]);
 
   useEffect(() => {
-    //이메일인증 코드 유효성검사
     if (inputSignUpData.emailVaildCode.length >= 1) {
       setInputVaildMessage({ ...inputVaildMessage, emailVaildCode: '' });
     } else {
@@ -319,6 +313,7 @@ export default function SignUp() {
   function handleComplete(complevent) {
     setRoadUserAddress(complevent.roadAddress);
   }
+
   function emailSend() {
     if (!inputVaildMessage.emailInput && !inputVaildMessage.idInput) {
       axios({
@@ -343,6 +338,7 @@ export default function SignUp() {
       alert('아이디, 이메일을 기입하세요');
     }
   }
+
   function codeSend() {
     axios({
       url: url + '/users/auth',
@@ -365,6 +361,7 @@ export default function SignUp() {
       }
     });
   }
+
   function signupFunc(e) {
     if (
       inputVaildMessage.idInput ||
@@ -377,11 +374,9 @@ export default function SignUp() {
     } else {
       axios({
         url: url + '/users/signup',
-        // url: url + "/signup",
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
-          // "Content-Type": "text/plain",
         },
         data: {
           user_id: inputSignUpData.idInput,
@@ -404,7 +399,7 @@ export default function SignUp() {
       });
     }
   }
-  ////////////////////////////////////////////////
+
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -427,7 +422,6 @@ export default function SignUp() {
   const addFile = (e) => {
     setPhoto(e.target.files[0]);
   };
-  ////////////////////////////////////////////////////
 
   return (
     <Outer className='SignUpPageComponent'>
@@ -460,7 +454,6 @@ export default function SignUp() {
             <li>{pwCheckInputMessage}</li>
           </ValidationListBox>
         </StyledArticle>
-        {/* //////////////////////////////////////////////////////// */}
         <StyledArticle className='password'>
           <InputAndTitle className='inputPwSection'>
             <h3>이메일 인증</h3>
@@ -495,7 +488,6 @@ export default function SignUp() {
             <Button onClick={codeSend}>코드 인증하기</Button>
           </Buttons>
         </StyledArticle>
-        {/* //////////////////////////////////////////////////////// */}
         <StyledArticle className='password'>
           <InputAndTitle className='inputPwSection'>
             <h3>닉네임</h3>
@@ -527,13 +519,11 @@ export default function SignUp() {
           <InputAndTitle className='inputPwSection'>
             <h3>프로필사진</h3>
             <Buttons2>
-              {/* /////////////////////////////// */}
               <PhotoUploadSection onSubmit={onSubmit} className='photoUploadSection'>
                 <PhotoBox>{uploadedImg ? <PhotoBox2 src={uploadedImg.filePath} /> : <div></div>}</PhotoBox>
                 <Button2 type='file' className='photoButton' onChange={addFile} />
                 <Button3 type='submit'>업로드</Button3>
               </PhotoUploadSection>
-              {/* /////////////////////////////// */}
             </Buttons2>
           </InputAndTitle>
         </StyledArticle>
