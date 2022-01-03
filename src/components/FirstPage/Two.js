@@ -13,7 +13,7 @@ export const TitleAndContents = styled(Contents)`
     text-align: center;
   }
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     height: 110vh;
     & > h2 {
       height: 12rem;
@@ -29,7 +29,7 @@ export const ContentsUnderTitle = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     flex-direction: row;
     height: calc(var(--desktop-page-height) - 12rem);
   }

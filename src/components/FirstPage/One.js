@@ -7,7 +7,7 @@ export const Contents = styled.div`
   align-items: center;
   width: 100vw;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     flex-direction: row;
   }
 `;
@@ -32,7 +32,7 @@ export const HalfPage = styled.article`
     line-height: 150%;
   }
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     height: var(--desktop-page-height);
     & img {
       margin: 2rem;

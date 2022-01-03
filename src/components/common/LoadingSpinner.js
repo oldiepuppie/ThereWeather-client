@@ -7,7 +7,7 @@ const Spinner = styled.img`
   animation-duration: ${(props) => props.duration || '2s'};
   opacity: 0.7;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     width: ${(props) => props.size || '100px'};
     height: ${(props) => props.size || '100px'};
   }

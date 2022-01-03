@@ -28,7 +28,7 @@ const HomeContainer = styled.div`
     border: 1px solid #aaa;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     flex-direction: column;
     margin: 0 auto;
     padding: 0 2vw;
@@ -68,7 +68,7 @@ const TodaysDate = styled.div`
     }
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     width: 85%;
   }
 
@@ -76,11 +76,11 @@ const TodaysDate = styled.div`
     width: 100%;
   }
 
-  @media screen and (max-width: 500px) {
+  @media ${(props) => props.theme.viewport5} {
     font-size: 15px;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     font-size: 12px;
   }
 `;
@@ -109,12 +109,12 @@ const LeftContainer1 = styled.div`
     text-align: center;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     margin: 0 auto;
     width: 100%;
   }
-
-  @media screen and (max-width: 300px) {
+  // 300
+  @media ${(props) => props.theme.viewport3} {
     img {
       width: 3rem;
       height: 3rem;
@@ -137,11 +137,11 @@ const LeftNav1 = styled.nav`
     margin-bottom: 1vh;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     margin-top: 5px;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     margin-top: 10px;
     line-height: 4vh;
     border-bottom: 1px solid #8e8e8e;
@@ -163,7 +163,7 @@ const LeftNav2 = styled.div`
     margin-bottom: 1vh;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     line-height: 4vh;
     border-bottom: 1px solid #8e8e8e;
   }
@@ -190,13 +190,13 @@ const LeftNav3 = styled.div`
     align-items: center;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     height: 30vh;
     flex-basis: 100vh;
     flex-grow: 2;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     p {
       font-size: 1.2rem;
       margin: 2vh 0;
@@ -207,12 +207,12 @@ const LeftNav3 = styled.div`
       justify-content: space-around;
       align-items: center;
     }
-    @media screen and (max-width: 1081px) {
+    @media ${(props) => props.theme.viewportMax10} {
       height: 30vh;
       flex-basis: 100vh;
       flex-grow: 2;
     }
-    @media screen and (max-width: 375px) {
+    @media ${(props) => props.theme.viewport3} {
       border-bottom: 1px solid #8e8e8e;
       p {
         font-size: 1rem;
@@ -227,7 +227,7 @@ const Codi = styled.img`
   height: 7rem;
   border: purple;
 
-  @media screen and (max-width: 400px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 5rem;
     height: 5rem;
   }
@@ -247,7 +247,7 @@ const RightContainer = styled.div`
     }
   }
 
-  @media (max-width: 600px) {
+  @media ${(props) => props.theme.viewport5} {
     .userPost:nth-last-child(1) {
       display: none;
     }
@@ -267,7 +267,7 @@ const RightContainer = styled.div`
     height: 100%;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     margin: 0 auto;
     width: 100%;
   }
@@ -294,7 +294,7 @@ const RightNav1 = styled.nav`
     color: #336fc9;
   }
 
-  @media screen and (max-width: 600px) {
+  @media ${(props) => props.theme.viewport5} {
     grid-column: 1 / 3;
     #location {
       font-size: 1rem;

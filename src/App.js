@@ -22,7 +22,6 @@ import FirstPage from './pages/etc/FirstPage';
 import Loading from './pages/etc/Loading';
 import EditUserInfo from './pages/user/EditUserInfo';
 import { changeIsLogin, changeUser } from './actions/index';
-import GlobalStyle from './components/GlobalStyle';
 
 let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
@@ -48,7 +47,6 @@ export default function App() {
 
   return (
     <>
-      <GlobalStyle />
       <Header isInput={isInput} />
       <Switch>
         <Route exact path='/map'>

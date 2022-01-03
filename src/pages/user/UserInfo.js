@@ -13,7 +13,7 @@ const Outer = styled.div`
   display: flex;
   align-items: center;
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     height: calc(100vh - 125px - 70px);
   }
 `;
@@ -36,7 +36,7 @@ const InfoBox = styled.div`
     color: black;
     margin: 0;
     line-height: 10vh;
-    @media screen and (max-width: 375px) {
+    @media ${(props) => props.theme.viewport3} {
       font-size: 1rem;
     }
   }

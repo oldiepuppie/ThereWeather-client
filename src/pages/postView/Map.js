@@ -9,7 +9,7 @@ const Container = styled.div`
   width: 100%;
   position: relative;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     width: 100%;
     position: relative;
   }

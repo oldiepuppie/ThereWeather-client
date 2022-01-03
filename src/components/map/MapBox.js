@@ -58,7 +58,7 @@ const LoadingBoxDiv = styled.div`
   align-item: center;
   width: 100%;
   flex-direction: column;
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -81,7 +81,7 @@ const ImgContainer = styled.div`
   width: 100%;
   height: var(--mobile-page-height);
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     height: var(--desktop-page-height);
   }
 `;
@@ -95,7 +95,7 @@ const PostListModal = styled.div`
   height: 50%;
   overflow: auto;
   padding: 0.5rem;
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     background-color: white;
     z-index: 999;
     position: absolute;
@@ -118,7 +118,7 @@ const SlideModal = styled.div`
   overflow: auto;
   display: flex;
   justify-content: center;
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     background-color: white;
     z-index: 9999;
     position: absolute;

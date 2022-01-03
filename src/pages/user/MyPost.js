@@ -31,7 +31,8 @@ const Outer = styled.div`
     padding-left: 3vh;
     padding-right: 3vh;
   }
-  @media screen and (max-width: 375px) {
+
+  @media ${(props) => props.theme.viewport3} {
     padding-top: 2vh;
   }
 `;
@@ -60,14 +61,14 @@ const GridArea = styled.div`
     width: 300px;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     padding-left: 5vw;
     padding-right: 5vw;
     height: auto;
     grid-template-columns: 1fr 1fr;
   }
 
-  @media screen and (max-width: 600px) {
+  @media ${(props) => props.theme.viewport5} {
     padding-left: 2vw;
     padding-right: 2vw;
     p {
@@ -75,7 +76,7 @@ const GridArea = styled.div`
     }
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     height: auto;
   }
 `;
@@ -88,10 +89,6 @@ const PostImg = styled.img`
   @media screen and (min-width: 2100px) {
     width: 300px;
     height: 300px;
-  }
-
-  @media screen and (max-width: 1081px) {
-    // FIXME 이미지 크기 수정 필요
   }
 `;
 

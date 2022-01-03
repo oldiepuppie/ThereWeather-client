@@ -22,7 +22,7 @@ const Outer = styled.section`
     margin-bottom: 2rem;
   }
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     min-height: calc(100vh - 125px);
   }
 `;

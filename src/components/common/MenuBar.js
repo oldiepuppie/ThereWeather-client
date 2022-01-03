@@ -13,7 +13,7 @@ const Outer = styled.div`
   right: 0;
   bottom: 0;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     width: 1080px;
   }
 `;
@@ -30,7 +30,7 @@ const Buttons = styled.div`
   z-index: 101;
   border-top: 1px solid #dbdbdb;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     position: fixed;
     background-color: white;
     border-top: 1px solid #dbdbdb;

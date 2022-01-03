@@ -26,7 +26,7 @@ const LoginOuter = styled.section`
     margin: 2rem auto;
   }
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewport10} {
     height: calc(100vh - 125px);
   }
 `;

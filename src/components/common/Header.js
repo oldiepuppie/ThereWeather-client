@@ -30,7 +30,7 @@ const HeaderOuter = styled.div`
     padding: 0;
   }
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     width: 100vw;
     background-color: white;
     flex-direction: row;
@@ -49,7 +49,7 @@ const TitleAndLogo = styled.div`
     margin-right: 0.5rem;
   }
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     display: flex;
     flex-growth: 1;
     align-items: center;
@@ -67,7 +67,7 @@ const Center = styled.div`
   min-width: 350px;
   justify-content: space-around;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     flex-direction: row;
     flex-growth: 2;
     width: 60vw;
@@ -82,7 +82,7 @@ const InputAndSubmit = styled.div`
   div {
     margin: auto 1rem;
   }
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     div {
       margin: 0;
     }
@@ -93,7 +93,7 @@ const StyledPostCode = styled(DaumPostcode)`
   position: absolute;
   top: 50px;
   border: 1px solid #e0e0e0;
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     top: 32px;
   }
 `;
@@ -106,10 +106,10 @@ const Input = styled.input`
   border: 0.5px solid #dbdbdb;
   border-radius: 3px;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     width: 300px;
   }
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 220px;
     height: 30px;
     font-size: 1rem;
@@ -125,7 +125,7 @@ const Buttons = styled.div`
     color: red;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     button {
       width: 35px;
       height: 35px;
@@ -167,8 +167,7 @@ const Button3 = styled.button`
     color: #fff;
     transform: translateY(-4px);
 
-    @media screen and (max-width: 1081px) {
-      // 임시 추가
+    @media ${(props) => props.theme.viewportMax10} {
       display: none;
     }
   }
@@ -180,7 +179,7 @@ const Buttons3 = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     display: none;
   }
 `;
@@ -197,12 +196,14 @@ const Buttons2 = styled.div`
   padding: ${(props) => (props.isText ? '.6rem' : '.4rem')};
   margin: 0.5rem;
   border-radius: 10%;
-  @media screen and (max-width: 1081px) {
-    padding: ${(props) => (props.isText ? '.6rem' : '0 0.5rem')};
+
+  @media ${(props) => props.theme.viewportMax10} {
+    padding: ${(props) => (props.isText ? '.6rem' : '.4rem')};
   }
-  @media screen and (max-width: 375px) {
+
+  @media ${(props) => props.theme.viewport3} {
     font-size: ${(props) => (props.isText ? '1.2rem' : '1.2rem')};
-    padding: ${(props) => (props.isText ? '.6rem' : '.2rem')};
+    padding: ${(props) => (props.isText ? '.6rem' : '.4rem')};
     height: 2rem;
   }
 `;

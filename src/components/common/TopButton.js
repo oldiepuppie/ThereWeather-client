@@ -21,7 +21,7 @@ const Button = styled.div`
     border-radius: 50%;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     display: block;
     height: 170px;
     img {
@@ -31,7 +31,7 @@ const Button = styled.div`
     }
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     height: 130px;
     img {
       width: 3rem;
@@ -48,15 +48,12 @@ export default function TopButton() {
   const handleFollow = () => {
     setScrollY(window.scrollY);
     if (ScrollY > 200) {
-      // 200 이상이면 버튼이 보임
       setBtnStatus(true);
     } else {
-      // 200 이하일때 버튼이 사라짐
       setBtnStatus(false);
     }
   };
 
-  // 클릭시 위로 올라감
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' }); // 위로 올라감
     setScrollY(0); // 올라가면 다시 0으로 초기화

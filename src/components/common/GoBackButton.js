@@ -15,11 +15,11 @@ const Button = styled.button`
     font-size: 50px;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     display: inline;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     .fa-fw {
       font-size: 35px;
     }

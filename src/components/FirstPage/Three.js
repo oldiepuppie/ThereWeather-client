@@ -11,7 +11,7 @@ export const TwoPictures = styled.div`
     width: 40vw;
   }
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     & > img {
       width: 40%;
     }

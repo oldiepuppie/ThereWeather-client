@@ -15,7 +15,7 @@ const Outer = styled.div`
   display: flex;
   padding-bottom: 100px;
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     flex-direction: column;
     min-height: calc(100vh - 125px - 70px);
   }
@@ -47,7 +47,7 @@ const ProfileArea = styled.div`
     }
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     margin: 0 auto;
     margin-top: 4vh;
     width: 100%;
@@ -66,7 +66,7 @@ const ProfileArea = styled.div`
     }
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     button {
       font-size: 1rem;
     }
@@ -93,11 +93,11 @@ const ProfileImg = styled.img`
   padding: 10px 10px;
   border-radius: 50%;
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     margin-right: 5vw;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 7rem;
     height: 7rem;
   }
@@ -114,14 +114,14 @@ const ButtonArea = styled.div`
     font-size: 1.2rem;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     width: 100vw;
     align-items: center;
     height: 10vh;
     position: absolute;
     bottom: 0;
   }
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     padding: 0 15vw;
     height: 20vh;
     justify-content: space-between;
@@ -187,7 +187,7 @@ const GridArea = styled.div`
     }
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     margin: 0 auto;
     margin-bottom: 10vh;
     padding: 0;
@@ -207,7 +207,7 @@ const GridArea = styled.div`
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media ${(props) => props.theme.viewport5} {
     padding-left: 2vw;
     padding-right: 2vw;
     grid-template-columns: 1fr 1fr;

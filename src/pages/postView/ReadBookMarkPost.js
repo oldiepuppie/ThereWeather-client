@@ -27,7 +27,7 @@ const Outer = styled.div`
     margin: 0 1rem;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     .todayCodi {
       margin-top: 2vh;
       font-weight: bold;
@@ -39,7 +39,7 @@ const PostHeader = styled.div`
   padding-top: 8vh;
   align-items: center;
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     padding-top: 5vh;
   }
 `;
@@ -56,10 +56,10 @@ const Title = styled.div`
     font-size: 2rem;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     width: 70%;
   }
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     span {
       font-size: 1.2rem;
     }
@@ -101,16 +101,16 @@ const Profile = styled.div`
     color: #707b7c;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     width: 70%;
   }
-  @media screen and (max-width: 594px) {
+  @media ${(props) => props.theme.viewport5} {
     .location {
       margin-top: 1.2vh;
       font-size: 1.2rem;
     }
   }
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 80%;
     margin-top: 4vh;
     span {
@@ -127,7 +127,7 @@ const ProfileImg = styled.img`
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 2rem;
     height: 2rem;
   }
@@ -139,12 +139,12 @@ const PostImg = styled.img`
   display: block;
   margin: 3vh auto;
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     width: 70%;
     height: 30rem;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 80%;
     height: 18rem;
   }
@@ -158,24 +158,24 @@ const WeatherInfo = styled.div`
   margin-bottom: 2vh;
   justify-content: space-between;
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     margin-top: 1vh;
     margin-bottom: 1vw;
     justify-content: space-around;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 50%;
     margin-bottom: 3vh;
   }
 `;
 
 const Icon = styled.img`
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     width: 4rem;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 3rem;
   }
 `;
@@ -206,11 +206,11 @@ const TodayCodi = styled.div`
     height: auto;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     width: 50%;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 50vw;
   }
 `;
@@ -227,11 +227,11 @@ const Post = styled.div`
     font-size: 1.5rem;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     width: 70%;
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 85%;
     margin-top: 4vh;
     p {
@@ -266,12 +266,12 @@ const Buttons = styled.div`
       inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     .button2 {
       margin-left: 80px;
     }
   }
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     width: 40%;
     display: flex;
     justify-content: space-between;

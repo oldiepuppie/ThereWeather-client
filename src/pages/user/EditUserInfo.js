@@ -15,7 +15,7 @@ const Outer = styled.div`
   padding: 3rem auto;
   background-color: var(--page-bg-color);
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     flex-direction: row;
     min-height: var(--desktop-page-height);
     padding: 2rem;
@@ -75,7 +75,7 @@ const PictureSection = styled.form`
   margin: 1rem;
   height: inherit;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     justify-content: center;
     width: 40vw;
   }
@@ -88,7 +88,7 @@ const DesktopRight = styled.section`
   justify-content: center;
   align-items: center;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     justify-content: space-around;
     width: 40vw;
   }
@@ -105,7 +105,7 @@ const WriteText = styled.div`
   margin: 1.5rem;
   padding: 1rem;
 
-  @media screen and (min-width: 1081px) {
+  @media ${(props) => props.theme.viewportMin10} {
     width: ${(props) => (props.small ? '35vw' : '40vw')};
     max-width: ${(props) => (props.small ? '500px' : '800px')};
   }

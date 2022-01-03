@@ -33,14 +33,14 @@ const Container = styled.div`
     border-radius: 3px;
   }
 
-  @media (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     margin: 3rem 2rem;
     gap: 2rem;
     grid-template-columns: 80vw;
     grid-template-areas: 'div';
   }
 
-  @media (max-width: 400px) {
+  @media ${(props) => props.theme.viewport3} {
     margin: 1rem;
     grid-auto-rows: 500px;
     gap: 0;
@@ -77,13 +77,13 @@ const BookMarkPhoto = styled.div`
     transition: 0.5s ease-in-out;
   }
 
-  @media screen and (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     .postPicture {
       height: 20vh;
     }
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     .postPicture {
       margin: 0;
     }
@@ -116,7 +116,7 @@ const BookMarkList = styled.div`
     height: 100%;
   }
 
-  @media (max-width: 1081px) {
+  @media ${(props) => props.theme.viewportMax10} {
     line-height: 2rem;
 
     .postTitle {
@@ -135,7 +135,7 @@ const BookMarkList = styled.div`
     }
   }
 
-  @media screen and (max-width: 375px) {
+  @media ${(props) => props.theme.viewport3} {
     margin: 0.1rem 0 0 0.5rem;
     line-height: 1.4rem;
 
