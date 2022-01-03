@@ -111,17 +111,13 @@ export default function MyPost() {
     });
   }, [dispatch, userInfo.user_id]);
 
-  // TODO 페이지네이션 시작
   const [currentPage, setCurrentPage] = useState(1);
-  // 1페이지로 시작
   const itemsPerPage = 8;
-  // 한 페이지에 8개씩 보여준다
   const lastIdx = currentPage * itemsPerPage;
   const firstIdx = lastIdx - itemsPerPage;
   const slicedData = (dataArr) => {
     return dataArr.slice(firstIdx, lastIdx);
   };
-  // 페이지네이션 끝
 
   const postClickHandler = (e) => {
     let elem = e.target;

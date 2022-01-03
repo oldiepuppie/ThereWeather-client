@@ -204,22 +204,18 @@ export default function BookMark() {
     });
   };
 
-  // FIXME 시작 - 페이지네이션 변수들 - setCurrentPage 외에는 필요없어보임 // TODO 컴포넌트 재확인
-  const [, setCurrentPage] = useState(1);
-  // // 1페이지로 시작
-  // const itemsPerPage = 6;
-  // // 한 페이지에 8개씩 보여준다
-  // const lastIdx = currentPage * itemsPerPage;
-  // const firstIdx = lastIdx - itemsPerPage;
-  // const slicedData = (dataArr) => {
-  //   return dataArr.slice(firstIdx, lastIdx);
-  // };
-  // // 끝 - 페이지네이션 변수들
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+  const lastIdx = currentPage * itemsPerPage;
+  const firstIdx = lastIdx - itemsPerPage;
+  const slicedData = (dataArr) => {
+    return dataArr.slice(firstIdx, lastIdx);
+  };
 
   return (
     <Outer>
       <Container>
-        {bookmarkList.map((el) => {
+        {slicedData(bookmarkList).map((el) => {
           return (
             <div className='BookMarkContainer' key={el.id}>
               <BookMarkPhoto>
@@ -240,13 +236,11 @@ export default function BookMark() {
         })}
       </Container>
 
-      {/* FIXME 시작 - 페이지네이션 새로 추가 */}
       <PaginationWithArrow
         dataLength={bookmarkList.length} // 본래
         itemsPerPage={8}
         numberButtonClickHandler={setCurrentPage}
       />
-      {/* 끝 - 페이지네이션 새로 추가 */}
     </Outer>
   );
 }

@@ -181,6 +181,7 @@ const PhotoBox2 = styled.img`
 let url = process.env.REACT_APP_LOCAL_HTTP_SERVER;
 
 export default function SignUp() {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const [inputSignUpData, setInputSignUpData] = useState({
@@ -209,8 +210,6 @@ export default function SignUp() {
     filePath: `${url}/img/blankProfile.png`,
   });
   const [codeOn, setCodeOn] = useState(false);
-
-  const history = useHistory();
 
   useEffect(() => {
     dispatch(changeMapPage(false));
@@ -510,7 +509,7 @@ export default function SignUp() {
         </StyledArticle>
         <StyledArticle className='password'>
           <InputAndTitle className='inputPwSection'>
-            <h3>사는곳</h3>
+            <h3>주소</h3>
             <DaumPostcode onComplete={handleComplete} />
           </InputAndTitle>
           <ValidationListBox className='pwValidationList'>{userRoadAddress}</ValidationListBox>

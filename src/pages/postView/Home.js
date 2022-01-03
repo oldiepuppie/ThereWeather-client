@@ -374,7 +374,6 @@ export default function Home() {
     setTodaysDate(formatDate(date));
   }, []);
 
-  // TODO 날씨, 코디 가져오기, 추후 수정
   let [currentTemp, setcurrentTemp] = useState('');
   let [currentWind, setcurrentWind] = useState('');
   let [currentWeather, setcurrentWeather] = useState('');
