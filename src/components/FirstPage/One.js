@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
 
 export const Contents = styled.div`
   display: flex;
@@ -60,42 +59,8 @@ export const AnimatedImg = styled.img`
   animation-duration: ${(props) => props.duration || '.5s'};
   animation-delay: ${(props) => props.delay || null};
 `;
-const Button = styled.button`
-font-size: ${(props) => (props.isText ? '1.6rem' : '1.6rem')};
-padding: ${(props) => (props.bgGrey ? '.6rem' : '.4rem')};
-margin: 0.5rem;
-border-radius: 10%;
-color: ${(props) => (props.bgGrey || props.isText ? '#ff6384' : 'grey')};
-background-color: ${(props) => (props.bgGrey || props.isText ? 'white' : 'white')};
-text-transform: uppercase;
-letter-spacing: 2.5px;
-font-weight: 500;
-color: #000;
-background-color: #fff;
-// border: none;
-border-radius: 45px;
-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-transition: all 0.3s ease 0s;
-cursor: pointer;
-outline: none;
-}
-
-&:hover {
-    background-color: pink;
-    box-shadow: 0px 15px 20px #f7cac9;
-    color: #fff;
-transform: translateY(-4px);
-}
-`;
-const Buttons = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 export default function One({ delayOne, delayTwo }) {
-  const history = useHistory();
-
   return (
     <Contents className={['landingPagePart', 'one']}>
       <HalfPage className='half-page'>
@@ -107,10 +72,6 @@ export default function One({ delayOne, delayTwo }) {
         <div className='picture-png left'>
           <AnimatedImg src='img/firstpage/phone-and-human.png' alt='human with phone' />
         </div>
-
-        <Buttons>
-          <Button onClick={() => history.push('/map')}>시작하기</Button>
-        </Buttons>
       </HalfPage>
 
       <HalfPage className='half-page'>
