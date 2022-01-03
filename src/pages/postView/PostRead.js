@@ -406,7 +406,6 @@ export default function PostRead() {
       withCredentials: true,
     }).then((res) => {
       alert(res.data);
-      // alert("삭제 완료")
       history.push('/mypage');
     });
     setRemovePost(false);
@@ -427,7 +426,6 @@ export default function PostRead() {
       url: url + '/bookmark',
       method: 'post',
       data: { user_id: userInfo.id, post_id: postIds },
-      // data: { post_id: postId },
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     }).then((res) => {

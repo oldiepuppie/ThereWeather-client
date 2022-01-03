@@ -155,7 +155,6 @@ export default function PasswordEdit() {
     }
   };
 
-  // 버튼 클릭 이벤트
   const editButtonHandler = (e) => {
     const token = JSON.parse(localStorage.getItem('ATOKEN'));
     axios({

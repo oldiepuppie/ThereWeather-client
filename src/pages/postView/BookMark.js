@@ -182,10 +182,10 @@ export default function BookMark() {
   }, [postId, postInfo, userInfo.id]);
 
   const formatDate = (dateString) => {
-    // 예시 : 2021. 11. 5. 22:02
     const dateObject = new Date(dateString);
     let dateOnly = dateObject.toLocaleDateString();
     return `${dateOnly}`;
+    // 2021. 11. 5. 22:02
   };
 
   const postClickHandler = (e) => {

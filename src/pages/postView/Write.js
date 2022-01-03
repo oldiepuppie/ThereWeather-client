@@ -312,7 +312,6 @@ export default function Write() {
       title.length > 0 &&
       postText.length > 0 &&
       uploadedImg.fileName !== 'blankPost.png' &&
-      // selectValueOuter !== "default" &&
       selectValueTop !== 'default' &&
       selectValueBottom !== 'default' &&
       selectWeather &&
@@ -433,7 +432,6 @@ export default function Write() {
         url: url + '/post/write',
         method: 'post',
         data: {
-          // user_id: Math.random().toString(36).substr(2, 5),
           user_id: 'kimcoding',
           post_photo: `http://placeimg.com/640/${getRandomIntInclusive(480, 640)}/nature`,
           post_title: Math.random().toString(36).substr(2, 20),

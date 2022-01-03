@@ -5,7 +5,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { changeIsLogin, changeMapPage } from '../../actions/index';
+import { changeIsLogin } from '../../actions/index';
 import Toggle from '../../components/common/Toggle';
 import DaumPostcode from 'react-daum-postcode';
 
@@ -288,7 +288,7 @@ export default function Login() {
   });
 
   useEffect(() => {
-    dispatch(changeMapPage(false));
+    // dispatch(changeMapPage(false));
     const urlinfo = new URL(window.location.href);
     const hash = urlinfo.hash;
 
@@ -441,7 +441,7 @@ export default function Login() {
         return { ...inputVaildMessage, idInput: '사용 불가능한 아이디 입니다.' };
       });
     }
-  }, [inputSignUpData.idInput, inputVaildMessage]);
+  }, [inputSignUpData.idInput]);
 
   useEffect(() => {
     if (nickIsMoreThan4Length(inputSignUpData.nickNameInput)) {
@@ -456,7 +456,7 @@ export default function Login() {
         };
       });
     }
-  }, [inputSignUpData.nickNameInput, inputVaildMessage]);
+  }, [inputSignUpData.nickNameInput]);
 
   function handleComplete(complevent) {
     setRoadUserAddress(complevent.roadAddress);
