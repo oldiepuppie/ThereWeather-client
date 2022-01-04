@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import getDateFormatted from '../../utilities/getDateFormatted';
 import { default as Bookmark } from '../../components/common/Heart';
 import ModalConfirm from '../../components/common/ModalConfirm';
 import GoBackButton from '../../components/common/GoBackButton';
-import { useHistory } from 'react-router-dom';
 import TopButton from '../../components/common/TopButton';
 
 const Outer = styled.div`
@@ -312,17 +313,6 @@ export default function PostRead() {
   });
   const [noIdWarning, setNoIdWarning] = useState('');
 
-  // 날짜 처리
-  const formatDate = (dateString) => {
-    // 예시 : 2021. 11. 5. 22:02
-    const dateObject = new Date(dateString);
-    let dateOnly = dateObject.toLocaleDateString();
-    let hourAndMin = dateObject.toLocaleTimeString('en-US', { hour12: false });
-    hourAndMin = hourAndMin.slice(0, -3);
-
-    return `${dateOnly} ${hourAndMin}`;
-  };
-
   useEffect(() => {
     function getOnePost(postId) {
       axios
@@ -438,7 +428,7 @@ export default function PostRead() {
           <div className='profileInfo'>
             <ProfileImg src={postData.user_Photo} />
             <span className='nickName'>{postData.nickName}</span>
-            <span className='date'>{formatDate(postData.updatedAt)}</span>
+            <span className='date'>{getDateFormatted(postData.updatedAt)}</span>
           </div>
           <div>
             <p className='location'>{postData.address}</p>

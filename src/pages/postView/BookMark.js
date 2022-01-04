@@ -4,6 +4,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { updatePostId } from '../../actions/index';
 import { useHistory } from 'react-router';
+import getDateFormatted from '../../utilities/getDateFormatted';
 import { default as PaginationWithArrow } from '../../components/common/Pagination';
 
 const Outer = styled.div`
@@ -181,13 +182,6 @@ export default function BookMark() {
     });
   }, [postId, postInfo, userInfo.id]);
 
-  const formatDate = (dateString) => {
-    const dateObject = new Date(dateString);
-    let dateOnly = dateObject.toLocaleDateString();
-    return `${dateOnly}`;
-    // 2021. 11. 5. 22:02
-  };
-
   const postClickHandler = (e) => {
     let elem = e.target;
     while (!elem.classList.contains('postItem')) {
@@ -225,7 +219,7 @@ export default function BookMark() {
               </BookMarkPhoto>
               <BookMarkList>
                 <div className='test' key={el.id}>
-                  <p className='postDate'>{formatDate(el.createdAt)}</p>
+                  <p className='postDate'>{getDateFormatted(el.createdAt)}</p>
                   <p className='postWeather sky'> {el.weather} </p>
                   <p className='postWeather wind'>{el.wind} </p>
                   <p className='postWeather temp'>{el.temp} </p>

@@ -5,7 +5,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { changeIsLogin } from '../../actions/index';
+import { changeIsLogin, changeMapPage } from '../../actions/index';
 import Toggle from '../../components/common/Toggle';
 import DaumPostcode from 'react-daum-postcode';
 
@@ -288,7 +288,7 @@ export default function Login() {
   });
 
   useEffect(() => {
-    // dispatch(changeMapPage(false));
+    dispatch(changeMapPage(false));
     const urlinfo = new URL(window.location.href);
     const hash = urlinfo.hash;
 
@@ -341,7 +341,6 @@ export default function Login() {
                 filePath: `https://lh3.googleusercontent.com/a/default-user=s96-c`,
               });
             } else {
-              // dispatch(changeIsLogin(res.data.verified_email))
               alert('소셜 간편 가입 되어있는 회원');
               setInputVaildMessage({
                 ...inputVaildMessage,

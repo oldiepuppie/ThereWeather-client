@@ -19,8 +19,6 @@ export const CHANGE_MAP_PAGE = 'CHANGE_MAP_PAGE';
 export const CHANGE_CURROOM = 'CHANGE_CURROOM';
 export const CHANGE_NEWMSGSECTION = 'CHANGE_NEWMSGSECTION';
 
-// actions creator functions
-
 export const changeNewMsgSection = (newmsg) => {
   return {
     type: CHANGE_NEWMSGSECTION,
