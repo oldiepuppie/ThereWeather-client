@@ -60,8 +60,9 @@ const Title = styled.div`
   @media ${(props) => props.theme.viewportMax10} {
     width: 70%;
   }
+
   @media ${(props) => props.theme.viewport3} {
-    width: 80%; // 추가
+    width: 80%;
     span {
       font-size: 1.2rem;
     }

@@ -1,4 +1,3 @@
-// action types
 export const CHANGE_USER_INFO = 'CHANGE_USER_INFO';
 export const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE';
 export const UPDATE_START_END_PAGE = 'UPDATE_START_END_PAGE';

@@ -231,7 +231,7 @@ export default function BookMark() {
       </Container>
 
       <PaginationWithArrow
-        dataLength={bookmarkList.length} // 본래
+        dataLength={bookmarkList.length}
         itemsPerPage={8}
         numberButtonClickHandler={setCurrentPage}
       />

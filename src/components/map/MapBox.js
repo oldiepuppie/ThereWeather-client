@@ -289,7 +289,6 @@ export default function Location() {
       // var message = "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, "
       // message += "경도는 " + latlng.getLng() + " 입니다"
     });
-    //////////////////////////////////////////고정-hoon/////////////////////////////////////////
 
     var clusterer = new kakao.maps.MarkerClusterer({
       map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체

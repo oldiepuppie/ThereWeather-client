@@ -43,7 +43,7 @@ const Button = styled.div`
 
 export default function TopButton() {
   const [ScrollY, setScrollY] = useState(0);
-  const [btnStatus, setBtnStatus] = useState(false); // 버튼 상태
+  const [btnStatus, setBtnStatus] = useState(false);
 
   const handleFollow = () => {
     setScrollY(window.scrollY);
@@ -55,9 +55,9 @@ export default function TopButton() {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // 위로 올라감
-    setScrollY(0); // 올라가면 다시 0으로 초기화
-    setBtnStatus(false); // 버튼 다시 사라짐
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setScrollY(0);
+    setBtnStatus(false);
   };
 
   useEffect(() => {

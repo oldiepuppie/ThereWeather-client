@@ -24,12 +24,12 @@ const itemReducer = (state = initialState, action) => {
         ...state,
         curRoom: action.payload.room,
       };
+
     case CHANGE_USER_INFO:
       return {
         ...state,
         userInfo: action.payload,
       };
-    // 새로운기능은 위의 양식으로 아래쪽에 만들어서 쓸수있다.-hoon
 
     case CHANGE_USER_GENDER:
       return {
@@ -79,6 +79,7 @@ const itemReducer = (state = initialState, action) => {
         ...state,
         curLocation: action.payload,
       };
+
     case UPDATE_WEATHERINFO:
       return {
         ...state,
@@ -96,16 +97,19 @@ const itemReducer = (state = initialState, action) => {
         ...state,
         readPostId: action.payload,
       };
+
     case CHANGE_WHEATER_FILTER:
       return {
         ...state,
         weatherFilter: action.payload,
       };
+
     case CHANGE_MAP_PAGE:
       return {
         ...state,
         mapPage: action.payload,
       };
+
     default:
       return state;
   }

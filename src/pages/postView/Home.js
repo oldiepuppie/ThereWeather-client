@@ -113,7 +113,7 @@ const LeftContainer1 = styled.div`
     margin: 0 auto;
     width: 100%;
   }
-  // 300
+
   @media ${(props) => props.theme.viewport3} {
     img {
       width: 3rem;
@@ -390,7 +390,7 @@ export default function Home() {
     let bottomArr = [];
 
     for (let i = 0; i < currentPosts.length; i++) {
-      tempArr.push(currentPosts[i].temp); // temp키만 가져옴
+      tempArr.push(currentPosts[i].temp);
       windArr.push(currentPosts[i].wind);
       weatherArr.push(currentPosts[i].weather);
       outerArr.push(currentPosts[i].outer_id);

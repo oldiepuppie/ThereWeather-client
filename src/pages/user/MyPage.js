@@ -148,7 +148,7 @@ const GridArea = styled.div`
   }
 
   div {
-    background-color: rgba(255, 255, 255, 0.5); // 추가
+    background-color: rgba(255, 255, 255, 0.5);
   }
 
   div:hover {
