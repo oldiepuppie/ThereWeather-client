@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { changeMapPage } from '../../actions/index';
+import { isNumberAndLatin, isAllTypesOverLengthSix, isInput, isLongerThan, isMatch } from '../../utilities/validation';
 
 const Outer = styled.section`
   position: relative;
@@ -226,28 +227,8 @@ export default function SignUp() {
     setPwCheckInput(e.target.value);
   };
 
-  function onlyNumberAndEnglish(str) {
-    return /^[A-Za-z][A-Za-z0-9]*$/.test(str);
-  }
-
-  function strongPassword(str) {
-    return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/.test(str);
-  }
-
-  function isMoreThan4Length(word) {
-    return word.length >= 4;
-  }
-
-  function isMatch(pwd1, pwd2) {
-    return pwd1 === pwd2;
-  }
-
-  function nickIsMoreThan4Length(word) {
-    return word.length >= 2;
-  }
-
   useEffect(() => {
-    if (onlyNumberAndEnglish(inputSignUpData.idInput) && isMoreThan4Length(inputSignUpData.idInput)) {
+    if (isNumberAndLatin(inputSignUpData.idInput) && isLongerThan(4, inputSignUpData.idInput)) {
       setInputVaildMessage({ ...inputVaildMessage, idInput: '' });
     } else {
       setInputVaildMessage({
@@ -258,16 +239,16 @@ export default function SignUp() {
   }, [inputSignUpData.idInput]);
 
   useEffect(() => {
-    if (strongPassword(inputSignUpData.pwInput)) {
+    if (isAllTypesOverLengthSix(inputSignUpData.pwInput)) {
       setInputVaildMessage({ ...inputVaildMessage, pwInput: '' });
-    } else if (!strongPassword(inputSignUpData.pwInput)) {
+    } else {
       setInputVaildMessage({
         ...inputVaildMessage,
         pwInput: '사용 불가능한 패스워드 입니다.',
       });
     }
 
-    if (isMatch(inputSignUpData.pwInput, pwCheckInput) && pwCheckInput.length === 0) {
+    if (isMatch(inputSignUpData.pwInput, pwCheckInput) && isInput(pwCheckInput)) {
       setPwCheckInputMessage('패스워드를 다시한번 입력해주세요.');
     } else if (isMatch(inputSignUpData.pwInput, pwCheckInput)) {
       setPwCheckInputMessage('');
@@ -277,7 +258,7 @@ export default function SignUp() {
   }, [inputSignUpData.pwInput, pwCheckInput]);
 
   useEffect(() => {
-    if (nickIsMoreThan4Length(inputSignUpData.nickNameInput)) {
+    if (isLongerThan(2, inputSignUpData.nickNameInput)) {
       setInputVaildMessage({ ...inputVaildMessage, nickNameInput: '' });
     } else {
       setInputVaildMessage({
@@ -288,7 +269,7 @@ export default function SignUp() {
   }, [inputSignUpData.nickNameInput]);
 
   useEffect(() => {
-    if (inputSignUpData.emailInput.length >= 5 && inputSignUpData.emailInput.indexOf('@') !== -1) {
+    if (isLongerThan(5, inputSignUpData.emailInput) && inputSignUpData.emailInput.indexOf('@') !== -1) {
       setInputVaildMessage({ ...inputVaildMessage, emailInput: '' });
     } else {
       setInputVaildMessage({
@@ -299,7 +280,7 @@ export default function SignUp() {
   }, [inputSignUpData.emailInput]);
 
   useEffect(() => {
-    if (inputSignUpData.emailVaildCode.length >= 1) {
+    if (isLongerThan(1, inputSignUpData.emailVaildCode)) {
       setInputVaildMessage({ ...inputVaildMessage, emailVaildCode: '' });
     } else {
       setInputVaildMessage({
@@ -307,7 +288,7 @@ export default function SignUp() {
         emailVaildCode: '코드를 기입하세요.',
       });
     }
-  }, [inputSignUpData.emailVaildCode.length]);
+  }, [inputSignUpData.emailVaildCode]);
 
   function handleComplete(complevent) {
     setRoadUserAddress(complevent.roadAddress);

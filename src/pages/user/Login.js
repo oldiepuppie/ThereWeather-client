@@ -5,9 +5,10 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { changeIsLogin, changeMapPage } from '../../actions/index';
-import Toggle from '../../components/common/Toggle';
 import DaumPostcode from 'react-daum-postcode';
+import { changeIsLogin, changeMapPage } from '../../actions/index';
+import { isInput, isLongerThan } from '../../utilities/validation';
+import Toggle from '../../components/common/Toggle';
 
 const LoginOuter = styled.section`
   position: relative;
@@ -359,7 +360,7 @@ export default function Login() {
   const loginidOnChangeHanlder = (e) => {
     setIdInput((prevInput) => e.target.value);
 
-    if (e.target.value.length === 0) {
+    if (isInput(e.target.value)) {
       setIdInputMessage((prevText) => '아이디를 입력하세요.');
     } else {
       setIdInputMessage((prevText) => '');
@@ -369,7 +370,7 @@ export default function Login() {
   const pwOnChangeHandler = (e) => {
     setPwInput((prevInput) => e.target.value);
 
-    if (e.target.value.length === 0) {
+    if (isInput(e.target.value)) {
       setPwInputMessage((prevText) => '비밀번호를 입력하세요.');
     } else {
       setPwInputMessage((prevText) => '');
@@ -422,16 +423,8 @@ export default function Login() {
     });
   };
 
-  function isMoreThan4Length(word) {
-    return word.length >= 4;
-  }
-
-  function nickIsMoreThan4Length(word) {
-    return word.length >= 2;
-  }
-
   useEffect(() => {
-    if (isMoreThan4Length(inputSignUpData.idInput)) {
+    if (isLongerThan(4, inputSignUpData.idInput)) {
       setInputVaildMessage((prev) => {
         return { ...inputVaildMessage, idInput: '' };
       });
@@ -443,7 +436,7 @@ export default function Login() {
   }, [inputSignUpData.idInput]);
 
   useEffect(() => {
-    if (nickIsMoreThan4Length(inputSignUpData.nickNameInput)) {
+    if (isLongerThan(2, inputSignUpData.nickNameInput)) {
       setInputVaildMessage((prev) => {
         return { ...inputVaildMessage, nickNameInput: '' };
       });

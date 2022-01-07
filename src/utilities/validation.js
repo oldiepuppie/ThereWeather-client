@@ -13,8 +13,12 @@ export const isAllTypes = (str) => {
   return allLetterTypes.test(str);
 };
 
-export const isAllTypesOverSix = (str) => {
+export const isAllTypesOverLengthSix = (str) => {
   return allTypesAndOverSix.test(str);
+};
+
+export const isInput = (str) => {
+  return str.length === 0;
 };
 
 export const isLengthOver = (number, str) => {

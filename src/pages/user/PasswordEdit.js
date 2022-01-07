@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { changeUserPw } from '../../actions/index';
+import { isAllTypes, isInput, isLengthBelow } from '../../utilities/validation';
 
 const Outer = styled.section`
   position: relative;
@@ -107,12 +108,9 @@ export default function PasswordEdit() {
   const { isNoInput, isTooShort, isWrongType } = newPwdInputWarning;
   const [isValid, setIsValid] = useState('');
 
-  const validationReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/g;
-  // 정규식 : 최소 6자 이상하면서, 알파벳과 숫자 및 특수문자(@$!%*#?&) 는 하나 이상 포함
-
   const curInputHandler = (e) => {
     setCurPwd((prev) => e.target.value);
-    if (e.target.value.length === 0) {
+    if (isInput(e.target.value)) {
       setCurPwdInputWarning((prev) => '비밀번호를 입력해주세요.');
     } else {
       setCurPwdInputWarning((prev) => '');
@@ -122,7 +120,7 @@ export default function PasswordEdit() {
   const newInputHandler = (e) => {
     setNewPwd((prev) => e.target.value);
 
-    if (e.target.value.length === 0) {
+    if (isInput(e.target.value)) {
       setNewPwdInputWarning((prev) => {
         return { ...prev, isNoInput: '비밀번호를 입력해주세요.' };
       });
@@ -132,7 +130,7 @@ export default function PasswordEdit() {
       });
     }
 
-    if (!validationReg.test(e.target.value)) {
+    if (isAllTypes(e.target.value)) {
       setNewPwdInputWarning((prev) => {
         return { ...prev, isWrongType: '문자, 숫자, 특수문자가 모두 포함되어야 합니다.' };
       });
@@ -144,7 +142,7 @@ export default function PasswordEdit() {
       setIsValid((prev) => '사용 가능합니다.');
     }
 
-    if (e.target.value.length < 6) {
+    if (isLengthBelow(6, e.target.value)) {
       setNewPwdInputWarning((prev) => {
         return { ...prev, isTooShort: '6자 이상이어야 합니다.' };
       });
