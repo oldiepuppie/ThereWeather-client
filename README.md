@@ -9,7 +9,7 @@
 - 직접 제보를 작성할 수 있어요.
 
 ## 시스템 아키텍처
-<img width="80%" alt="system architecture" src="https://user-images.githubusercontent.com/61111156/148698026-ffd7edf5-b1d3-4f84-9b52-1f0cdfb4e5fc.png">
+<img width="80%" alt="system architecture" src="https://user-images.githubusercontent.com/61111156/148698742-108f5dbf-55cb-4e24-86fe-a36fa2ed7b69.png">
 
 ## 미리 보기
 
