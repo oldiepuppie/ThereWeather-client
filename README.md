@@ -38,3 +38,5 @@
 - 사진과 함께 현재 날씨, 체감 온도, 바람 세기, 추천 옷차림, 하고 싶은 이야기를 올려주세요.
 <img width="80%" alt="writing" src="https://user-images.githubusercontent.com/61111156/148693121-330cb775-2ac5-4e78-afd3-2e317e1471b1.png">
 
+## Wiki
+[링크](https://github.com/codestates/ThereWeather/wiki)
